@@ -51,11 +51,11 @@
           <div
             @click="getDayMessage(currentYear,currentMonth,dayobject.day.getDate())"
             v-if="dayobject.day.getFullYear() === new Date().getFullYear() && dayobject.day.getMonth() === new Date().getMonth() && dayobject.day.getDate() === new Date().getDate()"
-            class="active"
+            :class="{'active':dayobject.day.getDate() === otherDay}"
           >
             <div class="active-col">
               {{ dayobject.day.getDate()}}
-              <!-- <div class="active-radius"></div> -->
+              <div class="active-radius"></div>
             </div>
           </div>
           <div
@@ -68,7 +68,12 @@
               <div
                 v-if="dayobject.day.getFullYear() < new Date().getFullYear() || dayobject.day.getFullYear() === new Date().getFullYear()&&dayobject.day.getMonth() < new Date().getMonth() 
                 || dayobject.day.getMonth() === new Date().getMonth() && dayobject.day.getDate() < new Date().getDate()"
-                class="otherday-radius"
+                class="otherday-radius-hui"
+              ></div>
+              <div
+                v-if="dayobject.day.getFullYear() > new Date().getFullYear() || dayobject.day.getFullYear() === new Date().getFullYear()&&dayobject.day.getMonth() > new Date().getMonth() 
+                || dayobject.day.getMonth() === new Date().getMonth() && dayobject.day.getDate() > new Date().getDate()"
+                class="otherday-radius-red"
               ></div>
             </div>
           </div>
@@ -310,7 +315,7 @@ export default {
     height: 5rem !important;
   }
   .year-month {
-    margin: 0.45rem 0 0.45rem 0;
+    margin: 0.3rem 0 0.3rem 0;
     font-size: 14px;
     color: #000;
     display: flex;
@@ -400,6 +405,7 @@ export default {
     justify-content: space-around;
     overflow: hidden;
     position: relative;
+    padding-bottom: 0.22rem;
     li {
       list-style-type: none;
       display: inline-block;
@@ -410,29 +416,33 @@ export default {
       color: #000;
       position: relative;
       .active {
+        box-sizing: border-box;
         border-radius: 50%;
-        background: #3a8fea;
-        color: #fff;
+        border: 1px solid blue;
+        color: black;
         width: 0.54rem;
         height: 0.54rem;
         margin: auto;
         display: flex;
         justify-content: center;
         align-items: center;
-        .active-col {
+      }
+      .active-col {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .active-radius {
+          width: 2px;
+          height: 2px;
+          border: 1px;
+          background: blue;
+          border-radius: 50%;
           display: flex;
-          flex-direction: column;
           justify-content: center;
-          align-items: center;
-          .active-radius {
-            width: 2px;
-            height: 2px;
-            border: 1px;
-            background: black;
-            border-radius: 50%;
-          }
         }
       }
+
       .other-month {
         width: 0.54rem;
         height: 0.54rem;
@@ -476,18 +486,26 @@ export default {
         justify-content: center;
         align-items: center;
         border-radius: 50%;
-        border: 1px solid #b2b2b2;
+        border: 1px solid blue;
+        box-sizing: border-box
       }
       .otherday-col {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        .otherday-radius {
+        .otherday-radius-hui {
           width: 2px;
           height: 2px;
           border: 1px;
-          background: black;
+          background: #d6d6d6;
+          border-radius: 50%;
+        }
+        .otherday-radius-red {
+          width: 2px;
+          height: 2px;
+          border: 1px;
+          background: red;
           border-radius: 50%;
         }
       }
