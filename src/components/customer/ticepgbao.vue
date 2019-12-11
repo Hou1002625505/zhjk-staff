@@ -1,0 +1,1310 @@
+<template>
+ <div class='maintype'>
+    <div class="tepg_header" v-if="heightflag">
+        <div class="picimg"><img src="../../assets/images/default.png" ></div>
+        <p>{{cusname}}</p>
+        <!-- <div class="infom">
+             <div class="sex"><img src="../../assets/images/icon_girl1@2x.png" /></div>
+              <div class="age"><span>{{cusage}}岁</span></div>
+               <div class="height"><span>{{cusheight?cusheight+'cm':""}}</span></div>
+        </div> -->
+        <div class="info">
+            <span style="border:none"> <img src="../../assets/images/icon_girl1@2x.png" alt="" class="sex"></span>
+            <span style="border-left:1px solid #fff;">{{cusage}}岁</span>
+            <span style="padding-left: 0.1rem;">{{cusheight?cusheight+'cm':""}}</span>
+        </div>  
+      <div class="fengeline"></div>
+     </div>
+     <div class="inbody_wrap" v-for="(item,index) in inbodylist" :key="index">
+          <div class="inbody_jichu">
+               <div class="inbody_jichu1">
+                  <div class="title">
+                      <p class="text1">Inbody体测</p>
+                      <p class="gengduo">更多<img src="../../assets/images/icon_expansion1@2x.png"></p>
+                  </div>
+                   <div class="time">{{formatDate(testtime)}}</div>
+            <div data-v-3e1d570a="" class="latestSide"> 
+                <div data-v-3e1d570a="" class="assess clearfix">
+                    <div data-v-3e1d570a="" class="score">
+                    <div data-v-3e1d570a="" class="scores">
+                    <p data-v-3e1d570a="">肌肉控制</p> 
+                    <p data-v-3e1d570a="">{{item.muscle_control}}kg</p>
+                    </div>
+                    </div> 
+                    <div data-v-3e1d570a="" class="pingGu">
+                    <div data-v-3e1d570a="" class="circle1">
+                    <div data-v-3e1d570a="" class="content">
+                    <p data-v-3e1d570a="">健康评估</p> 
+                    <p data-v-3e1d570a=""><span data-v-3e1d570a=""> {{item.fitness_score}} </span>分</p> 
+                    <p data-v-3e1d570a="">内脏脂肪等级：{{item.visceral_fat_level}}</p> 
+                    <div data-v-3e1d570a="" class="line"></div>
+                    </div>
+                    </div>
+                    </div> 
+                    <div data-v-3e1d570a="" class="muscle">
+                    <div data-v-3e1d570a="" class="muscle1">
+                    <p data-v-3e1d570a="">脂肪控制</p> 
+                    <p data-v-3e1d570a="">{{item.fat_control}}kg</p>
+                    </div>
+                    </div>
+                </div>
+                 <div class="feipang_text1 feipang_text3">
+                 <span class="xian"></span> <span class="text">肥胖指标</span>
+                </div> 
+
+
+                             <div class="sideContrast ">
+         <div class="condition">
+           <div class="cd">
+             <p>体重</p>
+             <p>{{item.weight}}<img :src="item.weight<item.weight_min?falling:(item.weight_min<=item.weight)&&(item.weight<=item.weight_max)?'':rising" alt="" v-if="!(item.weight_min<=item.weight)&&(item.weight<=item.weight_max)"></p>
+           </div>
+ 
+         </div>
+          <div class="condition">
+           <div class="cd" >
+             <p>骨骼肌 </p>
+             <p>{{item.skeletal_muscle_mass}}<img :src="item.skeletal_muscle_mass<item.skeletal_muscle_mass_min?falling:(item.skeletal_muscle_mass_min<=item.skeletal_muscle_mass)&&(item.skeletal_muscle_mass<=item.skeletal_muscle_mass_max)?'':rising" alt="" v-if="!(item.skeletal_muscle_mass_min<=item.skeletal_muscle_mass)&&(item.skeletal_muscle_mass<=item.skeletal_muscle_mass_max)"></p>
+           </div>
+         </div>
+          <div class="condition">
+           <div class="cd">
+             <p>体脂肪 </p>
+             <p>{{item.body_fat_mass}}<img :src="item.body_fat_mass<item.body_fat_mass_min?falling:(item.body_fat_mass_min<=item.body_fat_mass)&&(item.body_fat_mass<=item.body_fat_mass_max)?'':rising" alt="" v-if="!(item.body_fat_mass_min<=item.body_fat_mass)&&(item.body_fat_mass<=item.body_fat_mass_max)"></p>
+           </div>
+         </div>
+          <div class="condition" style="width:26%">
+           <div class="cd">
+             <p>身体水分含量 </p>
+             <p>{{item.total_body_water}}<img :src="item.total_body_water<item.total_body_water_min?falling:(item.total_body_water_min<=item.total_body_water)&&(item.total_body_water<=item.total_body_water_max)?'':rising" alt="" v-if="!(item.total_body_water_min<=item.total_body_water)&&(item.total_body_water<=item.total_body_water_max)"></p>
+           </div>
+         </div>
+          <div class="condition">
+           <div class="cd">
+             <p>去脂体重 </p>
+             <p>{{item.fat_free_mass}}<img :src="item.fat_free_mass<item.fat_free_mass_min?falling:(item.fat_free_mass_min<=item.fat_free_mass)&&(item.fat_free_mass<=item.fat_free_mass_max)?'':rising" alt="" v-if="!(item.fat_free_mass_min<=item.fat_free_mass)&&(item.fat_free_mass<=item.fat_free_mass_max)"></p>
+           </div> 
+         </div>
+       </div>
+
+
+            </div>
+             <div class="feipang_text1 feipang_text2">
+                 <span class="xian"></span> <span class="text">肥胖指标</span>
+             </div>
+               </div>
+               <div class="inbody_feipang">
+                  <div class="zhushu1">
+                      <div class="zhiliang">
+                          <p><img src="../../assets/images/icon_bodymassindex@2x.png" ><span class="jinum">{{item.bmi}}</span><span class="danwei">kg/m</span>  </p>
+                           <p class="name">身体质量指数</p>
+                      </div>
+                      <div class="tizhi">
+
+                          <p><img src="../../assets/images/icon_physicalfitnesspercent@2x.png" ><span class="jinum">{{item.percent_body_fat}}</span><span class="danwei">kg/m</span>  </p>
+                           <p class="name">体脂百分比</p>
+                      </div>
+                  </div>
+                   <div class="zhushu2">
+                        <div class="yaotun">
+                             <p><img src="../../assets/images/icon_waisttohipratio@2x.png" ><span class="jinum">{{item.waist_hip_ratio}}</span><span class="danwei">kg/m</span>  </p>
+                           <p class="name">腰臀比</p>
+                        </div>
+                      <div class="jichu">
+                           <p><img src="../../assets/images/icon_basicmetabolism@2x.png" ><span class="jinum">{{item.bmr}}</span><span class="danwei">kg/m</span>  </p>
+                           <p class="name">基础代谢</p>
+                      </div>
+                   </div>
+               </div>
+               <div class="tuijianka">
+                   <p>推荐每天摄入的卡路里量：{{item.rbmr}}kcal</p>
+               </div>
+          </div>
+          <div class="fengeline"></div>
+           <div class="inbody_more">
+               <div class="inbody_jirou">
+                   <div class="jieduantext"><img src="../../assets/images/img_left@2x.png" ><span>节段肌肉</span><img src="../../assets/images/img_right@3x.png" ></div>
+                 <div class="feipang_text1">
+                  <span class="xian"></span> <span class="text">肌肉量 / 评估</span>
+                 </div>
+                   <div class="inbody_jirou_wrap">
+                        <div class="left_wrap">
+                            <div class="ltop">
+                                <div class="jiroukg">{{item.segment_lean_left_arm}}kg<span :class="{digao:etype3[1] != 1}">{{etype3[1]==0?'低':etype3[1]==1?'标准':'高'}}</span></div>
+                                <div class="jirouline"></div>
+                                <div class="jirouname">左上肢</div>
+                            </div>
+                            <div class="ldown">
+                                <div class="jiroukg">{{item.segment_lean_left_leg}}kg<span :class="{digao:etype3[4] != 1}">{{etype3[4]==0?'低':etype3[4]==1?'标准':'高'}}</span></div>
+                                <div class="jirouline"></div>
+                                <div class="jirouname">左下肢</div>
+                            </div>
+                        </div>
+                       <div class="inbody_jirou_img"></div>
+                        <div class="right_wrap">
+                             <div class="rtop">
+                                 <div class="jiroukg1"><span :class="{digao:etype3[0] != 1}">{{etype3[0]==0?'低':etype3[0]==1?'标准':'高'}}</span>{{item.segment_lean_right_arm}}kg</div>
+                                <div class="jirouline"></div>
+                                <div class="jirouname">右上肢</div>
+                             </div>
+                             <div class="qugan">
+                                   <div class="jiroukg1"><span :class="{digao:etype3[2] != 1}">{{etype3[2]==0?'低':etype3[2]==1?'标准':'高'}}</span>{{item.segment_lean_trunk}}kg</div>
+                                <div class="jirouline"></div>
+                                <div class="jirouname">躯干</div>
+                            </div>                       
+                             <div class="rdown">
+                                   <div class="jiroukg1"><span :class="{digao:etype3[3] != 1}">{{etype3[3]==0?'低':etype3[3]==1?'标准':'高'}}</span>{{item.segment_lean_right_leg}}kg</div>
+                                <div class="jirouline"></div>
+                                <div class="jirouname">右下肢</div>
+                             </div>
+                        </div>
+                     
+                   </div>
+               </div>
+                <div class="fengeline"></div>
+               <div class="inbody_zhifang">
+                    <div class="jieduantext"><img src="../../assets/images/img_left@2x.png" ><span>节段脂肪</span><img src="../../assets/images/img_right@3x.png" ></div>
+                   <div class="feipang_text1">
+                     <span class="xian"></span> <span class="text">(体脂百分比 / 肌肉量 ) / 评估</span>
+                     <p>*节段脂肪是推测值</p>
+                   </div>
+                   <div class="inbody_zhifang_wrap">
+                       <div class="zltop">
+                           <div class="zhiname">左上肢</div>
+                            <div class="zhilength">
+                                <div class="zhijindu"></div>
+                            </div>
+                              <div class="zhivalue">
+                                  <p>{{item.percent_segment_fat_left_arm}}%</p>
+                                  <p class="line"></p>
+                                  <p>{{item.lean_left_arm}}kg</p>
+                              </div>
+                              <div class="zhibiao" :class="{digao:etype3[6] != 1}">{{etype3[6]==0?'低':etype3[6]==1?'标准':'高'}}</div>                                 
+                       </div>
+
+                       <div class="zrtop">
+                           <div class="zhiname">右上肢</div>
+                            <div class="zhilength">
+                                <div class="zhijindu"></div>
+                            </div>
+                              <div class="zhivalue">
+                                  <p>{{item.percent_segment_fat_right_arm}}%</p>
+                                  <p class="line"></p>
+                                  <p>{{item.lean_right_arm}}kg</p>
+                              </div>
+                              <div class="zhibiao" :class="{digao:etype3[5] != 1}">{{etype3[5]==0?'低':etype3[5]==1?'标准':'高'}}</div> 
+                       </div>
+                       <div class="zqugan">
+                            <div class="zhiname">躯干</div>
+                            <div class="zhilength">
+                                <div class="zhijindu"></div>
+                            </div>
+                              <div class="zhivalue">
+                                  <p>{{item.percent_segment_fat_trunk}}%</p>
+                                  <p class="line"></p>
+                                  <p>{{item.lean_trunk}}kg</p>
+                              </div>
+                              <div class="zhibiao" :class="{digao:etype3[7] != 1}">{{etype3[7]==0?'低':etype3[7]==1?'标准':'高'}}</div> 
+                       </div>
+                        <div class="zldown">
+                             <div class="zhiname">左下肢</div>
+                            <div class="zhilength">
+                                <div class="zhijindu"></div>
+                            </div>
+                              <div class="zhivalue">
+                                  <p>{{item.percent_segment_fat_left_leg}}%</p>
+                                  <p class="line"></p>
+                                  <p>{{item.lean_left_leg}}kg</p>
+                              </div>
+                              <div class="zhibiao" :class="{digao:etype3[9] != 1}">{{etype3[9]==0?'低':etype3[9]==1?'标准':'高'}}</div> 
+                        </div>
+                       <div class="zrdown">
+                            <div class="zhiname">右下肢</div>
+                            <div class="zhilength">
+                                <div class="zhijindu"></div>
+                            </div>
+                              <div class="zhivalue">
+                                  <p>{{item.percent_segment_fat_right_leg}}%</p>
+                                  <p class="line"></p>
+                                  <p>{{item.lean_right_leg}}kg</p>
+                              </div>
+                              <div class="zhibiao" :class="{digao:etype3[8] != 1}">{{etype3[8]==0?'低':etype3[8]==1?'标准':'高'}}</div> </div>                     
+                   </div>
+               </div>
+                <div class="fengeline"></div><!--分割线 -->
+               <div class="inbody_dianzu">
+                   <div class="jieduantext"><img src="../../assets/images/img_left@2x.png" ><span>生物电阻值</span><img src="../../assets/images/img_right@3x.png" ></div>
+                     <div class="inbody_dianzu_wrap">
+                         <div class="dianzuname">
+                             <div class="zu_wrap">
+                                <div class="zuname" style="font-size:0.34rem;width:48%"><span style="padding-left:16%;">Z</span></div>
+                                <div class="zu20" style="font-size:0.34rem;width:24%"><span>20KHZ</span></div>
+                                <div class="zu100" style="font-size:0.34rem;"><span>100KHZ</span></div>
+                            </div>
+                         </div>
+                          <div class="drtop">
+                              <div class="zu_wrap">
+                                <div class="zuname"><span class="yuand"></span>右上肢</div>
+                                <div class="zu20">{{item.ira20}}</div>
+                                <div class="zu100">{{item.ira100}}</div>
+                               </div>
+                         </div>
+                          <div class="dltop">
+                              <div class="zu_wrap">
+                                <div class="zuname"><span class="yuand1"></span>左上肢</div>
+                                <div class="zu20">{{item.ila20}}</div>
+                                <div class="zu100">{{item.ila100}}</div>
+                               </div>
+                         </div>
+                         <div class="dqugan">
+                              <div class="zu_wrap">
+                                <div class="zuname"><span class="yuand2"></span>躯干</div>
+                                <div class="zu20">{{item.it20}}</div>
+                                <div class="zu100">{{item.it100}}</div>
+                               </div>
+                         </div>
+                         <div class="drdown">
+                              <div class="zu_wrap">
+                                <div class="zuname"><span class="yuand3"></span>右下肢</div>
+                                <div class="zu20">{{item.irl20}}</div>
+                                <div class="zu100">{{item.irl100}}</div>
+                               </div>
+                         </div>
+                          <div class="dldown">
+                              <div class="zu_wrap">
+                                <div class="zuname"><span class="yuand4"></span>左下肢</div>
+                                <div class="zu20">{{item.ill20}}</div>
+                                <div class="zu100">{{item.ill100}}</div>
+                               </div>
+                         </div>
+                     </div>
+               </div>
+
+           </div>
+     </div>
+      <!-- inbody没有记录显示 -->
+      <div class="noinbody_wrap" v-show="noinbodyflag">
+      <div class="noinbody_wrap pa4">
+        <p class="nodatap">Inbody检测</p>
+        <div class="noinbody">
+          <p class="text1">NO.01</p>
+           <p class="text2">你还没有参加任何Inbody检测</p>
+            <p class="text3"></p>
+        </div>      
+      </div>      
+     </div>
+      <div class="fengeline"></div>
+      <!-- 体态静态评估 -->
+     <div class="jingpg_wrap" v-for="(item,index) in jingtlist" :key="index">
+         <p class="jingpgname">体态静态评估</p>
+          <p class="jingpgtime">{{item.createDate}}</p>
+         <div class="jingpg_zheng bottomline">
+           <div class="jianguan_hed">
+                <div class="pic_wrap" @click="previewImage(item.frontImg)">
+                    <div class="pic">
+                        <img :src="ImgUrl+item.frontImg" />
+                    </div>
+                </div>
+                <div class="text_wrap">
+                    <p class="title">正面</p>
+                    <p class="miaosu miao">{{item.frontComments}}</p>                  
+                </div>
+            </div>
+         </div>
+         <div class="jingpg_ce bottomline">
+             <div class="jianguan_hed">
+                <div class="pic_wrap"  @click="previewImage(item.sideImg)">
+                    <div class="pic">
+                        <img :src="ImgUrl+item.sideImg" />
+                    </div>
+                </div>
+                <div class="text_wrap">
+                    <p class="title">侧面</p>
+                    <p class="miaosu miao">{{item.sideComment}}</p>                  
+                </div>
+            </div>
+         </div>
+         <div class="jingpg_bei bottomline">
+            <div class="jianguan_hed">
+                <div class="pic_wrap"  @click="previewImage(item.backImg)">
+                    <div class="pic">
+                        <img :src="ImgUrl+item.backImg" />
+                    </div>
+                </div>
+                <div class="text_wrap">
+                    <p class="title">背面</p>
+                    <p class="miaosu miao">{{item.backComment}}</p>                  
+                </div>
+            </div>
+         </div>
+    </div>
+    
+     <div class="nojing_wrap" v-show="nojingflag">
+      <div class="nojing_wrap pa4">
+         <p class="nodatap">体态静态评估</p>
+        <div class="nojing">
+          <p class="text1">NO.02</p>
+           <p class="text2">你还没有参加任何体态静态评估</p>
+            <p class="text3"></p>
+        </div> 
+      </div>
+      </div>
+
+     <div class="fengeline"></div><!--分割线 -->
+     <!-- 体态动态评估 -->
+      <div class="dongpg_wrap" v-if="!nodongflag">
+         <p class="jingpgname">FMS功能性运动测试</p>
+          <p class="jingpgtime">{{dgcreateDate}}</p>
+          <div class="dongpg_leida">
+             <!-- <ve-radar :data="chartData" :settings="chartSettings"></ve-radar> -->
+             <div id="leida" style="width: 65%; height: 400px; -webkit-tap-highlight-color: transparent; user-select: none; background: rgb(255, 255, 255);margin:auto;"></div>
+          </div>
+          <div class="leidazhishi">
+              <div class="zhi"><span class="kuaitem">1、过顶深蹲</span></div>
+                 <div class="zhi"><span class="kuaitem">2、跨栏上步(左)</span>3、跨栏上步(右)</div>
+                   <div class="zhi"><span class="kuaitem">4、直线箭步（左）</span>5、直线箭步（右）</div>
+                     <div class="zhi"><span class="kuaitem">6、肩部灵活性（左）</span>7、肩部灵活性（右）</div>
+                      <div class="zhi"><span class="kuaitem">8、主动直膝抬腿（左）</span>9、主动直膝抬腿（右）</div>
+                      <div class="zhi"><span class="kuaitem">10、躯干稳定性俯卧撑</span></div>
+                      <div class="zhi"><span class="kuaitem">11、转动稳定性（左）</span>12、转动稳定性（右）</div>
+                       
+          </div>
+           <div class="fengeline"></div><!--分割线 -->
+           <div class="qitaxiangmu">
+              <p class="jingpgname">其他项目测试</p>
+              <p class="jingpgtime" style="padding-bottom: 0.2rem;">{{dgcreateDate}}</p>
+              <div class="qitaxiangmucon">
+                      <div class="actionCS">
+             <div class="items">肺活量</div>
+              <div class="items">{{fmsData.vitalCapacity}}ml</div>
+           </div>
+             <div class="actionCS">
+             <div class="items">台阶指数</div>
+              <div class="items">{{fmsData.stepIndex}}cm</div>
+           </div>
+           <div class="actionCS">
+             <div class="items">握力</div>
+              <div class="items">{{fmsData.grip}}kg</div>
+           </div>
+           <div class="actionCS">
+             <div class="items">俯卧撑</div>
+              <div class="items">{{fmsData.pushUp}}个</div>
+           </div>
+           <div class="actionCS">
+             <div class="items">仰卧起坐</div>
+              <div class="items">{{fmsData.sitUp}}个</div>
+           </div>
+           <div class="actionCS">
+             <div class="items">坐位体前屈</div>
+              <div class="items">{{fmsData.sitAndReach}}cm</div>
+           </div>
+           <div class="actionCS">
+             <div class="items">选择反应时间</div>
+              <div class="items">{{fmsData.selectiveReactivity}}s</div>
+           </div>
+              </div>
+           </div>
+
+
+          <div class="jiaolianjie">
+              <span class="xian"></span><span class="text">教练总结</span><span class="xian"></span>
+          </div>
+           <div class="zhengjie">
+                <textarea v-model="dgzj" readonly="readonly"></textarea>
+            </div>
+      </div>
+
+      <div class="nodong_wrap pa4" v-show="nodongflag">
+           <p class="nodatap">FMS功能性运动测试</p>
+        <div class="nodong">
+          <p class="text1">NO.03</p>
+           <p class="text2">你还没有参加任何FMS功能性运动测试</p>
+            <p class="text3"></p>
+        </div> 
+      </div>
+ </div>
+
+</template>
+
+<script>
+ export default {
+   data () {
+       
+     return {
+       gxId:this.$route.query.gxId,
+       mobile:this.$route.query.mobile,  
+       pacId:this.$route.query.pacId,
+       jingid:this.$route.query.jingid,
+        noinbodyflag:false,
+        nojingflag:false,
+        nodongflag:false,
+        heightflag:false,
+        testtime:"",
+        inbodylist:[],
+        etype3:[],
+        jingtlist:[],
+        cusname:"",
+        cussex:"",
+        cusage:"",
+        cusheight:"",
+        ImgUrl:this.config.service_ip+'/template/staticImg/',
+        dgcreateDate:"",
+        dgzj:"",
+        imglist:[],
+        fmsData:'',
+         falling:require('../../assets/images/home_menu_increase@2x.png'),
+         rising:require('../../assets/images/home_menu_increase拷贝@2x.png'), 
+     }
+   },
+   created(){
+    this.getticebaogao()
+     
+   },
+   methods: {
+       getticebaogao(){
+           this.instance.$post('/rest/wx/reception/getNowAssessment',{
+             gxId:this.gxId,
+               mobile:this.mobile,
+               pacId:this.jingid,
+               id:this.pacId
+           },res => {
+              
+        console.log(res);
+        var data = res.rows[0].customer;//基本信息
+        this.cusname = data.name
+        this.cussex = data.gxSex
+         var year2 = data.year;
+        var date=new Date;
+       var year1=date.getFullYear(); 
+       console.log(year1)
+         console.log(year2)
+       this.cusage = parseInt(year1)-parseInt(year2)
+       if(year2 == 0){
+           this.cusage = 0
+       }
+        this.getinbody()
+    //    静态评估报告
+     var data1 = res.rows[0].staticEvaluation;
+     console.log('静态评估报告')
+     
+      if(data1){              
+        console.log(data1)
+         this.jingtlist.push(data1)
+         console.log(data1.frontImg)
+         this.imglist.push(this.ImgUrl+data1.frontImg)
+        this.imglist.push(this.ImgUrl+data1.sideImg)
+        this.imglist.push(this.ImgUrl+data1.backImg)
+      }else{
+           this.nojingflag=true
+           
+      }
+     
+          //    动态评估报告  
+            var data2 = res.rows[0].dynamicEvaluation;
+            console.log('动态评估报告')
+           
+            if(data2){
+               console.log(data2)
+               this.leidameth()
+            }else{
+                    this.nodongflag=true
+            }
+       
+        })
+       },
+        // 图片预览
+    previewImage(imgurl){
+        var that=this;
+        wx.previewImage({
+            current:that.ImgUrl+imgurl, // 当前显示图片的http链接
+            urls:that.imglist // 需要预览的图片http链接列表
+        });
+    },
+       
+     getinbody(){
+        this.instance.$post('/rest/wx/reception/getBodyTestLastByCus',{
+             mobile:this.mobile
+         },res => {
+        console.log(res);
+        
+        if(res.rel){
+            
+            var data = res.rows;
+            console.log(data)
+            if(data == null){
+                this.noinbodyflag = true; 
+            }
+            if(data.length>0){
+                data.forEach(item => {
+                    this.testtime = item.testtime
+                    this.inbodylist.push(item.bodyTestDetail)
+                    console.log(item.bodyTestDetail.etype3)
+                    this.cusheight = item.bodyTestDetail.height
+                    this.heightflag = true
+                    var etype = item.bodyTestDetail.etype3
+                    this.etype3 = Number(etype).toString().split('')
+                    var typelen = this.etype3.length;
+                     if(typelen < 10){
+                       var cha = 10 - typelen;
+                        for(var i = 0;i < cha;i++){
+                            this.etype3.unshift(0)
+                        }
+                     }
+                    console.log(this.etype3[0])
+                });
+            }else{
+                this.noinbodyflag = true;
+            }
+        }
+        })
+     },
+     formatDate (date) {
+        var d = new Date(date);
+        var year = d.getFullYear();
+        var month = d.getMonth() + 1;
+        var day = d.getDate() < 10 ? '0' + d.getDate() : '' + d.getDate();
+        if(month<10){
+            month="0"+month;
+        }
+        return year + '-' + month + '-' + day; 
+    },
+    leidameth(){
+        this.instance.$post('/rest/wx/reception/getDynamicEvaluation',{
+           mobile:this.mobile,
+           user:this.user
+       },res => {
+           console.log(res);
+           if(res.status){
+             var data = res.rows;
+             this.fmsData=res.rows[0];
+             if(data.length>0){
+                 data.forEach(item =>{
+                     this.dgcreateDate = item.createDate;
+                     this.dgzj = item.summary;
+                   var   dataBJ =[ item.squat,item.legBalanceL,item.legBalanceR,item.advanceJungeL,item.legBalanceL,item.advanceJungeR,item.shoulderFlexibilityL,item.latissimusDorsiR,item.legLiftL,item.legLiftR,item.trunkStability,item.handedTouchL,item.handedTouchR]
+                    var myChart = echarts.init(document.getElementById('leida'));
+      
+      window.onresize = myChart.resize; 
+        var lineStyle = {
+            normal: {
+                width: 1,
+                opacity: 0.5
+            }
+        };
+
+        var option = {
+            backgroundColor: '#fff',
+            radar: {
+                indicator: [
+                    {text: '①', max: 3},
+                    {text: '②', max: 3},
+                     {text: '③', max: 3},
+                     {text: '④', max: 3},
+                    {text: '⑤', max: 3},
+                    {text: '⑥', max: 3},
+                     {text: '⑦', max: 3},
+                    {text: '⑧', max: 3},
+                    {text: '⑨', max: 3},
+                    {text: '⑩', max: 3},
+                    {text: '⑪', max: 3},
+                      {text: '⑫', max: 3}
+                  
+                ],
+                splitNumber: 4,
+                name: {
+                    textStyle: {
+                        color: '#333',
+                        fontSize:20
+                    }
+                },
+                splitLine: {
+                    lineStyle: {
+                        color: '#3598FF',
+                         opacity: 0.6
+                    }
+                },
+                splitArea: {
+                    show: false,
+                    areaStyle : {
+                        color: '#3598FF', // 图表背景的颜色
+                    },
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: '#3598FF',
+                          opacity: 0.6
+                    }
+                }
+            },
+            series: [
+                   {
+                    name: '',
+                    type: 'radar',
+                    lineStyle: lineStyle,
+                     symbol:'circle',
+                     symbolSize:6,
+                        data: [ {
+                            value :dataBJ,
+                            name : '',
+                            itemStyle: {
+                                normal: {
+                                    color: '#3598FF',
+                                    areaStyle: {
+                                        color: '#9acbff'
+                                    }
+                                }
+                            }
+                        }],
+                },
+            
+            ]
+        };
+      myChart.setOption(option);
+
+
+                 })
+             }
+           }else{
+                this.nodongflag=true
+           }
+       
+    })
+
+    
+    }
+   },
+   mounted(){
+     
+   },
+   components: {
+   
+   }
+ }
+</script>
+
+<style scoped lang="less">
+.maintype{
+        position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    overflow-y: auto;
+    z-index: 2;
+}
+.kuaitem{display: inline-block;width:50%;}
+.jiaolianjie{text-align: center;margin-top:0.2rem;}
+.jiaolianjie .xian{display:inline-block;width:30%;height:1px;background:#D6D6D6;position: relative;bottom:0.1rem;}
+.jiaolianjie .text{padding:0 3%;}
+.zhengjie{width:94%;margin:0.4rem auto;}
+textarea{width:93.8%;height:2.06rem;background:#F7F7F7;
+border:1px solid rgba(214,214,214,1);outline: none;resize:none;padding:3%;font-size: 0.3rem;color:#1D1D1D;}
+  .pa4{padding:0 4%;}
+.nodatap{font-size:0.34rem;
+font-family:PingFang-SC-Medium;
+font-weight:500;
+color:rgba(29,29,29,1);
+padding:0.3rem 0;
+}
+.noinbody{width:96%;padding-left:4%;margin-bottom: 0.4rem;
+height:2.1rem;
+background:linear-gradient(90deg,rgba(175,228,255,1),rgba(254,252,255,1));
+box-shadow:0px 0px 10px 0px rgba(53,152,255,0.3);
+}
+.noinbody .text1{font-size:0.3rem;
+font-family:PingFang-SC-Light;
+font-weight:300;
+color:rgba(29,29,29,1);
+padding:0.3rem 0 0.2rem 0;
+}
+.noinbody .text2{
+    font-size:0.26rem;
+font-family:PingFang-SC-Medium;
+font-weight:500;
+color:rgba(29,29,29,1);
+}
+.noinbody .text3{
+    width:0.35rem;
+height:0.06rem;
+background:rgba(113,202,255,1);
+margin-top:0.2rem;
+}
+
+.nojing{width:96%;padding-left:4%;margin-bottom: 0.4rem;
+height:2.1rem;
+background:linear-gradient(90deg,rgba(249,222,253,1),rgba(254,252,255,1));
+box-shadow:0px 0px 10px 0px rgba(53,152,255,0.3);
+}
+.nojing .text1{font-size:0.3rem;
+font-family:PingFang-SC-Light;
+font-weight:300;
+color:rgba(29,29,29,1);
+padding:0.3rem 0 0.2rem 0;
+}
+.nojing .text2{
+    font-size:0.26rem;
+font-family:PingFang-SC-Medium;
+font-weight:500;
+color:rgba(29,29,29,1);
+}
+.nojing .text3{
+    width:0.35rem;
+height:0.06rem;
+background:rgba(242,155,255,1);
+margin-top:0.2rem;
+}
+
+.nodong{width:96%;padding-left:4%;margin-bottom: 0.4rem;
+height:2.1rem;
+background:linear-gradient(90deg,rgba(198,225,255,1),rgba(254,252,255,1));
+box-shadow:0px 0px 10px 0px rgba(53,152,255,0.3);
+}
+.nodong .text1{font-size:0.3rem;
+font-family:PingFang-SC-Light;
+font-weight:300;
+color:rgba(29,29,29,1);
+padding:0.3rem 0 0.2rem 0;
+}
+.nodong .text2{
+    font-size:0.26rem;
+font-family:PingFang-SC-Medium;
+font-weight:500;
+color:rgba(29,29,29,1);
+}
+.nodong .text3{
+    width:0.35rem;
+height:0.06rem;
+background:rgba(108,176,255,1);
+margin-top:0.2rem;
+}
+
+.leidazhishi{}
+.leidazhishi .zhi{width:80%;margin:0 auto 0.3rem;
+height:0.5rem;line-height: 0.5rem;padding-left:4%;
+background:rgba(247,247,247,1);
+border-radius:25px;
+font-size:0.2rem;
+font-family:PingFang-SC-Medium;
+font-weight:500;
+color:rgba(153,153,153,1);}
+.leidazhishi .zhi span{padding-right:6%;}
+.latestSide {
+  padding:0.32rem 0;
+  
+  .title {
+    font-size: 0.38rem;
+    padding: 0.3rem 0.35rem;
+  }
+  .assess {
+    padding-bottom: 0.3rem;
+    width: 100%;
+    position: relative;
+    .score {
+      width: 28%;
+      font-size: 0.28rem;
+      text-align: center;
+      float: left;
+      color: #1c1c1c;
+      margin-top: 0.5rem;
+      .scores {
+        float: right;
+        p:first-child {
+          font-size: 0.28rem;
+          line-height: 0.46rem;
+          color: #7A7A7A;
+        }
+        p:last-child {
+             font-size: 0.35rem;
+    color: #1d1d1d;
+        }
+      }
+    }
+    .pingGu {
+      width: 44%;
+      float: left;
+      .circle,
+      .circle1 {
+        position: relative;
+        width: 1.82rem;
+        font-size: 0.24rem;
+          color: #1c1c1c;
+        margin: 0 auto;
+        .content{
+          position: relative;
+              padding: 0.36rem 0.2rem;
+    text-align: center;
+    .line{
+       position: absolute;
+    width: 2rem;
+    height: 1px;
+    margin-left: 0rem;
+    height: 1;
+    bottom: 0.75rem;
+    background: url(../../assets/images/circleLine.png) no-repeat;
+    background-size: 100% 100%;
+    }
+        }
+        p:nth-child(2){
+          font-size: 0.5rem;
+          line-height: 0.9rem;
+        }
+      }
+      .circle1 {
+     width: 2.4rem;
+    height: 2.4rem;
+    position: absolute;
+    top: -0.22rem;
+    left: 48%;
+    -webkit-transform: translate(-42%);
+    transform: translate(-44%);
+    border: 4px solid #3598FF;
+    border-radius: 50%;
+      }
+    }
+
+    .muscle {
+      width: 28%;
+      float: right;
+      .muscle1 {
+        font-size: 0.35rem;
+        color: #1d1d1d;
+        margin-bottom: 0.3rem;
+            margin-top: 0.5rem;
+        p:first-child {
+          font-size: 0.28rem;
+          line-height: 0.46rem;
+          color: #7a7a7a;
+        }
+      }
+    }
+  }
+  .sideContrast {
+    display: flex;
+    padding: 0 0.3rem;
+    padding-top: 0.2rem;
+    .condition {
+      // flex: 1;
+      // -webkit-flex: 1;
+      text-align: center;
+     
+      .cd {
+        float: left;
+        position: relative;
+        p {
+          font-size: 0.24rem;
+          color: #1c1c1c;
+        }
+        p:first-child {
+          font-size: 0.24rem;
+          color: #7a7a7a;
+        }
+      }
+      .db {
+        float: left;
+        padding-top: 0.44rem;
+        //padding-left: 0.1rem;
+        font-size: 0.25rem;
+        img {
+          float: left;
+          width: 0.14rem;
+          //margin-right: 0.02rem;
+          // padding-top: 0.08rem;
+        }
+      }
+    }
+  }
+}
+.actionCS{
+   display: flex;
+       padding-bottom: 0.2rem;
+   .items{
+     flex: 1;
+     font-size: 0.3rem;
+     padding: 0 0.3rem;
+   }
+   .items:last-child{
+     text-align: right;
+   }
+ }
+ .latestSide {
+// padding: 0.6rem 0;
+// padding-bottom: 0.35rem;
+//   text-align: center;
+//   .title {
+//     font-size: 0.38rem;
+//     text-align: left;
+//     padding: 0.3rem 0.35rem;
+//   }
+//   .assess {
+//     padding-bottom: 0.3rem;
+//     width: 100%;
+//     position: relative;
+//     .score {
+//       width: 26%;
+//       font-size: 0.24rem;
+//       text-align: center;
+//       float: left;
+//       color: #1c1c1c;
+//       margin-top: 0.5rem;
+//       .scores {
+//         float: right;
+//         p:first-child {
+//           font-size: 0.24rem;
+//           line-height: 0.46rem;
+//           color: #7A7A7A;
+//         }
+//         p:last-child {
+//              font-size: 0.35rem;
+//     color: #1d1d1d;
+//         }
+//       }
+//     }
+//     .pingGu {
+//       width: 48%;
+//       float: left;
+//       .circle,
+//       .circle1 {
+//         position: relative;
+//         width: 1.82rem;
+//         font-size: 0.24rem;
+//           color: #1c1c1c;
+//         margin: 0 auto;
+//         .content{
+//           position: relative;
+//               padding: 0.44rem 0.2rem;
+//     text-align: center;
+//     .line{
+//        position: absolute;
+//     width: 2rem;
+//     height: 1px;
+//     margin-left: 0.06rem;
+//     height: 1;
+//     bottom: 0.812rem;
+//     background: url(../../assets/images/circleLine.png) no-repeat;
+//     background-size: 100% 100%;
+//     }
+//         }
+//         p:nth-child(2){
+//           font-size: 0.5rem;
+//           line-height: 0.9rem;
+//         }
+//       }
+//       .circle1 {
+//      width: 2.5rem;
+//     height: 2.5rem;
+//     position: absolute;
+//     top: -0.22rem;
+//     left: 48%;
+//     -webkit-transform: translate(-42%);
+//     transform: translate(-44%);
+//     border: 4px solid #7980F5;
+//     border-radius: 50%;
+//       }
+//     }
+
+//     .muscle {
+//       width: 26%;
+//       float: right;
+//       .muscle1 {
+//         font-size: 0.35rem;
+//         color: #1d1d1d;
+//         margin-bottom: 0.3rem;
+//             margin-top: 0.5rem;
+//             text-align: left;
+//         p:first-child {
+//           font-size: 0.24rem;
+//           line-height: 0.46rem;
+//           color: #7a7a7a;
+//         }
+//       }
+//     }
+//   }
+  .sideContrast {
+    padding: 0 0.3rem;
+    padding-top: 0.35rem;
+        overflow: hidden;
+    .condition {
+          width: 20%;
+          float: left;
+      .cd {
+        float: left;
+        position: relative;
+        p {
+          font-size: 0.35rem;
+          color: #1c1c1c;
+          img{
+             width: 0.14rem;
+             margin-left: 0.05rem;
+          }
+        }
+        p:first-child {
+          font-size: 0.24rem;
+          color: #7a7a7a;
+        }
+      }
+    
+      .db {
+            float: left;
+    padding-left: 0.1rem;
+    font-size: 0.25rem;
+    position: absolute;
+    right: -0.25rem;
+    top: 0.08rem;
+        img {
+          float: left;
+          width: 0.14rem;
+          margin-right: 0.02rem;
+          margin-top: 0.48rem;
+        }
+      }
+    }
+    .condition:first-child,.condition:last-child{
+      width: 17%;
+    }
+    .condition:last-child{
+      .cd{
+        float:right;
+      }
+    }
+  }
+}
+
+ .tepg_header{background:rgba(74,119,176,1);  overflow: hidden;
+        color:#fff;
+        text-align: center;
+        font-size: 0.28rem;}
+ .tepg_header .info{
+    height: 0.8rem;
+    line-height: 0.8rem;
+    margin-top: -0.3rem;
+ }
+ .tepg_header span{ display: inline-block;
+    text-align: center;
+    border-right: 1px solid #fff;
+    height: 0.26rem;
+    line-height: 0.26rem;
+    padding: 0 0.2rem;
+        // vertical-align: text-bottom;
+    position: relative;}
+  .tepg_header .sex{
+    vertical-align: middle;
+    position: absolute;
+    right: 0.2rem;
+  }
+  .info img{ width:0.2rem;}  
+      .tepg_header .picimg{text-align:center;padding-top:0.3rem;}
+       .tepg_header .picimg img{width:1rem;height:1rem;border-radius:50%;border:2px solid #a5bbd8}
+         .tepg_header p{text-align:center;font-size:0.3rem;
+font-family:PingFang-SC-Medium;
+font-weight:500;
+color:rgba(255,255,255,1);
+padding-bottom: 0.2rem;
+}
+           .tepg_header .infom{width:60%;height:0.4rem;margin:0 auto;padding:0.2rem 0 0.3rem;display: flex;text-align: center;font-size:0.3rem;
+font-family:PingFang-SC-Medium;
+font-weight:500;
+color:rgba(255,255,255,1);}
+           .infom .sex{flex:1;border-right: 1px solid #FFFFFF}
+           .infom .sex img{width:0.2rem;height:0.3rem;vertical-align: middle;}
+           .infom .ageactive{border-right: 1px solid #FFFFFF;}
+           .infom .age{flex:1;border-right: 1px solid #FFFFFF;}
+           .infom .height{flex:1;border-right: 1px solid #FFFFFF;}
+           .fengeline{width:100%;height:0.2rem;background:rgba(247,247,247,1);}
+ .inbody_jichu1{ }
+.inbody_jichu1 .title{height:1rem;line-height: 1rem;padding:0 4%;}
+.inbody_jichu1 .text1{float: left;font-size:0.34rem;
+font-family:PingFang-SC-Bold;
+font-weight:bold;
+color:rgba(28,28,28,1);}
+.inbody_jichu1 .gengduo{float:right;font-size:0.26rem;
+font-family:PingFang-SC-Medium;
+font-weight:500;
+color:rgba(153,153,153,1);}
+.gengduo img{width:0.25rem;height:0.16rem;padding-left:0.2rem;}
+.inbody_jichu1 .time{font-size:0.26rem;
+font-family:PingFang-SC-Medium;
+font-weight:500;padding:0 4%;
+color:rgba(29,29,29,1);padding-bottom: 0.3rem; }
+.feipang_text1{padding-bottom: 0.3rem;}
+.feipang_text2{padding:0 4% 0.3rem;}
+.feipang_text3{padding:0.6rem 4% 0;}
+.feipang_text1 .xian{display: inline-block; width:0.05rem;
+height:0.3rem;position: relative;top:0.02rem;
+background:rgba(73,120,176,1);}
+.feipang_text1 .text{font-size:0.3rem;
+font-family:PingFang-SC-Medium;
+font-weight:500;
+color:rgba(28,28,28,1);}
+.inbody_feipang{}
+.inbody_feipang .zhushu1{width:100%;height:1rem;border-top:1px solid #D6D6D6;border-bottom:1px solid #D6D6D6; }
+.inbody_feipang .zhushu2{width:100%;height:1rem;border-bottom:1px solid #D6D6D6;}
+.inbody_feipang .zhiliang{width:49%;height:1rem;border-right:1px solid #D6D6D6;text-align: center;display: inline-block;}
+.inbody_feipang .tizhi{width:49%;height:1rem;text-align: center;display: inline-block;}
+.inbody_feipang .yaotun{width:49%;height:1rem;border-right:1px solid #D6D6D6;text-align: center;display: inline-block;}
+.inbody_feipang .jichu{width:49%;height:1rem;text-align: center;display: inline-block;}
+.inbody_feipang img{width:0.36rem;height:0.4rem;vertical-align: text-bottom;}
+.inbody_feipang .jinum{font-size:0.36rem;
+font-family:PingFang-SC-Medium;
+font-weight:500;
+color:rgba(28,28,28,1);
+padding:0 2% 0 8%;
+}
+.inbody_feipang .danwei{font-size:0.2rem;
+font-family:PingFang-SC-Regular;
+font-weight:400;
+color:rgba(28,28,28,1);}
+.inbody_feipang .name{
+    font-size:0.2rem;
+font-family:PingFang-SC-Medium;
+font-weight:500;
+color:rgba(153,153,153,1);
+padding-left:14%;
+}
+.tuijianka{width:92%;margin:0.3rem auto;
+height:0.8rem;line-height: 0.8rem;text-align: center;
+background:rgba(53,152,255,1);
+border-radius:40px;}
+.tuijianka p{font-size:0.36rem;
+font-family:PingFang-SC-Medium;
+font-weight:500;
+color:rgba(255,255,255,1);}
+.inbody_jirou{padding:0 4%;}
+ .inbody_jirou_img{
+    float: left;
+    background: url(../../assets/images/img_people@2x.png);
+    width: 2rem;
+    height: 4.46rem;
+    background-size: 100%;
+    margin-left:10%;
+    }
+    .inbody_jirou_wrap{height:4.8rem;position: relative;padding:0 1%;}
+     .left_wrap{float: left;}
+     .left_wrap .ldown{position: absolute;bottom: 0.3rem;}
+    .jiroukg{}
+    .jiroukg span{font-size:0.3rem;padding-left:0.2rem;
+font-family:PingFang-SC-Medium;
+font-weight:500;
+color:rgba(29,29,29,1);}
+    .jiroukg1 span{font-size:0.3rem;padding-right:0.2rem;
+font-family:PingFang-SC-Medium;
+font-weight:500;
+color:rgba(29,29,29,1);}
+
+    .digao{font-size:0.3rem;
+font-family:PingFang-SC-Medium;
+font-weight:500;
+color:rgba(255,0,0,1)!important;}
+    .jirouline{height:1px;background: #D6D6D6;}
+    .jirouname{}
+    .right_wrap{float:right;text-align: right;}
+     .right_wrap .qugan{padding-top:0.36rem;}
+     .right_wrap .rdown{position: absolute;bottom: 0.3rem;}
+     .inbody_zhifang{padding:0 4%;}
+.feipang_text1 p{font-size:0.26rem;
+font-family:PingFang-SC-Regular;
+font-weight:400;
+color:rgba(153,153,153,1);}
+.inbody_zhifang_wrap{padding:0 1%;}
+.zltop{height:1rem;}
+.zhiname{display: inline-block; width:16%;font-size:0.3rem;
+font-family:PingFang-SC-Medium;
+font-weight:500;line-height: 1rem;
+color:rgba(153,153,153,1);}
+.zhilength{display: inline-block; width:52%;height:0.1rem;background:rgba(153,203,255,1);
+border-radius:8px;line-height: 1rem;position: relative;bottom:0.06rem;}
+.zhilength .zhijindu{}
+.zhivalue{display: inline-block; width:12%;font-size:0.26rem;
+font-family:PingFang-SC-Medium;
+font-weight:500;
+color:rgba(28,28,28,1);
+position: relative;top:0.14rem;
+padding:0 2%;
+}
+.zhivalue p{}
+.zhivalue .line{border:0.5px dashed  rgba(29,29,29,1);}
+.zhibiao{display: inline-block; width:10%;font-size:0.3rem;
+font-family:PingFang-SC-Medium;
+font-weight:500;line-height: 1rem;
+color:rgba(28,28,28,1);}
+
+.jieduantext{text-align: center;padding:0.3rem 0 0.2rem;}
+.jieduantext img{width:0.43rem;height:0.59rem;vertical-align: middle;}
+.jieduantext span{padding:0 5%;}
+ .inbody_dianzu{padding:0 4%;}
+ .zuname{display: inline-block; width:50%;height:;font-size:0.3rem;
+font-family:PingFang-SC-Medium;
+font-weight:500;
+color:rgba(29,29,29,1);}
+.zuname .yuand{display: inline-block; width:0.1rem;
+height:0.1rem;
+background:rgba(199,88,255,1);
+border-radius:5px;
+margin-right: 2%
+
+;}
+.zuname .yuand1{display: inline-block; width:0.1rem;
+height:0.1rem;
+background:#F16C53;
+border-radius:5px;
+margin-right: 2%
+
+;}
+.zuname .yuand2{display: inline-block; width:0.1rem;
+height:0.1rem;
+background:#FF9E3F;
+border-radius:5px;
+margin-right: 2%
+
+;}
+.zuname .yuand3{display: inline-block; width:0.1rem;
+height:0.1rem;
+background:#FECD5D;
+border-radius:5px;
+margin-right: 2%
+
+;}
+.zuname .yuand4{display: inline-block; width:0.1rem;
+height:0.1rem;
+background:#4E88FF;
+border-radius:5px;
+margin-right: 2%
+
+;}
+.zu20{display: inline-block; width:26%;height:;font-size:0.3rem;
+font-family:PingFang-SC-Medium;
+font-weight:500;
+color:rgba(29,29,29,1);}
+.zu100{display: inline-block; width:20%;height:;font-size:0.3rem;
+font-family:PingFang-SC-Medium;
+font-weight:500;
+color:rgba(29,29,29,1);}
+.zu_wrap{height:1rem;line-height: 1rem}
+.jingpgname{padding:0.4rem 4% 0;font-size:0.34rem;
+font-family:PingFang-SC-Bold;
+font-weight:bold;
+color:rgba(28,28,28,1);}
+.jingpgtime{padding:0 4%;font-size:0.26rem;
+font-family:PingFang-SC-Bold;
+color:rgba(28,28,28,1);}
+ .jianguan_hed{height:3.6rem;padding:4% 4% 0;position: relative;}
+         .pic_wrap{float:left;width:36%;height:3.2rem;background:#F7F7F7;padding:0 5%;margin-right: 4%;
+}
+         .pic_wrap .pic{width:100%;height:100%;}
+         .pic_wrap img{width:100%;height:100%;border: none;}
+           .text_wrap{float:right;width:50%;}
+         .text_wrap .title{font-size:0.36rem;padding-top:0.3rem;
+font-family:PingFang-SC-Bold;
+font-weight:bold;
+color:#1C1C1C;}
+.text_wrap .miao{ padding-top:0.2rem;}
+         .text_wrap .miaosu{
+            
+             font-size:0.3rem;
+font-family:PingFang-SC-Medium;
+font-weight:500;
+color:rgba(29,29,29,1);}      
+ .text_wrap .xian{width:0.3rem;height:5px;background:rgba(74,119,176,1);position: absolute;bottom:0.4rem;}
+.jingpg_zheng{}
+.bottomline{border-bottom: 1px solid #f7f7f7;}
+</style>

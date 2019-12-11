@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	    <link rel="stylesheet" href="lib/css/iconfont.css" />
+		<link rel="stylesheet" href="lib/css/weui.min.css" />
+		<link rel="stylesheet" href="lib/css/jquery-weui.min.css" />
+		<link rel="stylesheet" href="lib/css/iosSelect.css"  />
+		<link rel="stylesheet" href="h5_css/common.css" />
+		<link rel="stylesheet" href="h5_css/daiyue_dengji.css?v0.0.1" />
+		<title>私教代约-登记信息</title>
+	</head>
+	<style>
+		    .contact_me_add_city{padding:0 0.5rem 0 0.24rem;margin-top: 0.2rem;}
+			.contact_me_add_city span{display: block;}	
+			.contact_me_add_city em{display: inline-block;width: 90%;height:0.02rem;background:#999;position:relative ;top:-0.09rem;}       
+             .shengcheng span{color: #fff;font-size: 0.34rem;} 
+            .club_name_wrap,.club_name_wrap1{width:100%;height:100% ;background: rgba(153,153,153,0.5);position: absolute;top:0;left:0;z-index: 101;}
+            .club_name_wrap1_wrap{width:100%;margin-top: 1.2rem;}
+            .club_name_wrap1 span{display: inline-block;height:0.5rem;background: #FFFFFF;}
+			.club_name{width:100%;padding:0.23rem 0;background: #FFFFFF;height:4rem;}
+			/*.club_name1{width:100%;height:3.8rem ;padding:0.23rem 0;background: #FFFFFF;}
+			.club_name2{width:100%;height:3.8rem ;padding:0.23rem 0;background: #FFFFFF;}*/
+			.club_name_item_wrap{padding:0.3rem 0.5rem 0;}
+			.club_name_item {text-align: center;}
+			.club_name_item span{font-size: 0.3rem;color:#666;padding:0.1rem 0.2rem;border: 1px solid #333;border-radius:8px ;margin:0.2rem;}
+			.par0{height:3.2rem;}
+			.par1{height:3.2rem;}                                                                                                  ;}
+			.par2{height:1.8rem;}                                                                                                  ;}
+			.par3{height:1.8rem;}                                                                                                  ;}
+			.par4{height:1.8rem;}                                                                                                  ;}
+			.par5{height:2.8rem;}                                                                                                  ;}
+			.par6{height:1.8rem;} 
+		.dengji_finish{margin:0.5rem auto 0; width:6.9rem;height:0.86rem;line-height:0.86rem;text-align:center;background:#5176AB;border-radius:6px;}
+		.dengji_finish span{font-size:0.36rem;color:#fff;}
+		.fl{float:left;}
+		.fr{float:right;}
+		.fr_border{border-right: 1px solid #E4E4E4;}
+		.jieshu_num{background:#fff;position: fixed;bottom:0;width:100%;}
+		.jieshu_num p{height:0.72rem;line-height: 0.72rem; color: #2C2E34;font-size: 0.36rem;padding-left: 0.2rem;}
+		.jieshu_num .item{height:1.28rem;line-height:1.28rem;border-top:1px solid #E4E4E4;}
+		.jieshu_num .item1{height:0.86rem;line-height:0.7rem;border-top:1px solid #E4E4E4;}
+		.item_text{width:50%;text-align: center;}
+		.item_text span{font-size:0.36rem;color:#2C2E34;}
+		.item1 span{color:#5176AB;}
+		.jieshu_num_wrap{position: absolute;left:0;right:0;top:0;bottom:0;background: rgba(0,0,0,0.3);}
+		.item_box{text-align: center;padding:0.3rem 0;}
+		.item_box .item{display: inline-block;width:45%;margin-bottom: 0.3rem;}
+		 .item_box .item span{display: inline-block;width:100%;height:0.6rem;line-height:0.6rem;border:1px solid #5176AB;border-radius: 15px;
+		                      font-size:0.3rem ;color:#2C2E34;padding:0 0.1rem;
+		 }
+		 .shangke_type{background: #fff;position: absolute;top:0;left:0;width:100%;height:100%;}
+		 .shangke_type_header{height:1rem;line-height: 1rem;text-align: center;} 
+		 .shangke_type_header span{font-size:0.4rem;color:#2C2E34;}
+		 .selftaoc{width:100%;height:100%; background: url(h5_img/healthList.jpg);background-size: 100%;position: absolute;top:0;left:0;z-index: 101;}
+		 .taocan_iyem{width:6.9rem;height:1.5rem;line-height: 1.5rem; text-align: center; background:#2E2B41;margin: 0 auto 0.4rem;}
+		 .taocan_iyem span{font-size:0.32rem ;color:#fff;}
+		 .box{height: 0.2rem;}
+		 .tanchuang_wrap{background:rgba(0,0,0,0.3);position: fixed;bottom:0;left:0;top:0;right: 0;}
+		 .tanchuang{width:5.7rem;height:4rem;margin:2rem auto 0;}
+		 .tanchuang .text{height:2rem;background:#00A0E9;text-align: center;border-top-left-radius:6px;border-top-right-radius:6px;}
+		 .tanchuang .btn{height:2rem;background:#FFFFFF;border-bottom-left-radius:6px;border-bottom-right-radius:6px;}
+		 .tanchuang .text p{font-size:0.36rem;color:#fff;}
+		 .clickbtn{margin:0 auto;position: relative;top:0.6rem;display: inline-block;
+		 	width:2rem;height:0.7rem;line-height:0.7rem;background:#00A0E9;text-align: center;border-radius: 35px;}
+		 .text_p{padding-top:0.4rem;}	
+		 .clickbtn span{color:#fff;}
+		 .btn{padding-left: 0.7rem;}
+		 .btnkan{margin-left: 0.35rem;}
+		 .tanchuang_wrap9{background:rgba(0,0,0,0.3);position: fixed;bottom:0;left:0;top:0;right: 0;}
+		 .tanchuang9{width:5.7rem;height:4rem;margin:2rem auto 0;}
+		 .tanchuang9 .text{height:2rem;background:#00A0E9;text-align: center;border-top-left-radius:6px;border-top-right-radius:6px;}
+		 .tanchuang9 .btn9{height:2rem;background:#FFFFFF;border-bottom-left-radius:6px;border-bottom-right-radius:6px;}
+		 .tanchuang9 .text p{font-size:0.36rem;color:#fff;}
+		 .clickbtn9{margin:0 auto;position: relative;top:0.6rem;
+		 	width:4.3rem;height:0.7rem;line-height:0.7rem;background:#00A0E9;text-align: center;border-radius: 35px;}
+		 .text_p9{padding-top:0.4rem;}	
+		 .clickbtn9 span{color:#fff;} 
+		 .jianshentaocan{width:100%; position: absolute;top:0;left:0;right:0;bottom:0; background:#fff;}
+		 .sijiaotaocan_wrap{width:100%; position: absolute;top:0;left:0;right:0;bottom:0; background:#fff;}
+		 .jiantaocanitem_wrap1{margin:0 auto; background: url(h5_img/chuzhika.png);background-size: 100%;width:93%;height:3.2rem;}
+		 .jiantaocanitem_wrap2{margin:0 auto; background: url(h5_img/cika.png);background-size: 100%;width:93%;height:3.2rem;}
+		 .jiantaocanitem_wrap3{margin:0 auto; background: url(h5_img/qixianka.png);background-size: 100%;width:93%;height:3.2rem;}
+		 .jiantaocanitem{padding:0.3rem 0.6rem 0;position: relative;}
+		 .kahao{font-size:0.24rem;color:#fff;position: absolute;right: 0.6rem;}
+		 .canname{font-size:0.3rem;color:#fff;padding: 0.4rem 0 0 0.7rem;}
+		 .yue_yuci{padding-top: 0.9rem;}
+		 .yu_text{font-size:0.24rem;color:#fff;}
+		 .yu_text .item1{}
+		 .yu_text .item2{position: absolute;right:0.6rem;}
+		 .yu_cishu{font-size:0.3rem;color:#fff;}
+		 .yu_cishu .item1{}
+		 .yu_cishu .item2{position: absolute;right:0.6rem;}		 
+		 .sitaocanitem{height: 3.6rem;padding:0.3rem 0.3rem;border-bottom: 1px solid #E4E4E4;}
+		 .pictrue{float: left;width:56%;}
+		 .pictrue img{width:100%;height:3rem;}		 
+		 .text_wrap{width:40%; float: right;color: #2C2E34;font-size: 0.32rem;position: relative;}
+		 .text_wrap p{position: absolute;top:0.2rem;word-break:break-all;}
+		 .shengyu{position: absolute;top:2.3rem;}
+		 .shengyu span{color: #FF0024;}
+		 .zanwutaocan{text-align: center;margin-top: 3rem;}
+	     .zanwutaocan p{font-size: 0.3rem;color:red;}
+	     .boxitem{background:#fff;}
+	     .jiantou1{  width: 9px;
+		    height: 9px;
+		    border-top: 2px solid rgb(202,202,204);
+		    border-right: 2px solid rgb(202,202,204);
+		    transform: rotate(45deg);
+		    position: absolute;
+		    right: 0.3rem;
+		    top:0.36rem;
+		    
+        }
+       #jianshentaoc,#sijiaotaoc{padding-right: 0.14rem;}
+       
+	</style>
+	<body ontouchstart="" style="background:#E4E4E4;">
+		
+		<section>
+			<div id="message-one">
+				<div class="weui-cells">
+				  <a class="weui-cell weui-cell_access">
+				    <div class="weui-cell__bd">
+				      <p>会员姓名</p>
+				    </div>
+				    <input  class="weui-input"  id="rel-name" onfocus="this.blur()"/>
+				  </a>
+				  <a class="weui-cell weui-cell_access" >
+				    <div class="weui-cell__bd">
+				      <p>手机号码</p>
+				    </div>   
+				    <input  class="weui-input"   id="rel-tel" onfocus="this.blur()"/>    
+				  </a>
+				  <div class="weui-cell weui-cell_access" >
+				    <div class="weui-cell__bd">
+				      <p>上课门店</p>
+				    </div>
+				    <div class="weui-cell__ft" id="choice_club">
+				    	<input  type="text" class="weui-input" placeholder="请选择上课门店" data-toggle='date' id="datefcf" readonly="readonly" onfocus="this.blur()"/>
+				    </div>
+				  </div>
+				  
+				   <a class="weui-cell weui-cell_access">
+				    <div class="weui-cell__bd">
+				      <p>健身套餐</p>
+				    </div>
+
+					   <input  class="weui-input" placeholder="请选择健身套餐"  id="jianshentaoc" onfocus="this.blur()"/>
+					   <div class="jiantou1"></div>
+				  </a>
+				  <a class="weui-cell weui-cell_access">
+				    <div class="weui-cell__bd">
+				      <p>私教套餐</p>
+				    </div>
+				    
+				   <input  class="weui-input" placeholder="请选择私教套餐"   id="sijiaotaoc"  onfocus="this.blur()"/>
+				   <div class="jiantou1"></div>
+				  </a>
+				  <a class="weui-cell weui-cell_access" >
+				    <div class="weui-cell__bd">
+				      <p>上课类型</p>
+				    </div>
+				    <div class="weui-cell__ft">
+				    	<input  class="weui-input" placeholder="请选择上课类型" id="document-type" readonly="readonly" onfocus="this.blur()"/>
+				    </div>
+				  </a>
+				  <a class="weui-cell weui-cell_access"  id="card">
+				    <div class="weui-cell__bd">
+				      <p>上课节数</p>
+				    </div>
+				     <div class="weui-cell__ft" id="identit">
+				    <input  class="weui-input" placeholder="请选择上课节数" id="identity" unselectable="on" onfocus="this.blur()"/>
+				    </div>
+				  </a>
+				  <a class="weui-cell weui-cell_access" >
+				    <div class="weui-cell__bd">
+				      <p>开始时间</p>
+				    </div>
+				    <div class="weui-cell__ft" id="selectDate">
+				   <input  class="weui-input" type="text" placeholder="请选择上课开始时间" id="showDate" onfocus="this.blur()"/>
+				   </div>
+				  </a>
+				  <!--<a class="weui-cell weui-cell_access" >
+				    <div class="weui-cell__bd">
+				      <p>结束时间</p>
+				    </div>
+				    <div class="weui-cell__ft" id="selectDate1">
+				   <input  class="weui-input" type="text" placeholder="根据上课类型和节数计算" id="showDate1" onfocus="this.blur()"/>
+				   </div>
+				  </a>-->
+				  <!--<a class="weui-cell weui-cell_access">
+				    <div class="weui-cell__bd">
+				      <p>消费金额</p>
+				    </div>
+				    <input value="300.00元" style="color:red;font-size:0.3rem;" class="weui-input"  id="xiaofei_money" onfocus="this.blur()"/>
+				  </a>-->
+				</div>
+				<input type="text" hidden="hidden" id="customer_id"/>
+			</div>
+		</section>
+		<div class="dengji_finish"><span>代约登记完成</span></div>
+		
+		<!--选择上课节数-->
+		  <div class="jieshu_num_wrap" style="display: none;">
+			<div class="jieshu_num">
+				<p>选择上课节数</p>
+				<div class="item">
+					<div class="item_text fl fr_border" onclick="fang(1)"><span>1节</span></div>
+					<div class="item_text fr"  onclick="fang(2)"><span>2节</span></div>
+				</div>
+				<div class="item">
+					<div class="item_text fl fr_border"  onclick="fang(3)"><span>3节</span></div>
+					<div class="item_text fr"  onclick="fang(4)"><span>4节</span></div>
+				</div>
+				<!--<div class="item1">
+					<div class="item_text fl fr_border"><span>取消</span></div>
+					<div class="item_text fr" ><span>确认</span></div>
+				</div>-->
+			</div>
+		   </div>
+		  <!-- 请选择会员上课类型-->
+		  <div class="shangke_type" style="display: none;">
+		  	 <div class="shangke_type_header"><span>请选择会员上课类型</span></div>
+		  	 <div class="shangke_type_con">
+		  	 	<div class="item_box">
+		  	 		<!--<div class="item" onclick="fangitem('PT')"><span>PT</span></div>
+		  	 		<div class="item"  onclick="fangitem('ET')"><span>ET</span></div>
+		  	 		<div class="item"  onclick="fangitem('AT')"><span>AT</span></div>
+		  	 	
+		  	 		<div class="item" onclick="fangitem('私教GT')"><span>私教GT</span></div>
+		  	 		<div class="item" onclick="fangitem('有氧操GT')"><span>有氧操GT</span></div>
+		  	 		<div class="item" onclick="fangitem('FTX')"><span>FTX</span></div>
+		  	 	
+		  	 		<div class="item" onclick="fangitem('RTX')"><span>RTX</span></div>
+		  	 		<div class="item" onclick="fangitem('PLT')"><span>PLT</span></div>
+		  	 		<div class="item" onclick="fangitem('整脊私教')"><span>整脊私教</span></div>
+		  	 	
+		  	 		<div class="item" onclick="fangitem('游泳私教')"><span>游泳私教</span></div>
+		  	 		<div class="item" onclick="fangitem('MC')"><span>MC</span></div>
+		  	 		<div class="item" onclick="fangitem('其他私教')"><span>其他私教</span></div>-->
+		  	 	</div>
+		  	 </div>
+		  </div>
+		  <div class="club_name_wrap" style="display: none;">
+			<div class="futian club_name par0">
+				<div class="contact_me_add_city"><span>福田区</span><em></em></div>
+			</div>
+			<div class="nanshan club_name par1">
+				<div class="contact_me_add_city"><span>南山区</span><em></em></div>
+			</div>
+			<div class="luohu club_name par2" style="height:2.2rem;">
+				<div class="contact_me_add_city"><span>罗湖区</span><em></em></div>
+			</div>
+			<div class="longgang club_name par3" style="height:2.2rem;">
+				<div class="contact_me_add_city"><span>龙岗区</span><em></em></div>
+			</div>
+			<div class="baoan club_name par4" style="height:2.2rem;">
+				<div class="contact_me_add_city"><span>宝安区</span><em></em></div>
+			</div>
+			<div class="longhua club_name par5" style="height:3.2rem;">
+				<div class="contact_me_add_city"><span>龙华新区</span><em></em></div>
+			</div>
+			<div class="dapeng club_name par6" style="height:2.2rem;">
+				<div class="contact_me_add_city"><span>大鹏新区</span><em></em></div>
+			</div>
+		</div> <!--门店-->
+		<!--私教套餐-->
+				 
+		 <div class="sijiaotaocan_wrap sijiaotaoc" style="display: none;">
+		 	<div class="box"></div>
+		 	<div class="boxitem boxitem2"></div>
+		<!--<div class="sijiaotaocan">
+			<div class="sitaocanitem">
+				<div class="pictrue">
+					<img src="h5_img/sijiaochuzhika.png" />
+				</div>
+				<div class="text_wrap">
+					<p>优来荟全能年卡赠送ET两节</p>
+					<div class="shengyu">剩余<span id="sinum1">25000</span>元</div>
+				</div>
+			</div>		
+		</div>
+		
+		<div class="sijiaotaocan1">
+			<div class="sitaocanitem">
+				<div class="pictrue">
+					<img src="h5_img/sijiaozengsongka.png" />
+				</div>
+				<div class="text_wrap">
+					<p>优来荟全能年卡赠送ET两节</p>
+					<div class="shengyu">剩余<span id="sinum2">25</span>次</div>
+				</div>
+			</div>		
+		</div>
+		
+		<div class="sijiaotaocan2">
+			<div class="sitaocanitem">
+				<div class="pictrue">
+					<img src="h5_img/sijiaocika.png" />
+				</div>
+				<div class="text_wrap">
+					<p>优来荟全能年卡赠送ET两节</p>
+					<div class="shengyu">剩余<span id="sinum3">25</span>次</div>
+				</div>
+			</div>		
+		</div>
+		-->
+		<div class="zanwutaocan"  style="display: none;"><p>没有可以使用的套餐，请与前台联系!</p></div>
+  </div>
+		 <!--健身套餐-->
+	<div class="jianshentaocan jianshentaoc" style="display: none;">
+		<div class="box"></div>
+		<div class="boxitem boxitem1"></div>
+		<!--<div class="jiantaocanitem_wrap1">
+		  <div class="jiantaocanitem">	
+			<div class="kahao">'+x.customerCardId+'</div>
+			<div class="canname">'+x.packageName+'</div>
+			<div class="yue_yuci">
+				<div class="yu_text"><span class="item1">余额</span><span class="item2">有效期</span></div>
+				<div class="yu_cishu"><span class="item1">'+x.remainMoney+'元</span><span class="item2">'+x.validate+'</span></div>
+			</div>
+		  </div>
+		</div>
+		
+		<div class="jiantaocanitem_wrap2">
+		  <div class="jiantaocanitem">	
+			<div class="kahao">SZCF58345665</div>
+			<div class="canname">好几个估计惹欧泰蕨根粉d</div>
+			<div class="yue_yuci">
+				<div class="yu_text"><span class="item1">余次</span><span class="item2">有效期</span></div>
+				<div class="yu_cishu"><span class="item1">0元</span><span class="item2">2018.7.30</span></div>
+			</div>
+		  </div>
+		</div>
+		
+		<div class="jiantaocanitem_wrap3">
+		  <div class="jiantaocanitem">	
+			<div class="kahao">SZCF58345665</div>
+			<div class="canname">好几个估计惹欧泰蕨根粉d</div>
+			<div class="yue_yuci">
+				<div class="yu_text"><span class="item1">余额</span><span class="item2">有效期</span></div>
+				<div class="yu_cishu"><span class="item1">0元</span><span class="item2">2018.7.30</span></div>
+			</div>
+		  </div>
+		</div>-->
+		<div class="zanwutaocan"  style="display: none;"><p>没有可以使用的套餐，请与前台联系!</p></div>
+	</div>
+		 		 		 
+	<div class="tanchuang_wrap" style="display: none;">
+		<div class="tanchuang">
+			<div class="text">
+			   <div class="text_p">	
+				<p>代约课登记完成</p>
+				<p>请去日程管理查看上课安排</p>
+			   </div>	
+			</div>
+			<div class="btn">
+				<div class="clickbtn" id="return"><span>返回</span></div><div class="clickbtn btnkan" id="btnkan"><span>去看看</span></div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="tanchuang_wrap9" style="display: none;">
+		<div class="tanchuang9">
+			<div class="text">
+			   <div class="text_p9">	
+				<p class="strongg">请通知会员关注微信公众号</p>
+				<p class="strongg1">“中航健身会”并绑定会员卡</p>
+			   </div>	
+			</div>
+			<div class="btn9">
+				<div class="clickbtn9"><span>返回</span></div>
+			</div>
+		</div>
+	</div> 
+	</body>
+	<script type="text/javascript" src="lib/js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="lib/js/jquery-2.1.4.js"></script>
+	<script src="lib/js/jquery-weui.min.js"></script>
+	<script src="lib/js/datePicker.js"></script>
+	<script type="text/javascript" src="h5_js/common.js"></script>
+	<script src="lib/js/common.js"></script>
+	<script src="lib/js/filDate.js?v0.0.4"></script>
+	<script src="lib/js/iosSelect.js"></script>
+	<script src="lib/js/date_time.js?v0.0.3"></script>
+	
+	<script type="text/javascript" src="lib/js/getQueryStr.js"></script>
+	 <script type="text/javascript" src="lib/js/jquery.cookie.js"></script>
+	<!--<script src="h5_js/per_data.js?v.0.3.3"></script>-->
+	<script>
+		 //日期格式转换把时间yyyymmdd转yyyy-mm-dd  
+		function yyyy_MM_dd(value){
+			if(value.length == 8){
+			return value.substring(0, 4) + "-" + value.substring(4, 6) + "-" + value.substring(6, 8);
+			} else if(value.length == 6){
+			return value.substring(0, 4) + "-" + value.substring(4, 6);
+			} else {
+			return value;
+			}
+		}
+		function filDate(value){
+			var filValue = value.split(' ');
+		 	return filValue[0];
+ 	     }
+		function filDate1(value){
+			var filValue = value.split(' ');
+		 	return filValue[1];
+ 	     }
+		$('#return').click(function(){
+			$('.tanchuang_wrap').hide()
+		})
+		
+		$('#btnkan').click(function(){
+			location.href="richeng_management.html"
+		})
+		
+		var huiyuan_name = getUrlParam('name');
+		var huiyuan_tel = getUrlParam('tel');
+		var customerId = getUrlParam('customerId');
+		
+		$('#rel-name').val(huiyuan_name);
+		$('#rel-tel').val(huiyuan_tel);
+		
+		
+		//选取会所
+		$.ajax({
+			url:service_ip+'/rest/wx/customer/club/getJSClub',
+			//url:'http://localhost:8080/fangtest/club.json',
+			type:"post",
+			async:false,
+			success: function(msg){			
+		    var data = msg.rows;
+		    $.each(data, function(index,x) {
+                
+                var area1 = x.area;
+              if(area1 == '福田区'){
+              	$('.futian').append($('<div class="club_name_item"  onclick="feng(\''+x.clubName+'\',\''+x.clubId+'\');taocan(\''+x.sysClubCode+'\');clearcheck()"> <span  style="float:left;">'+x.clubName+'</span> </div>'))
+              }
+              
+              if(area1 == '南山区'){
+              	$('.nanshan').append($('<div class="club_name_item"  onclick="feng(\''+x.clubName+'\',\''+x.clubId+'\');taocan(\''+x.sysClubCode+'\');clearcheck()"> <span  style="float:left;">'+x.clubName+'</span> </div>'))
+              }
+              if(area1 == '罗湖区'){
+              	$('.luohu').append($('<div class="club_name_item"  onclick="feng(\''+x.clubName+'\',\''+x.clubId+'\');taocan(\''+x.sysClubCode+'\');clearcheck()"> <span  style="float:left;">'+x.clubName+'</span> </div>'))
+              }
+            if(area1 == '龙岗区'){
+              	$('.longgang').append($('<div class="club_name_item"  onclick="feng(\''+x.clubName+'\',\''+x.clubId+'\');taocan(\''+x.sysClubCode+'\');clearcheck()"> <span  style="float:left;">'+x.clubName+'</span> </div>'))
+              }
+            if(area1 == '宝安区'){
+              	$('.baoan').append($('<div class="club_name_item"  onclick="feng(\''+x.clubName+'\',\''+x.clubId+'\');taocan(\''+x.sysClubCode+'\');clearcheck()"> <span  style="float:left;">'+x.clubName+'</span> </div>'))
+              }
+            if(area1 == '龙华新区'){
+              	$('.longhua').append($('<div class="club_name_item"  onclick="feng(\''+x.clubName+'\',\''+x.clubId+'\');taocan(\''+x.sysClubCode+'\');clearcheck()"> <span  style="float:left;">'+x.clubName+'</span> </div>'))
+              }
+            if(area1 == '大鹏新区'){
+              	$('.dapeng').append($('<div class="club_name_item"  onclick="feng(\''+x.clubName+'\',\''+x.clubId+'\');taocan(\''+x.sysClubCode+'\');clearcheck()"> <span  style="float:left;">'+x.clubName+'</span> </div>'))
+              }
+            
+            
+		    });
+		    
+			},
+		    error: function(){
+		      alert('网络请求中断,请稍后重试!')	
+		    }
+		})
+		
+		
+		$('#sijiaotaoc').click(function(){
+			
+			$('.sijiaotaoc').show()
+			if($('.boxitem2').children().length==0){
+				$('.zanwutaocan').show()
+			}else{
+				$('.zanwutaocan').hide()
+			}
+		})
+		
+		$('#jianshentaoc').click(function(){
+			
+			$('.jianshentaoc').show()
+			if($('.boxitem1').children().length==0){
+				$('.zanwutaocan').show()
+			}else{
+				$('.zanwutaocan').hide()
+			}
+			
+		})
+		
+		$('#choice_club').click(function(){
+	
+		$('.club_name_wrap').show()	
+		})
+	
+	     $('#identit').click(function(){
+			$('.jieshu_num_wrap').show()
+		})
+	      
+	    $('#document-type').click(function(){
+	    	
+	    	$('.shangke_type').show()
+	    })
+	    
+		  		  
+		  //根据选择门店动态生成私教套餐、健身套餐
+		  function taocan(value){
+		  	
+			console.log(value)
+			$('.boxitem').html('')
+			
+			$.cookie('sijiaoclubID',value, { expires: 29 });
+			//私教套餐 fitType为3					
+		  $.ajax({
+			url:service_ip+"/rest/wx/customer/pac/findCpByType?clubId="+value+"&fitType=3"+"&customerId="+customerId,//根据会所ID,预约类型获取套餐
+			type:"get",
+			async:false,
+//			data:data,
+			success: function(msg){
+				console.log(msg)
+		    var data = msg.rows
+		    //console.log(data)
+		    $.each(data, function(index,x) {		    	
+		    var data = x.pacList;
+		     $.each(data, function(index,x){
+		     	console.log(x.isEnable)
+		     	if(x.isEnable==1){
+		     	  if(x.packageStatus==1){
+		     	  	if(x.isCoupon==1){
+			     	  	 if(x.packageType ==3 || x.packageType ==4){		     	  	 	
+			     	  	 	$('.boxitem2').append($('<div class="sijiaotaocan" onclick="sijiaotaocan(\''+x.sysCustomerPacId+'\',\''+x.packageName+'\',\''+x.packageType+'\',\''+x.sysCustomerId+'\',\''+x.customerCardId+'\',\''+x.remainMoney+'\',\''+x.remainCount+'\')"><div class="sitaocanitem"><div class="pictrue"><img src="h5_img/sijiaozengsongka.png" /></div><div class="text_wrap"><p>'+x.packageName+'</p><div class="shengyu">剩余<span id="sinum1">'+x.remainMoney+'</span>元</div></div></div></div>'))		     	  	 
+			     	  	 }else{
+			     	  	 	$('.boxitem2').append($('<div class="sijiaotaocan2" onclick="sijiaotaocan(\''+x.sysCustomerPacId+'\',\''+x.packageName+'\',\''+x.packageType+'\',\''+x.sysCustomerId+'\',\''+x.customerCardId+'\',\''+x.remainMoney+'\',\''+x.remainCount+'\')"><div class="sitaocanitem"><div class="pictrue"><img src="h5_img/sijiaozengsongka.png" /></div><div class="text_wrap"><p>'+x.packageName+'</p><div class="shengyu">剩余<span id="sinum1">'+x.remainCount+'</span>次</div></div></div></div>'))		     	  	 
+			     	  	 }
+		     	  	}else{
+			     	  	 if(x.packageType ==3 || x.packageType ==4){		     	  	 	
+			     	  	 	$('.boxitem2').append($('<div class="sijiaotaocan" onclick="sijiaotaocan(\''+x.sysCustomerPacId+'\',\''+x.packageName+'\',\''+x.packageType+'\',\''+x.sysCustomerId+'\',\''+x.customerCardId+'\',\''+x.remainMoney+'\',\''+x.remainCount+'\')"><div class="sitaocanitem"><div class="pictrue"><img src="h5_img/sijiaochuzhika.png" /></div><div class="text_wrap"><p>'+x.packageName+'</p><div class="shengyu">剩余<span id="sinum1">'+x.remainMoney+'</span>元</div></div></div></div>'))		     	  	 
+			     	  	 }else{
+			     	  	 	$('.boxitem2').append($('<div class="sijiaotaocan2" onclick="sijiaotaocan(\''+x.sysCustomerPacId+'\',\''+x.packageName+'\',\''+x.packageType+'\',\''+x.sysCustomerId+'\',\''+x.customerCardId+'\',\''+x.remainMoney+'\',\''+x.remainCount+'\')"><div class="sitaocanitem"><div class="pictrue"><img src="h5_img/sijiaocika.png" /></div><div class="text_wrap"><p>'+x.packageName+'</p><div class="shengyu">剩余<span id="sinum1">'+x.remainCount+'</span>次</div></div></div></div>'))		     	  	 
+			     	  	 }	
+		     	  	}
+		     	  }
+		     	}
+		     })
+                
+		    });
+			},
+		    error: function(){
+		      alert('网络请求中断,请稍后重试!')	
+		    }
+		});
+		
+		//健身套餐 fitType为1
+		
+		 $.ajax({
+			url:service_ip+"/rest/wx/customer/pac/findCpByType?clubId="+value+"&fitType=1"+"&customerId="+customerId,//根据会所ID,预约类型获取套餐
+			type:"get",
+			async:false,
+//			data:data,
+			success: function(msg){
+				console.log(msg)
+		    var data = msg.rows
+		    //console.log(data)
+		    $.each(data, function(index,x) {		    	
+		    var data = x.pacList;
+		     $.each(data, function(index,x){
+		     	console.log(x.isEnable)
+		     	var shixiao = yyyy_MM_dd(x.validate)
+		     	if(x.isEnable == 1){
+		     	  if(x.packageStatus==1){
+		     	  	if(x.packageType ==3 || x.packageType ==4){
+		     	  		
+		     	  	  $('.boxitem1').append($('<div class="jiantaocanitem_wrap1" onclick="jianshentaocan(\''+x.sysCustomerPacId+'\',\''+x.packageName+'\',\''+x.packageType+'\',\''+x.sysCustomerId+'\',\''+x.customerCardId+'\',\''+x.remainMoney+'\',\''+x.remainCount+'\')"><div class="jiantaocanitem"><div class="kahao">'+x.customerCardId+'</div><div class="canname">'+x.packageName+'</div><div class="yue_yuci"><div class="yu_text"><span class="item1">余额</span><span class="item2">有效期</span></div><div class="yu_cishu"><span class="item1">'+x.remainMoney+'元</span><span class="item2">'+shixiao+'</span></div></div></div></div>'))	
+		     	    }else{
+		     	    	
+		     	       $('.boxitem1').append($('<div class="jiantaocanitem_wrap2" onclick="jianshentaocan(\''+x.sysCustomerPacId+'\',\''+x.packageName+'\',\''+x.packageType+'\',\''+x.sysCustomerId+'\',\''+x.customerCardId+'\',\''+x.remainMoney+'\',\''+x.remainCount+'\')"><div class="jiantaocanitem"><div class="kahao">'+x.customerCardId+'</div><div class="canname">'+x.packageName+'</div><div class="yue_yuci"><div class="yu_text"><span class="item1">余次</span><span class="item2">有效期</span></div><div class="yu_cishu"><span class="item1">'+x.remainCount+'次</span><span class="item2">'+shixiao+'</span></div></div></div></div>'))	
+		     	    }
+		     	  }
+		     	}
+		     })
+                
+		    });
+			},
+		    error: function(){
+		      alert('网络请求中断,请稍后重试!')	
+		    }
+		});
+	   };
+		
+	//选取会所
+     var cookiedata;//服务门店
+     function  feng(clubName,clubID){
+     	var data = clubName;
+     	 $.cookie('clubID',clubID, { expires: 29 })
+     	 $.cookie('sijiaomendian', data, { expires: 29 });
+        cookiedata = $.cookie('sijiaomendian');
+      var clubnamenull = "请选择门店" 
+        
+        if(cookiedata == null){
+//      	geo()
+    	  $('#datefcf').html( clubnamenull)
+        }else{
+         	  $('#datefcf').val( cookiedata)
+         	  var huisuo = $.cookie('sijiaoclubID');
+         	  taocan(huisuo)
+         }
+        
+     	$('.club_name_wrap').hide()
+     }
+     feng(cookiedata);
+     
+      var leiixng;//项目名称
+      var sijiaocanname;
+      var sijiaotaocanID;      
+      var sijiaopackagetype;
+      var sysCustomerId;
+      var sysCardCode1;
+      var remainMoney1;
+      var remainNum1;
+      //选择私教套餐
+      function sijiaotaocan(value,taocanname,packageType,sysCustomerId1,sysCardCode,remainMoney,remainNum){
+      	    $('.item_box').html('');
+      	    $('#document-type').val('');
+      	     
+            var huisuoID=$.cookie('sijiaoclubID')
+      	    $('.sijiaotaoc').hide()
+      	    $('#sijiaotaoc').val(taocanname)
+      	   	      							
+			sijiaocanname = taocanname; 
+            sijiaotaocanID  = value;             
+            sijiaopackagetype = packageType;
+            sysCustomerId = sysCustomerId1;
+            sysCardCode1 = sysCardCode;
+            remainMoney1 = remainMoney;
+            remainNum1 = remainNum;
+            $.ajax({
+          	type:"get",
+          	url:service_ip+"/rest/wx/customer/pac/findItemsByPack?clubId="+huisuoID+"&fitType=3"+"&packageId="+sijiaotaocanID,
+          	async:false,
+          	success:function(res){
+          		console.log(res)
+          		var data = res.rows;
+          		$.each(data, function(index,x) {
+          		$('.item_box').append($('<div class="item" onclick="fangitem(\''+x.itemsName+'\',\''+x.itemId+'\',\''+x.itemPrice+'\',\''+x.itemBzPrice+'\',\''+x.relaId+'\',\''+x.courseTime+'\')"><span>'+x.itemsName+'</span></div>'))	   
+        			 
+          		});
+          	},
+          	error:function(){
+			  alert('网络请求中断,请稍后重试!')	
+			}
+          });
+        	
+	   }   
+     
+	       
+	 //选择健身套餐
+	  var jianshencanname;
+      var jianshentaocanID;      
+      var jianshenpackagetype;
+      var sysCustomerIdZz;
+      var jianshenitemPrice;
+      var jianshenitemPricebz;
+      var jianshenitemId;
+      var jianshenitemname;
+      var relaIdZz;
+      var sysCardCodeZz1;
+      var remainMoneyZz1;
+      var remainNumZz1;
+      function jianshentaocan(value,taocanname,packageType,sysCustomerIdZz1,sysCardCodeZz,remainMoneyZz,remainNumZz){
+      	console.log(sysCustomerIdZz)
+            var huisuoID=$.cookie('sijiaoclubID')
+      	    $('.jianshentaoc').hide()
+      	    $('#jianshentaoc').val(taocanname)
+      	   	      							
+			jianshencanname = taocanname; 
+            jianshentaocanID  = value;             
+            jianshenpackagetype = packageType;
+            sysCustomerIdZz = sysCustomerIdZz1;
+            sysCardCodeZz1 = sysCardCodeZz;
+            remainMoneyZz1 = remainMoneyZz;
+            remainNumZz1 = remainNumZz;
+            
+            console.log(jianshenpackagetype+'packageType')
+            // 根据会所ID,预约类型套餐ID来获取项目
+          $.ajax({
+          	type:"get",
+          	url:service_ip+"/rest/wx/customer/pac/findItemsByPack?clubId="+huisuoID+"&fitType=1"+"&packageId="+jianshentaocanID,
+          	async:false,
+          	success:function(res){
+          		console.log(res)
+          		
+          		var data = res.rows;
+          		  if(data.length>0){
+	          		$.each(data, function(index,x) {
+	          			if(x.itemsName == "健身"){
+	          				jianshenitemPrice = x.itemPrice;
+	          				jianshenitemPricebz = x.itemBzPrice;
+	          				jianshenitemId = x.itemId;
+	          				jianshenitemname = x.itemsName;
+	          				relaIdZz = x.relaId;
+	          			}
+	          		});
+          		 }else{
+          		 	    $('.strongg').css('opacity',0)
+                        $('.strongg1').html('此套餐不能在本门店使用')
+                        $('.tanchuang_wrap9').show()        		 	
+          		 }
+          		
+          	},
+          	error:function(){
+			  alert('网络请求中断,请稍后重试!')	
+			}
+          });
+	   }   
+      
+		
+		//选择节数
+		var jieshu; 
+	   function fang(value){
+	   	    
+	   	    jieshu = value;
+	    	if(jieshu == null){
+	   	    	jieshu = 1
+	   	    	$('#identity').val(jieshu + '节')
+	   	    }else{
+	   	    	$('#identity').val(jieshu + '节')
+	   	    }
+	    	$('.jieshu_num_wrap').hide()
+	        
+	    }
+	    fang(jieshu)
+	  	   
+	    //选择上课类型	    
+	    var sijiaobzprice;//项目标准价格
+        var sijiaoprice;//项目价格
+        var sijiaoitemId;//项目ID
+        var relaId1;
+        var courseTime1;
+	  function  fangitem(value,valueID,valuePrice,valuebzPrice,relaId,courseTime){
+	  	console.log(relaId+'relaId')
+//	  	$.cookie('leiixng1',value,{expires: 29 });
+//	  	$.cookie('itemID',valueID,{expires: 29 });
+//	  	$.cookie('itemPrice',valuePrice,{expires: 29 });
+//	  	$.cookie('itembzPrice',valuebzPrice,{expires: 29 });
+	  	
+	  	leiixng = value;
+	  	sijiaoitemId = valueID;
+	  	sijiaoprice = valuePrice;
+	  	sijiaobzprice = valuebzPrice;
+	  	relaId1 = relaId;
+	  	courseTime1 = courseTime;
+	  	$('#document-type').val(leiixng)
+	  		  	
+	  	$('.shangke_type').hide()
+	  	
+	  }
+	  function clearcheck(){
+	  	$('#jianshentaoc').val('');
+	  	$('#sijiaotaoc').val('');
+	  	$('#document-type').val('')
+	  	
+	  }
+	  
+	   pushHistory(); 
+	window.addEventListener("popstate", function(e) { 
+		
+        if( $('.jianshentaoc').css('display')==='block'){		 
+		  $('.jianshentaoc').hide();
+        }
+        if($('.sijiaotaoc').css('display')==='block'){
+        	$('.sijiaotaoc').hide();
+        }
+        if($('.shangke_type').css('display')==='block'){
+        	 $('.shangke_type').hide();
+        }
+		}, false); 
+		function pushHistory() { 
+			var state = { 
+			title: "title", 
+			url: "#" 
+			}; 
+		    window.history.pushState(state, "title", "#"); 
+	    }
+	  //获取用户上一次预约信息	 	 	  	  
+	  function getuserinfo(){
+	     console.log(customerId+' customerId')
+	  	 $.ajax({
+	  	 	type:"get",
+	  	 	url:service_ip+"/rest/wx/coach/getLastOrderInfoByCus?customerId="+customerId,
+	  	 	async:false,
+	  	 	contentType: "application/json;charset=UTF-8",
+		    dataType: "json",
+	  	 	//data:data,
+	  	 	success:function(res){
+	  	 		console.log(res)
+	  	 		if(res.status){
+	  	 			var data = res.rows;
+	  	 			console.log(data.length)
+	  	 		  if(data.length>0){	
+	  	 			$.each(data, function(index,x){	  	 				
+	  	 				console.log(x.fitName)
+	  	 				   $('#rel-name').val(x.customerName);	  	 				  
+					       leiixng=x.itemName;//项目名称
+					       $('#document-type').val(leiixng);
+					       sijiaocanname=x.tradePackage;
+					        $('#sijiaotaoc').val(sijiaocanname)
+					       sijiaotaocanID=x.packageId;      
+					      
+					       sysCustomerId=x.sysCustomerId;
+					       sysCardCode1=x.sysCardCode;
+					       remainMoney1=x.remainMoney;
+					       remainNum1=x.remainNum;
+					       jianshencanname=x.fitName;
+					       $('#jianshentaoc').val(jianshencanname)
+					       jianshentaocanID=x.fitId;      
+					       
+					       sysCustomerIdZz=x.sysCustomerIdZz;
+					       jianshenitemPrice=x.deductionsZz;
+					       jianshenitemPricebz=x.deductionsZzBz;
+					       jianshenitemId=x.fitItemId;
+					       jianshenitemname=x.fitItemName;
+					       relaIdZz=x.relaIdZz;
+					       sysCardCodeZz1=x.sysCardCodeZz;
+					       remainMoneyZz1=x.remainMoneyZz;
+					       remainNumZz1=x.remainNumZz;
+					       jieshu=x.number;
+					       sijiaobzprice=x.deductionsBz;//项目标准价格
+					       sijiaoprice=x.deductions;//项目价格
+					       sijiaoitemId=x.itemId;//项目ID
+					       relaId1=x.relaId;					       	  	 				
+	  	 			});
+	  	 		  }
+	  	 		}
+	  	 	},
+	  	 	error:function(){
+	  	 		alert('error')
+	  	 	}
+	  	 });
+	  };
+	  getuserinfo()
+	  //点击代约登记完成
+	  $('.dengji_finish').click(function(){
+	    var leixing1 =	$('#document-type').val();
+	    var jianshentao = $('#jianshentaoc').val();	 
+	    	var myDate = new Date();//获取系统当前时间
+	        var todaydate = myDate.getTime();//获取当前时间
+	        var dtae = formatDate2(todaydate)	       
+	        var fildtae = filDate(dtae)//今天年 月 日
+	        var fildtae1 = filDate1(dtae)//当前小时
+	        console.log(fildtae)
+	        console.log(fildtae1)
+	        
+	      //console.log(leixing + 'ceshileixing')
+	      var clubId = $.cookie('clubID'); //会所id
+		  var clubName = $('#datefcf').val();//会所名字
+		 
+//		  var customerId = $('#').val();//客户id
+		  var customerName = $('#rel-name').val();//客户姓名
+		  var tel = $('#rel-tel').val();//客户手机
+		  var packageId = sijiaotaocanID;//私教套餐id
+		  var tradePackage = sijiaocanname;//私教套餐名称
+		  var fitId = jianshentaocanID;//自助健身套餐id
+		  var fitName = jianshencanname;//自助健身套餐名称
+		  var number1 = jieshu; //预约节数
+		 		  		  
+		  
+		  if(jianshenpackagetype == 3 || jianshenpackagetype == 4){
+		  	var deductionsZz = jianshenitemPrice;
+		  }else{
+		  	var deductionsZz = 1;
+		  }
+		    var data_year = $('#showDate').attr("data-year");
+	    	var data_month = $('#showDate').attr("data-month");
+	    	var data_date = $('#showDate').attr("data-date");	    	
+	    	var data_hour = $('#showDate').attr("data-hour");
+	    	var data_minute = $('#showDate').attr("data-minute");
+	        
+	    	
+	    	if(data_month<10){
+	    		var data_month1 = "0" + data_month
+	    	}else{
+	    		var data_month1 =data_month
+	    	}
+	    	if(data_date<10){
+	    		var data_date2 = "0" + data_date
+	    	}else{
+	    		var data_date2 =data_date
+	    	}
+	    	if(data_hour<10){
+	    		var data_hour5 = "0" + data_hour
+	    	}else{
+	    		var data_hour5 =data_hour
+	    	}
+	    	if(data_minute<10){
+	    		var data_minute5 = "0" + data_minute
+	    	}else{
+	    		var data_minute5 =data_minute
+	    	}
+	    	
+	    	var appointDate = data_year +'-'+ data_month1 +'-'+ data_date2; 
+	    	var timeScope0 = data_hour5 +':'+ data_minute5;
+	    	var xuanzevalue = data_year +'/'+ data_month1 +'/'+ data_date2+" "+data_hour5 +':'+ data_minute5 	    	
+	    	var hour = data_hour;	    	
+	    	var minute = data_minute;
+	    	
+	    	console.log(minute)
+	    	 //1分钟=60000毫秒
+	    	    	
+	    	 var shichang = number1*courseTime1*60000;
+	    	 	    	 
+	    	var xuanzevalue1 = new Date(xuanzevalue)
+	    	var xuanzevalue2 = xuanzevalue1.getTime()//转成时间戳
+	    	var jiesutime = xuanzevalue2 + shichang;
+	    	var jiesutimedate = formatDate3(jiesutime);
+	    	var timeScope1 = filDate1(jiesutimedate);
+	    	var timeScope = timeScope0 +'-'+ timeScope1;
+	    	console.log(xuanzevalue2 + 'xuanzevalue')
+	    	console.log(jiesutimedate+'jiesutimedate')
+	    	console.log(appointDate)
+		    console.log(timeScope)
+		    
+		    var Flag1 = true;
+		    var Flag2 = true;
+		    var Flag3 = true;
+		    var Flag4 = true;
+		    var Flag5 = true;
+		    var Flag6 = true;
+		    var Flag7 = true;
+		    var Flag8 = true;
+		    if(appointDate==fildtae){
+		    	if(hour<fildtae1){
+		    		    $('.strongg').css('opacity',0)
+                        $('.strongg1').html('时间选择有误,开始时间已过')
+                        $('.tanchuang_wrap9').show()
+		    		Flag7 = false;
+		    	}
+		    }
+		   
+		    if(clubName == ""){
+		    	Flag1 = false;
+		    	alert('上课门店为空')
+		    }
+		    if(tradePackage == undefined || fitName == undefined || jianshentao==''){
+		    	Flag2 = false;
+	    		alert('请选择消费套餐')
+	    	}
+		    if(leixing1 == ''){
+		    	Flag3 = false;
+	    		alert('上课类型为空')
+	    	}
+		   
+	    	if(number1 == ""){
+	    		Flag4 = false;
+	    		alert('请选择上课节数')
+	    	}
+            
+             if(minute == undefined){
+             	Flag5 = false;
+		    	alert('请选择上课时间')
+		    }
+             console.log(jianshenitemname)
+            if(jianshenitemname == "健身"){
+            	 var Flag8 = true;
+            }else{
+            	var Flag8 = false;
+            	$('.strongg').css('opacity',1)
+            	 $('.strongg').html('此健身套餐不能用于私教代约')
+                 $('.strongg1').html('请选择别的健身套餐')
+                 $('.tanchuang_wrap9').show()
+            	
+            }
+           
+           
+//	    	var deductions = itemPrice * jieshu;
+	    	if(Flag1==true & Flag2==true & Flag3==true& Flag4==true& Flag5==true&Flag6==true&Flag7==true&Flag8==true){
+	    		var data = {
+	    			customerName:customerName,
+	    			customerId:customerId,
+	    			appointDate:appointDate,
+	    			timeScope:timeScope,
+	    			tel:tel,
+	    			clubId:clubId,
+	    			clubName:clubName,
+	    			courseType:leiixng,
+	    			packageId:packageId,
+	    			tradePackage:tradePackage,
+	    			fitId:fitId,
+	    			fitName:fitName,
+	    			number:number1,
+	    			itemName:leiixng,
+	    			itemId:sijiaoitemId,	    			
+	    			deductions:sijiaoprice,//私教价格
+	    			deductionsBz:sijiaobzprice,	    			
+	    			deductionsZz:jianshenitemPrice,//自助价格		    			
+	    			deductionsZzBz:jianshenitemPricebz,//自助标准价格
+	    			fitItemId:jianshenitemId,
+	    			fitItemName:jianshenitemname,
+	    			relaId:relaId1,
+	    			relaIdZz:relaIdZz,
+	    			sysCustomerId:sysCustomerId,
+	    			sysCustomerIdZz:sysCustomerIdZz,
+	    			sysCardCode:sysCardCode1,	    			
+	    			sysCardCodeZz:sysCardCodeZz1,
+	    			remainMoney:remainMoney1,
+                    remainNum:remainNum1,
+                    remainMoneyZz:remainMoneyZz1,
+                    remainNumZz:remainNumZz1
+	    		}
+	    		console.log(data)
+	    	$.ajax({	    			
+//	    		url:"http://192.168.0.33:8088/rest/wx/coach/addOrder",
+	    		url:service_ip+"/rest/wx/coach/addOrder",
+	    		type:"post",	    		
+	    		async:false,
+	    		contentType: "application/json;charset=UTF-8",
+    	        dataType: "json",
+                data:JSON.stringify(data),               
+	    		success:function(res){
+	    			var mess = res.message
+	    			console.log(res.status)//为true代约登记成功
+	    			if(res.status){
+	    				
+	    				$('.tanchuang_wrap').show()
+	    			}else{
+	    				 $('.strongg').html(mess)
+		                 $('.strongg1').css('display','none')
+		                 $('.tanchuang_wrap9').show()
+	    				
+	    			}
+	    		},
+	    		error:function(){
+	    			alert('网络请求中断,请稍后重试!')
+	    		}
+	    	    });
+	    		
+	    	}
+	    	
+	    	
+	    })
+	    //	 备注：  把要传给后台登记信息全部存入全局变量
+		 $('.clickbtn9').click(function(){
+      	 	$('.tanchuang_wrap9').hide()
+      	 })
+	</script>
+</html>
