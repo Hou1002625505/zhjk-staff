@@ -43,7 +43,8 @@
           v-if="dayobject.day.getMonth()+1 !== currentMonth"
           @click="otherMonth(dayobject.day.getDate())"
           class="other-month"
-        >{{ dayobject.day.getDate() }}</div>
+        ></div>
+        <!-- {{dayobject.day.getDate()}} -->
         <!--如果是本月 还需要判断是不是这一天-->
         <div v-else class="everyDay">
           <!--今天 同年同月同日-->
@@ -54,14 +55,23 @@
           >
             <div class="active-col">
               {{ dayobject.day.getDate()}}
-              <div class="active-radius"></div>
+              <!-- <div class="active-radius"></div> -->
             </div>
           </div>
           <div
             :class="{'otherday':dayobject.day.getDate() === otherDay}"
             v-else
             @click="getDayMessage(currentYear,currentMonth,dayobject.day.getDate())"
-          >{{ dayobject.day.getDate()}}</div>
+          >
+            <div class="otherday-col">
+              {{ dayobject.day.getDate()}}
+              <div
+                v-if="dayobject.day.getFullYear() < new Date().getFullYear() || dayobject.day.getFullYear() === new Date().getFullYear()&&dayobject.day.getMonth() < new Date().getMonth() 
+                || dayobject.day.getMonth() === new Date().getMonth() && dayobject.day.getDate() < new Date().getDate()"
+                class="otherday-radius"
+              ></div>
+            </div>
+          </div>
           <div :class="{'circle':dayobject.status==='3','o':dayobject.status==='2'}"></div>
         </div>
       </li>
@@ -282,6 +292,10 @@ export default {
       if (d < 10) d = "0" + d;
       return y + "-" + m + "-" + d;
     }
+  },
+  mounted() {
+    console.log(this.days);
+    console.log(this.days[0].day.getMonth());
   }
 };
 </script>
@@ -415,7 +429,7 @@ export default {
             height: 2px;
             border: 1px;
             background: black;
-            border-radius: 50%
+            border-radius: 50%;
           }
         }
       }
@@ -426,7 +440,7 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
-        color: white;
+        color: blanchedalmond;
       }
       .everyDay {
         width: 40px;
@@ -463,6 +477,19 @@ export default {
         align-items: center;
         border-radius: 50%;
         border: 1px solid #b2b2b2;
+      }
+      .otherday-col {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .otherday-radius {
+          width: 2px;
+          height: 2px;
+          border: 1px;
+          background: black;
+          border-radius: 50%;
+        }
       }
     }
   }
