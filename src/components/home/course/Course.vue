@@ -24,7 +24,7 @@
           </a>
         </div>
         <div class="branch-store-line"></div>
-        <div class="branch-store-footer">
+        <a class="branch-store-footer" @click="toappointment">
           <img src="../../../assets/images/1.jpg" alt />
           <div class="branch-store-footer-p">
             <p>
@@ -33,7 +33,7 @@
             </p>
             <p>星河中心健身分店</p>
           </div>
-        </div>
+        </a>
       </div>
     </div>
     <div v-if="shift == 'customer'" :class="{'fadeOut':fadeOut,'fadeIn':fadeIn,'fadeOutR':fadeOutR,'fadeInR':fadeInR}">还没开始哦！</div>
@@ -94,9 +94,18 @@ export default {
       }, 250);
     },
     toqr(){
-      this.$router.push({
+      setTimeout(() => {
+        this.$router.push({
         name : 'qr'
       })
+      }, 500);
+    },
+    toappointment(){
+      setTimeout(() => {
+        this.$router.push({
+        name:'appointment'
+      })
+      }, 500);
     }
   }
 };

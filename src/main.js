@@ -36,7 +36,7 @@ Vue.prototype.config = config;
 import Promise from 'es6-promise';
 Promise.polyfill()
 
-import  { ToastPlugin } from 'vux'
+import { ToastPlugin } from 'vux'
 Vue.use(ToastPlugin)
 // 导入接口
 import instance_ from './api/index.js';
@@ -73,7 +73,7 @@ Vue.use(Vuex);
 //   },
 //   mutations: {
 //     getQyUserme(state) {
-     
+
 //        $.ajax({
 //          type:"post",
 //          url: "http://test.physicalclub.com/crm/rest/wx/customer/getQyUser",
@@ -85,7 +85,7 @@ Vue.use(Vuex);
 //            state.yuangonghao = res.rows[0].userName
 //          }
 //        })
-      
+
 //     }
 //   },
 //   actions:{
@@ -108,12 +108,12 @@ import VueWechatTitle from 'vue-wechat-title'
 Vue.use(VueWechatTitle)
 //切换路由改变标题
 router.beforeEach((to, from, next) => {
-  if(to.meta.title){
+  if (to.meta.title) {
     document.title = to.meta.title;
   }
   const toDepth = to.path.split('/').length
   const fromDepth = from.path.split('/').length
-    let isBack = sessionStorage.getItem("isBack");
+  let isBack = sessionStorage.getItem("isBack");
   if (isBack == "true") {
     if (to.meta.nprogress != 1) {
       if (firstGo == 1) {
@@ -127,13 +127,13 @@ router.beforeEach((to, from, next) => {
     //   NProgress.start();
     // }
   }
-    // if(isBack=="false"){
-    //     from.meta.keepAlive = false;
-    //      to.meta.keepAlive = true;
-    //  }
+  // if(isBack=="false"){
+  //     from.meta.keepAlive = false;
+  //      to.meta.keepAlive = true;
+  //  }
   firstGo = 1;
 
- next()
+  next()
 })
 
 import { MessageBox, Indicator } from 'mint-ui';
@@ -147,15 +147,15 @@ router.afterEach(route => {
 import vueSignature from "vue-signature"
 Vue.use(vueSignature)
 // 时间过滤器
-Vue.filter("data",function (input) {
+Vue.filter("data", function (input) {
   var d = new Date(input);
   var year = d.getFullYear();
   var month = d.getMonth() + 1;
-  var day = d.getDate() <10 ? '0' + d.getDate() : '' + d.getDate();
+  var day = d.getDate() < 10 ? '0' + d.getDate() : '' + d.getDate();
   var hour = d.getHours();
   var minutes = d.getMinutes();
   var seconds = d.getSeconds();
-  return  year+ '-' + month + '-' + day;
+  return year + '-' + month + '-' + day;
 })
 //日期过滤器
 Vue.filter("subTime", function (time) {
@@ -167,11 +167,11 @@ Vue.filter("subTime", function (time) {
 })
 //手机号码过滤器
 Vue.filter("phoneStr", function (phone) {
-  if (phone != "" && phone != undefined){
+  if (phone != "" && phone != undefined) {
     let phoneResult = phone.substr(0, 3) + '****' + phone.substr(7);
     return phoneResult;
   }
-  
+
 })
 // 身份证过滤器
 Vue.filter("plusXing", function (str, frontLen, endLen) {
@@ -198,7 +198,7 @@ Vue.prototype.addCookie = function (name, value, expiresHours) {
   document.cookie = cookieString;
 }
 //修改cookie的值
-Vue.prototype.editCookie = function(name, value, expiresHours) {
+Vue.prototype.editCookie = function (name, value, expiresHours) {
   var cookieString = name + "=" + escape(value);
   if (expiresHours > 0) {
     var date = new Date();
@@ -220,24 +220,25 @@ Vue.prototype.getCookieValue = function (name) {
 }
 
 //去除两端空格
-String.prototype.trim=function(){
-  return this.replace(/(^\s*)|(\s*$)/g,"");
+String.prototype.trim = function () {
+  return this.replace(/(^\s*)|(\s*$)/g, "");
 }
 // import './util/rem';
 // vuex
 var store = new Vuex.Store({//store对象
   state: {
-    jurisdiction:[]
-    }
+    jurisdiction: []
+  }
 })
+
 new Vue({
   el: '#app',
   router,
   components: { App },
   // i18n,
   store,
-  data:{
-    eventHub:new Vue()
-  }, 
+  data: {
+    eventHub: new Vue()
+  },
   template: '<App/>'
 })

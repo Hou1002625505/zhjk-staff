@@ -95,6 +95,7 @@ const newticepinggu = () => import('../components/home/newticepinggu.vue')
 
 const Course = () => import('../components/home/course/Course.vue')
 const Qr = () => import('../components/home/course/Qr.vue')
+const Appointment = () => import('../components/home/course/Appointment.vue')
 
 export default new Router({
   //mode:'history',
@@ -125,6 +126,12 @@ export default new Router({
       meta: { title: '团操课程码', keepAlive: false },
       name: "qr",
       component: Qr
+    },
+    {
+      path: '/home/course/appointment',
+      meta: { title: '团操详情', keepAlive: false },
+      name: "appointment",
+      component: Appointment
     },
     {
       path: '/home',
