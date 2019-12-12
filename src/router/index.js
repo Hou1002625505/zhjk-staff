@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import { resolve } from 'rsvp';
 Vue.use(Router);
-sessionStorage.setItem("isBack",true);
+sessionStorage.setItem("isBack", true);
 window.addEventListener('popstate', () => {
   sessionStorage.setItem("isBack", false);
 }, false)
@@ -32,7 +32,7 @@ const cusjiedai = () => import('../components/home/cusjiedai.vue')
 const questionlist = () => import('../components/home/question_list.vue')
 const gfpquestion = () => import('../components/home/gfpquestion.vue')
 const parquestion = () => import('../components/home/parquestion.vue')
-const guwenjie = () => import('../components/home/guwenjie.vue') 
+const guwenjie = () => import('../components/home/guwenjie.vue')
 const zhiqingImg = () => import('../components/home/zhiqingImg.vue')
 const chagfp = () => import('../components/home/chagfp.vue')
 const chagfp1 = () => import('../components/home/chagfp1.vue')
@@ -50,7 +50,7 @@ const shoudianziht = () => import('../components/home/shoudianziht.vue')
 const inbodydetailID = () => import('../components/home/inbodydetailID.vue')
 const classhour = () => import('../components/home/classhour.vue')
 const classpublish = () => import('../components/home/classpublish.vue')
-const amymanagement = () => import('../components/home/amymanagement.vue') 
+const amymanagement = () => import('../components/home/amymanagement.vue')
 const sideHistory = () => import('../components/customer/sideHistory.vue')
 const customer = () => import('../components/customer/customerManagement.vue')
 const customerDetail = () => import('../components/customer/customerDetail.vue')
@@ -84,7 +84,7 @@ const todaycheng = () => import('../components/home/todaycheng.vue')
 
 const experience = () => import('../components/experience/experienceManagement.vue')
 const customerAnalysis = () => import('../components/experience/customerAnalysis.vue')
-const staffAnalysis = () => import('../components/experience/staffAnalysis.vue') 
+const staffAnalysis = () => import('../components/experience/staffAnalysis.vue')
 const personalAchievement = () => import('../components/experience/personalAchievement.vue')
 const me = () => import('../components/me/me.vue')
 const targetbianji = () => import('../components/me/targetbianji.vue')
@@ -94,11 +94,12 @@ const yuanuppic = () => import('../components/me/yuanuppic.vue')
 const newticepinggu = () => import('../components/home/newticepinggu.vue')
 
 const Course = () => import('../components/home/course/Course.vue')
+const Qr = () => import('../components/home/course/Qr.vue')
 
 export default new Router({
   //mode:'history',
-  base: '/per/', 
-  scrollBehavior (to, from, savedPosition) {
+  base: '/per/',
+  scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition
     } else {
@@ -109,9 +110,10 @@ export default new Router({
     }
   },
   routes: [
-    { path: '/', 
-    redirect: '/home'
-   },
+    {
+      path: '/',
+      redirect: '/home'
+    },
     {
       path: '/home/course',
       meta: { title: '团操课表', keepAlive: false },
@@ -119,9 +121,15 @@ export default new Router({
       component: Course,
     },
     {
+      path: '/home/course/qr',
+      meta: { title: '团操课程码', keepAlive: false },
+      name: "qr",
+      component: Qr
+    },
+    {
       path: '/home',
-      meta: { slide: 1,title: '中航健康', keepAlive: false },
-      name:"home",
+      meta: { slide: 1, title: '中航健康', keepAlive: false },
+      name: "home",
       component: home
     },
     {
@@ -136,40 +144,40 @@ export default new Router({
       name: "classhour",
       component: classhour
     },
-    
+
     {
       path: '/home/shoudianziht',
       meta: { title: '电子合同', keepAlive: false },
       name: "shoudianziht",
       component: shoudianziht
     },
-   
-    
+
+
     {
       path: '/home/yejidetail',
       meta: { title: '业绩查询', keepAlive: false },
       name: "yejidetail",
       component: yejidetail
-    },    
+    },
     {
       path: '/home/fenxiangmenu',
       meta: { title: '体验卡', keepAlive: false },
       name: "fenxiangmenu",
       component: fenxiangmenu
-    },  
+    },
     {
       path: '/home/fenxianglist',
       meta: { title: '体验卡券', keepAlive: false },
       name: "fenxianglist",
       component: fenxianglist
-    },    
+    },
     {
       path: '/home/tiyankayiling',
       meta: { title: '体验卡券', keepAlive: false },
       name: "tiyankayiling",
       component: tiyankayiling
     },
-    
+
     {
       path: '/home/meirongshouye',
       meta: { title: '我的客户', keepAlive: false },
@@ -182,7 +190,7 @@ export default new Router({
       name: "addmeicus",
       component: addmeicus
     },
-    
+
     {
       path: '/home/kehudang',
       meta: { title: '客户档案', keepAlive: false },
@@ -195,7 +203,7 @@ export default new Router({
       name: "cusjiben",
       component: cusjiben
     },
-    
+
     {
       path: '/home/cusjibeninfo',
       meta: { title: '客户基本信息', keepAlive: false },
@@ -213,24 +221,24 @@ export default new Router({
       meta: { title: '客户基本信息', keepAlive: false },
       name: "cusjibeninfobian",
       component: cusjibeninfobian
-    },  
-     {
-       path: '/home/zhiqinglist',
+    },
+    {
+      path: '/home/zhiqinglist',
       meta: { title: '客户知情书', keepAlive: false },
-       name: "zhiqinglist",
-       component: zhiqinglist
+      name: "zhiqinglist",
+      component: zhiqinglist
     },
     {
       path: '/home/zhiqinginfo',
       meta: { title: '客户知情书', keepAlive: false },
       name: "zhiqinginfo",
       component: zhiqinginfo
-    },   
-     {
-       path: '/home/zhishow',
+    },
+    {
+      path: '/home/zhishow',
       meta: { title: '客户知情书', keepAlive: false },
-       name: "zhishow",
-       component: zhishow
+      name: "zhishow",
+      component: zhishow
     },
     {
       path: '/home/panzhenlist',
@@ -270,7 +278,7 @@ export default new Router({
     },
     {
       path: '/home/cusjiedai',
-      meta: { title:'问卷调查', keepAlive: false }, 
+      meta: { title: '问卷调查', keepAlive: false },
       name: "cusjiedai",
       component: cusjiedai,
       children: [
@@ -347,7 +355,7 @@ export default new Router({
       meta: { title: 'PAR-Q问卷', keepAlive: false },
       name: "chapar1",
       component: chapar1
-    },    
+    },
     {
       path: '/home/parquestion',
       meta: { title: 'PAR-Q问卷', keepAlive: false },
@@ -360,14 +368,14 @@ export default new Router({
       name: "guwenjie",
       component: guwenjie
     },
-    
+
     {
       path: '/home/chaguwenjie',
       meta: { title: '顾问接待总结报告', keepAlive: false },
       name: "chaguwenjie",
       component: chaguwenjie
     },
-   
+
     {
       path: '/home/inbodylist',
       meta: { title: '体测数据', keepAlive: false },
@@ -385,7 +393,7 @@ export default new Router({
       meta: { title: '体测数据', keepAlive: false },
       name: "inbodydetailID",
       component: inbodydetailID
-    },    
+    },
     {
       path: '/home/inbodyduibi',
       meta: { title: '体测数据对比', keepAlive: false },
@@ -410,19 +418,19 @@ export default new Router({
       name: "amymanagement",
       component: amymanagement
     },
-    
+
 
     {
       path: '/customer',
       component: customer,
-      name:"customer",
-      meta: {slide:6, title: "客户管理", keepAlive: true }
+      name: "customer",
+      meta: { slide: 6, title: "客户管理", keepAlive: true }
     },
-    
-     {
-       path: '/home/daibanlist1',
-       component: daibanlist1,
-       name: "daibanlist1",
+
+    {
+      path: '/home/daibanlist1',
+      component: daibanlist1,
+      name: "daibanlist1",
       meta: { title: "待办", keepAlive: false }
     },
     {
@@ -430,13 +438,13 @@ export default new Router({
       component: daibanlist,
       name: "daibanlist",
       meta: { title: "待办", keepAlive: false }
-    }, 
+    },
     {
       path: '/customer/addclient',
       component: addclient,
       name: "addclient",
       meta: { slide: 1, title: "添加客户", keepAlive: false }
-    }, 
+    },
     {
       path: '/customer/customerDetail',
       component: customerDetail,
@@ -479,10 +487,10 @@ export default new Router({
       name: "yuandengjieg",
       meta: { title: "登记回访结果", keepAlive: false }
     },
-     {
+    {
       path: '/customer/yuannewhuifang',
-       component: yuannewhuifang,
-       name: "yuannewhuifang",
+      component: yuannewhuifang,
+      name: "yuannewhuifang",
       meta: { title: "新建回访计划", keepAlive: false }
     },
     {
@@ -491,7 +499,7 @@ export default new Router({
       name: "newhuifang",
       meta: { slide: 1, title: "新建回访计划", keepAlive: false }
     },
-    
+
     {
       path: '/customer/dianzihetong',
       component: dianzihetong,
@@ -502,7 +510,7 @@ export default new Router({
       path: '/customer/goumaiht',
       component: goumaiht,
       name: "goumaiht",
-      meta: { slide:1, title: "购买合同", keepAlive: false }
+      meta: { slide: 1, title: "购买合同", keepAlive: false }
     },
     {
       path: '/customer/kedaihuifang',
@@ -516,18 +524,18 @@ export default new Router({
       name: "kehuilishi",
       meta: { title: "回访历史", keepAlive: false }
     },
-    
+
     {
       path: '/customer/package_details',
       component: package_details,
       name: "package_details",
       meta: { title: "套餐详情", keepAlive: false }
     },
-    
-     {
-       path: '/customer/tcdetails',
-       component: tcdetails,
-       name: "tcdetails",
+
+    {
+      path: '/customer/tcdetails',
+      component: tcdetails,
+      name: "tcdetails",
       meta: { title: "套餐明细", keepAlive: false }
     },
     {
@@ -536,7 +544,7 @@ export default new Router({
       name: "tigetcus",
       meta: { title: "查找客户", keepAlive: false }
     },
-    
+
     {
       path: '/customer/cuszhiqing',
       component: cuszhiqing,
@@ -624,14 +632,14 @@ export default new Router({
       component: todaycheng
     },
     {
-      path: '/experience', 
-      name: 'experience', 
+      path: '/experience',
+      name: 'experience',
       component: experience,
-      meta: { slide: 1,title: "经营管理", keepAlive: false }
+      meta: { slide: 1, title: "经营管理", keepAlive: false }
     },
     {
       path: '/customer/sideHistory',
-      name: 'sideHistory', 
+      name: 'sideHistory',
       component: sideHistory,
       meta: { title: '体测历史', keepAlive: false },
       children: [
@@ -652,18 +660,18 @@ export default new Router({
     {
       path: '/me',
       component: me,
-      meta: { slide:1,title: "我的", keepAlive: false }
+      meta: { slide: 1, title: "我的", keepAlive: false }
     },
     {
       path: '/me/parsontarget',
       component: parsontarget,
-      name:"parsontarget",
+      name: "parsontarget",
       meta: { title: "个人目标", keepAlive: false }
     },
-     {
-       path: '/me/targetbianji',
-       component: targetbianji,
-       name: "targetbianji",
+    {
+      path: '/me/targetbianji',
+      component: targetbianji,
+      name: "targetbianji",
       meta: { title: "目标编辑", keepAlive: false }
     },
     {
@@ -678,7 +686,7 @@ export default new Router({
       name: "customerAnalysis",
       meta: { title: "经营管理", keepAlive: false }
     },
-    { 
+    {
       path: '/experience/staffAnalysis',
       component: staffAnalysis,
       name: "staffAnalysis",
@@ -688,7 +696,7 @@ export default new Router({
           path: "personalAchievement",
           name: "personalAchievement",
           component: personalAchievement,
-          meta: { title: '个人业绩', keepAlive: false  },
+          meta: { title: '个人业绩', keepAlive: false },
         }
       ]
     },
@@ -703,43 +711,43 @@ export default new Router({
       meta: { title: '体测评估', keepAlive: false },
       name: "newticepinggu",
       component: newticepinggu,
-       children: [
+      children: [
         {
           path: "cuszhiqings",
           name: "cuszhiqings",
           component: cuszhiqing,
           meta: { title: '客户知情书' }
         },
-         {
-           path: "inbodypics",
-           name: "inbodypics",
-           component: inbodypic,
-           meta: { title: '体侧评估' }
-         },
-         {
-           path: "jingpgs",
-           name: "jingpgs",
-           component: jingpg,
-           meta: { title: '体态静态评估' }
-         },
-         {
-           path: "dongpgs",
-           name: "dongpgs",
-           component: dongpg,
-           meta: { title: 'FMS功能性运动' }
-         }, 
-         {
-           path: "ticepgbaos",
-           name: "ticepgbaos",
-           component: ticepgbao,
-           meta: { title: '体测评估报告' }
-         },
-         {
-           path: "zhiqingImg",
-           name: "zhiqingImg",
-           component: zhiqingImg,
-           meta: { title: '签署协议' }
-         }
+        {
+          path: "inbodypics",
+          name: "inbodypics",
+          component: inbodypic,
+          meta: { title: '体侧评估' }
+        },
+        {
+          path: "jingpgs",
+          name: "jingpgs",
+          component: jingpg,
+          meta: { title: '体态静态评估' }
+        },
+        {
+          path: "dongpgs",
+          name: "dongpgs",
+          component: dongpg,
+          meta: { title: 'FMS功能性运动' }
+        },
+        {
+          path: "ticepgbaos",
+          name: "ticepgbaos",
+          component: ticepgbao,
+          meta: { title: '体测评估报告' }
+        },
+        {
+          path: "zhiqingImg",
+          name: "zhiqingImg",
+          component: zhiqingImg,
+          meta: { title: '签署协议' }
+        }
       ]
     },
   ]

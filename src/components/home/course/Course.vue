@@ -18,10 +18,10 @@
             <img src="../../../assets/image/clock_icon@2x.png" alt />
             <p>8:00~10:00</p>
           </div>
-          <div class="branch-store-qr">
+          <a class="branch-store-qr" @click="toqr">
             <img src="../../../assets/image/code@2x.png" alt />
             <img src="../../../assets/image/right_btn@2x.png" alt />
-          </div>
+          </a>
         </div>
         <div class="branch-store-line"></div>
         <div class="branch-store-footer">
@@ -92,6 +92,11 @@ export default {
         self.fadeOut = false;
         self.fadeIn = false;
       }, 250);
+    },
+    toqr(){
+      this.$router.push({
+        name : 'qr'
+      })
     }
   }
 };
