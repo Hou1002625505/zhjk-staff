@@ -20,19 +20,67 @@
         </div>
       </div>
     </div>
-    <mt-swipe :auto="0" class="mt-swipe">
+    <mt-swipe :auto="0" class="appointment-mt-swipe">
       <mt-swipe-item>
-        <div class="chart">
-          <div>
-            <my-echarts :titleText="titleText" :opinion="opinion" :opinionData="opinionData"></my-echarts>
+        <p>1111111</p>
+        <my-echarts :opinionData="opinionData"></my-echarts>
+        <!-- :titleText="titleText" :opinion="opinion" -->
+        <div class="mt-swipe-flex">
+          <div class="mt-swipe-flex-one">
+            <div class="mt-swipe-circle"></div>
+            <p>20以下</p>
           </div>
-          <div>
-            <my-echarts :titleText="titleText2" :opinion="opinion2" :opinionData="opinionData2"></my-echarts>
+          <div class="mt-swipe-flex-one">
+            <div class="mt-swipe-circle"></div>
+            <p>20以下</p>
+          </div>
+          <div class="mt-swipe-flex-one">
+            <div class="mt-swipe-circle"></div>
+            <p>20以下</p>
           </div>
         </div>
+        <p>111111</p>
       </mt-swipe-item>
-      <mt-swipe-item>2</mt-swipe-item>
-      <mt-swipe-item>3</mt-swipe-item>
+      <mt-swipe-item>
+        <p>1111111</p>
+        <my-echarts :opinionData="opinionData"></my-echarts>
+        <!-- :titleText="titleText" :opinion="opinion" -->
+        <div class="mt-swipe-flex">
+          <div class="mt-swipe-flex-one">
+            <div class="mt-swipe-circle"></div>
+            <p>20以下</p>
+          </div>
+          <div class="mt-swipe-flex-one">
+            <div class="mt-swipe-circle"></div>
+            <p>20以下</p>
+          </div>
+          <div class="mt-swipe-flex-one">
+            <div class="mt-swipe-circle"></div>
+            <p>20以下</p>
+          </div>
+        </div>
+        <p>111111</p>
+      </mt-swipe-item>
+      <mt-swipe-item>
+        <p>1111111</p>
+        <my-echarts :opinionData="opinionData"></my-echarts>
+        <!-- :titleText="titleText" :opinion="opinion" -->
+        <div class="mt-swipe-flex">
+          <div class="mt-swipe-flex-one">
+            <div class="mt-swipe-circle"></div>
+            <p>20以下</p>
+          </div>
+          <div class="mt-swipe-flex-one">
+            <div class="mt-swipe-circle"></div>
+            <p>20以下</p>
+          </div>
+          <div class="mt-swipe-flex-one">
+            <div class="mt-swipe-circle"></div>
+            <p>20以下</p>
+          </div>
+        </div>
+        <p>111111</p>
+      </mt-swipe-item>
     </mt-swipe>
   </div>
 </template>
@@ -46,22 +94,16 @@ export default {
   },
   data() {
     return {
-      titleText: "年龄分布统计",
-      titleText2: "学历分布统计",
+      //titleText: "年龄分布统计",
       // 扇形区域名称 lengend
-      opinion: ["18-25岁", "26-40岁", "41-50岁"],
-      opinion2: ["硕士", "本科", "专科", "其他"],
+      //opinion: ["18-25岁", "26-40岁", "41-50岁","51-60岁","61-70岁"],
       // series
       opinionData: [
         { value: 600, name: "18-25岁" },
         { value: 300, name: "26-40岁" },
-        { value: 200, name: "41-50岁" }
-      ],
-      opinionData2: [
-        { value: 70, name: "硕士" },
-        { value: 300, name: "本科" },
-        { value: 470, name: "专科" },
-        { value: 140, name: "其他" }
+        { value: 200, name: "41-50岁" },
+        { value: 600, name: "51-60岁" }
+        // { value: 400, name: "61-70岁" },
       ]
     };
   }
@@ -149,10 +191,25 @@ export default {
       }
     }
   }
-  .mt-swipe {
+  .appointment-mt-swipe {
     width: 100%;
-    height: 200px;
-    background: red;
+    height: 4.7rem;
+    background: white;
+    .mt-swipe-flex {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 0.6rem;
+      .mt-swipe-flex-one {
+        display: flex;
+        align-items: center;
+        .mt-swipe-circle {
+          width: 0.2rem;
+          height: 0.2rem;
+          border-radius: 50%;
+          background: blue;
+        }
+      }
+    }
   }
 }
 </style>

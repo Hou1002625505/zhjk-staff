@@ -128,3 +128,7 @@ padding: 0.18rem 1rem !important;
 .wjtc .weui-cells_form{
     padding: 0.3rem 0;
 }
+
+.appointment-mt-swipe .mint-swipe-items-wrap{
+    height:4rem;
+}
