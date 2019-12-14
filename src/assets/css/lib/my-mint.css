@@ -12,6 +12,7 @@
 }
 .mint-swipe-indicators{
     /* display: none; */
+    padding-bottom:-0.2rem;
 }
 .mint-spinner-snake{
         height: 20px !important;;
@@ -130,5 +131,5 @@ padding: 0.18rem 1rem !important;
 }
 
 .appointment-mt-swipe .mint-swipe-items-wrap{
-    height:4rem;
+    height:4.3rem;
 }

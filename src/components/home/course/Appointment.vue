@@ -22,21 +22,69 @@
     </div>
     <mt-swipe :auto="0" class="appointment-mt-swipe">
       <mt-swipe-item>
+        <div class="mt-swipe-header">
+          <div class="mt-swipe-header-left">
+            <p></p>
+            <p>年龄比对分析</p>
+          </div>
+          <div class="mt-swipe-header-right">
+            <p>
+              男:
+              <span>5</span>人
+            </p>
+            <p>
+              女:
+              <span>5</span>人
+            </p>
+          </div>
+        </div>
+        <my-echarts :opinionData="opinionData"></my-echarts>
+        <!-- :titleText="titleText" :opinion="opinion" -->
+        <div class="mt-swipe-flex">
+          <div class="mt-swipe-flex-one">
+            <div class="mt-swipe-circle-blue"></div>
+            <p>20以下</p>
+          </div>
+          <div class="mt-swipe-flex-one">
+            <div class="mt-swipe-circle-orange"></div>
+            <p>20-24</p>
+          </div>
+          <div class="mt-swipe-flex-one">
+            <div class="mt-swipe-circle-green"></div>
+            <p>25-30</p>
+          </div>
+        </div>
+        <div class="mt-swipe-flex">
+          <div class="mt-swipe-flex-one">
+            <div class="mt-swipe-circle-blue"></div>
+            <p>31-40</p>
+          </div>
+          <div class="mt-swipe-flex-one">
+            <div class="mt-swipe-circle-orange"></div>
+            <p>41-50</p>
+          </div>
+          <div class="mt-swipe-flex-one">
+            <div class="mt-swipe-circle-orange"></div>
+            <p>50以上</p>
+          </div>
+        </div>
+      </mt-swipe-item>
+      <mt-swipe-item>
         <p>1111111</p>
         <my-echarts :opinionData="opinionData"></my-echarts>
         <!-- :titleText="titleText" :opinion="opinion" -->
         <div class="mt-swipe-flex">
           <div class="mt-swipe-flex-one">
-            <div class="mt-swipe-circle"></div>
+            <div class="mt-swipe-circle-blue"></div>
             <p>20以下</p>
           </div>
           <div class="mt-swipe-flex-one">
-            <div class="mt-swipe-circle"></div>
-            <p>20以下</p>
+            <div class="mt-swipe-circle-orange"></div>
+            <p>20-24</p>
           </div>
           <div class="mt-swipe-flex-one">
-            <div class="mt-swipe-circle"></div>
-            <p>20以下</p>
+            <div class="mt-swipe-circle-green"></div>
+            <p>25-30</p>
           </div>
         </div>
         <p>111111</p>
@@ -47,36 +95,16 @@
         <!-- :titleText="titleText" :opinion="opinion" -->
         <div class="mt-swipe-flex">
           <div class="mt-swipe-flex-one">
-            <div class="mt-swipe-circle"></div>
+            <div class="mt-swipe-circle-blue"></div>
             <p>20以下</p>
           </div>
           <div class="mt-swipe-flex-one">
-            <div class="mt-swipe-circle"></div>
-            <p>20以下</p>
+            <div class="mt-swipe-circle-orange"></div>
+            <p>20-24</p>
           </div>
           <div class="mt-swipe-flex-one">
-            <div class="mt-swipe-circle"></div>
-            <p>20以下</p>
-          </div>
-        </div>
-        <p>111111</p>
-      </mt-swipe-item>
-      <mt-swipe-item>
-        <p>1111111</p>
-        <my-echarts :opinionData="opinionData"></my-echarts>
-        <!-- :titleText="titleText" :opinion="opinion" -->
-        <div class="mt-swipe-flex">
-          <div class="mt-swipe-flex-one">
-            <div class="mt-swipe-circle"></div>
-            <p>20以下</p>
-          </div>
-          <div class="mt-swipe-flex-one">
-            <div class="mt-swipe-circle"></div>
-            <p>20以下</p>
-          </div>
-          <div class="mt-swipe-flex-one">
-            <div class="mt-swipe-circle"></div>
-            <p>20以下</p>
+            <div class="mt-swipe-circle-green"></div>
+            <p>25-30</p>
           </div>
         </div>
         <p>111111</p>
@@ -116,6 +144,7 @@ export default {
   background: #f7f7f7;
   padding: 0.2rem 0.2rem 0 0.2rem;
   .appointment-header {
+    border-radius: 0.1rem;
     background: white;
     width: 100%;
     display: flex;
@@ -193,20 +222,106 @@ export default {
   }
   .appointment-mt-swipe {
     width: 100%;
-    height: 4.7rem;
+    height: 4.9rem;
     background: white;
-    .mt-swipe-flex {
+    border-radius: 0.1rem;
+    margin-top: 0.2rem;
+    .mt-swipe-header {
+      display: flex;
+      justify-content: space-between;
+      .mt-swipe-header-left {
+        display: flex;
+        padding: 0.11rem 0.2rem 0 0.2rem;
+        align-items: center;
+        p:nth-child(1) {
+          width: 0.05rem;
+          height: 0.3rem;
+          background: #4978b0;
+        }
+        p:nth-child(2) {
+          font-size: 15px;
+          margin-left: 0.09rem;
+        }
+      }
+      .mt-swipe-header-right {
+        display: flex;
+        font-size: 15px;
+        padding: 0.11rem 0.2rem 0 0.2rem;
+        align-items: center;
+        p:nth-child(1) {
+          margin-right: 0.28rem;
+          span {
+            margin-left: 0.1rem;
+          }
+        }
+        p:nth-child(2) {
+          span {
+            margin-left: 0.1rem;
+          }
+        }
+      }
+    }
+    .mt-swipe-flex:nth-child(3) {
       display: flex;
       justify-content: space-between;
       padding: 0 0.6rem;
       .mt-swipe-flex-one {
         display: flex;
         align-items: center;
-        .mt-swipe-circle {
+        transform: scale(0.5);
+        font-size: 20px;
+        .mt-swipe-circle-blue {
           width: 0.2rem;
           height: 0.2rem;
           border-radius: 50%;
           background: blue;
+          margin-right: 0.2rem;
+        }
+        .mt-swipe-circle-orange {
+          width: 0.2rem;
+          height: 0.2rem;
+          border-radius: 50%;
+          background: #ffa21e;
+          margin-right: 0.2rem;
+        }
+        .mt-swipe-circle-green {
+          width: 0.2rem;
+          height: 0.2rem;
+          border-radius: 50%;
+          background: #b8d927;
+          margin-right: 0.2rem;
+        }
+      }
+    }
+    .mt-swipe-flex:nth-child(4) {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 0.7rem;
+      .mt-swipe-flex-one {
+        display: flex;
+        align-items: center;
+        transform: scale(0.5);
+        font-size: 20px;
+        .mt-swipe-circle-blue {
+          width: 0.2rem;
+          height: 0.2rem;
+          border-radius: 50%;
+          background: blue;
+          margin-right: 0.2rem;
+        }
+        .mt-swipe-circle-orange {
+          width: 0.2rem;
+          height: 0.2rem;
+          border-radius: 50%;
+          background: #ffa21e;
+          margin-right: 0.2rem;
+        }
+        .mt-swipe-circle-green {
+          width: 0.2rem;
+          height: 0.2rem;
+          border-radius: 50%;
+          background: #b8d927;
+          margin-right: 0.2rem;
         }
       }
     }
