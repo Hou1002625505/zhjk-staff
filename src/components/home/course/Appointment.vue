@@ -1,115 +1,184 @@
 <template>
-  <div class="appointment-body">
-    <div class="appointment-header">
-      <p>BODYBALANCE莱美身心</p>
-      <p>10:00~11:00</p>
-      <div class="appointment-header-register">
-        <div class="appointment-header-register-column">
-          <p>10</p>
-          <p>已预约</p>
-        </div>
-        <p class="appointment-header-register-column"></p>
-        <div class="appointment-header-register-column">
-          <p>9</p>
-          <p>已签到</p>
-        </div>
-        <p class="appointment-header-register-column"></p>
-        <div class="appointment-header-register-column">
-          <p>1</p>
-          <p>未签到</p>
+  <div style="background:#f7f7f7">
+    <div class="appointment-body">
+      <div class="appointment-header">
+        <p>BODYBALANCE莱美身心</p>
+        <p>10:00~11:00</p>
+        <div class="appointment-header-register">
+          <div class="appointment-header-register-column">
+            <p>10</p>
+            <p>已预约</p>
+          </div>
+          <p class="appointment-header-register-column"></p>
+          <div class="appointment-header-register-column">
+            <p>9</p>
+            <p>已签到</p>
+          </div>
+          <p class="appointment-header-register-column"></p>
+          <div class="appointment-header-register-column">
+            <p>1</p>
+            <p>未签到</p>
+          </div>
         </div>
       </div>
+      <mt-swipe :auto="0" class="appointment-mt-swipe">
+        <mt-swipe-item>
+          <div class="mt-swipe-header">
+            <div class="mt-swipe-header-left">
+              <p></p>
+              <p>年龄比对分析</p>
+            </div>
+            <div class="mt-swipe-header-right">
+              <p>
+                男:
+                <span>5</span>人
+              </p>
+              <p>
+                女:
+                <span>5</span>人
+              </p>
+            </div>
+          </div>
+          <my-echarts :opinionData="opinionData"></my-echarts>
+          <!-- :titleText="titleText" :opinion="opinion" -->
+          <div class="mt-swipe-flex">
+            <div class="mt-swipe-flex-one">
+              <div class="mt-swipe-circle-red"></div>
+              <p>20以下</p>
+            </div>
+            <div class="mt-swipe-flex-one">
+              <div class="mt-swipe-circle-orange"></div>
+              <p>20-24</p>
+            </div>
+            <div class="mt-swipe-flex-one">
+              <div class="mt-swipe-circle-green"></div>
+              <p>25-30</p>
+            </div>
+          </div>
+          <div class="mt-swipe-flex">
+            <div class="mt-swipe-flex-one">
+              <div class="mt-swipe-circle-sky"></div>
+              <p>31-40</p>
+            </div>
+            <div class="mt-swipe-flex-one">
+              <div class="mt-swipe-circle-lightgreen"></div>
+              <p>41-50</p>
+            </div>
+            <div class="mt-swipe-flex-one">
+              <div class="mt-swipe-circle-blue"></div>
+              <p>50以上</p>
+            </div>
+          </div>
+        </mt-swipe-item>
+        <mt-swipe-item>
+          <div class="mt-swipe-header">
+            <div class="mt-swipe-header-left">
+              <p></p>
+              <p>年龄比对分析</p>
+            </div>
+            <div class="mt-swipe-header-right">
+              <p>
+                男:
+                <span>5</span>人
+              </p>
+              <p>
+                女:
+                <span>5</span>人
+              </p>
+            </div>
+          </div>
+          <my-echarts :opinionData="opinionData"></my-echarts>
+          <!-- :titleText="titleText" :opinion="opinion" -->
+          <div class="mt-swipe-flex">
+            <div class="mt-swipe-flex-one">
+              <div class="mt-swipe-circle-red"></div>
+              <p>20以下</p>
+            </div>
+            <div class="mt-swipe-flex-one">
+              <div class="mt-swipe-circle-orange"></div>
+              <p>20-24</p>
+            </div>
+            <div class="mt-swipe-flex-one">
+              <div class="mt-swipe-circle-green"></div>
+              <p>25-30</p>
+            </div>
+          </div>
+          <div class="mt-swipe-flex">
+            <div class="mt-swipe-flex-one">
+              <div class="mt-swipe-circle-sky"></div>
+              <p>31-40</p>
+            </div>
+            <div class="mt-swipe-flex-one">
+              <div class="mt-swipe-circle-lightgreen"></div>
+              <p>41-50</p>
+            </div>
+            <div class="mt-swipe-flex-one">
+              <div class="mt-swipe-circle-blue"></div>
+              <p>50以上</p>
+            </div>
+          </div>
+        </mt-swipe-item>
+        <mt-swipe-item>
+          <div class="mt-swipe-header">
+            <div class="mt-swipe-header-left">
+              <p></p>
+              <p>年龄比对分析</p>
+            </div>
+            <div class="mt-swipe-header-right">
+              <p>
+                男:
+                <span>5</span>人
+              </p>
+              <p>
+                女:
+                <span>5</span>人
+              </p>
+            </div>
+          </div>
+          <my-echarts :opinionData="opinionData"></my-echarts>
+          <!-- :titleText="titleText" :opinion="opinion" -->
+          <div class="mt-swipe-flex">
+            <div class="mt-swipe-flex-one">
+              <div class="mt-swipe-circle-red"></div>
+              <p>20以下</p>
+            </div>
+            <div class="mt-swipe-flex-one">
+              <div class="mt-swipe-circle-orange"></div>
+              <p>20-24</p>
+            </div>
+            <div class="mt-swipe-flex-one">
+              <div class="mt-swipe-circle-green"></div>
+              <p>25-30</p>
+            </div>
+          </div>
+          <div class="mt-swipe-flex">
+            <div class="mt-swipe-flex-one">
+              <div class="mt-swipe-circle-sky"></div>
+              <p>31-40</p>
+            </div>
+            <div class="mt-swipe-flex-one">
+              <div class="mt-swipe-circle-lightgreen"></div>
+              <p>41-50</p>
+            </div>
+            <div class="mt-swipe-flex-one">
+              <div class="mt-swipe-circle-blue"></div>
+              <p>50以上</p>
+            </div>
+          </div>
+        </mt-swipe-item>
+      </mt-swipe>
     </div>
-    <mt-swipe :auto="0" class="appointment-mt-swipe">
-      <mt-swipe-item>
-        <div class="mt-swipe-header">
-          <div class="mt-swipe-header-left">
-            <p></p>
-            <p>年龄比对分析</p>
-          </div>
-          <div class="mt-swipe-header-right">
-            <p>
-              男:
-              <span>5</span>人
-            </p>
-            <p>
-              女:
-              <span>5</span>人
-            </p>
-          </div>
+    <div class="appointment-footer-user">
+      <div class="appointment-footer-user-left">
+        <img src="../../../assets/images/1.jpg" alt />
+        <div>
+          <p>吴美丽</p>
+          <p>123456789</p>
+          <p>年龄:<span>23</span></p>
         </div>
-        <my-echarts :opinionData="opinionData"></my-echarts>
-        <!-- :titleText="titleText" :opinion="opinion" -->
-        <div class="mt-swipe-flex">
-          <div class="mt-swipe-flex-one">
-            <div class="mt-swipe-circle-blue"></div>
-            <p>20以下</p>
-          </div>
-          <div class="mt-swipe-flex-one">
-            <div class="mt-swipe-circle-orange"></div>
-            <p>20-24</p>
-          </div>
-          <div class="mt-swipe-flex-one">
-            <div class="mt-swipe-circle-green"></div>
-            <p>25-30</p>
-          </div>
-        </div>
-        <div class="mt-swipe-flex">
-          <div class="mt-swipe-flex-one">
-            <div class="mt-swipe-circle-blue"></div>
-            <p>31-40</p>
-          </div>
-          <div class="mt-swipe-flex-one">
-            <div class="mt-swipe-circle-orange"></div>
-            <p>41-50</p>
-          </div>
-          <div class="mt-swipe-flex-one">
-            <div class="mt-swipe-circle-orange"></div>
-            <p>50以上</p>
-          </div>
-        </div>
-      </mt-swipe-item>
-      <mt-swipe-item>
-        <p>1111111</p>
-        <my-echarts :opinionData="opinionData"></my-echarts>
-        <!-- :titleText="titleText" :opinion="opinion" -->
-        <div class="mt-swipe-flex">
-          <div class="mt-swipe-flex-one">
-            <div class="mt-swipe-circle-blue"></div>
-            <p>20以下</p>
-          </div>
-          <div class="mt-swipe-flex-one">
-            <div class="mt-swipe-circle-orange"></div>
-            <p>20-24</p>
-          </div>
-          <div class="mt-swipe-flex-one">
-            <div class="mt-swipe-circle-green"></div>
-            <p>25-30</p>
-          </div>
-        </div>
-        <p>111111</p>
-      </mt-swipe-item>
-      <mt-swipe-item>
-        <p>1111111</p>
-        <my-echarts :opinionData="opinionData"></my-echarts>
-        <!-- :titleText="titleText" :opinion="opinion" -->
-        <div class="mt-swipe-flex">
-          <div class="mt-swipe-flex-one">
-            <div class="mt-swipe-circle-blue"></div>
-            <p>20以下</p>
-          </div>
-          <div class="mt-swipe-flex-one">
-            <div class="mt-swipe-circle-orange"></div>
-            <p>20-24</p>
-          </div>
-          <div class="mt-swipe-flex-one">
-            <div class="mt-swipe-circle-green"></div>
-            <p>25-30</p>
-          </div>
-        </div>
-        <p>111111</p>
-      </mt-swipe-item>
-    </mt-swipe>
+      </div>
+      <div class="appointment-footer-user-right">33</div>
+    </div>
   </div>
 </template>
 
@@ -270,11 +339,11 @@ export default {
         align-items: center;
         transform: scale(0.5);
         font-size: 20px;
-        .mt-swipe-circle-blue {
+        .mt-swipe-circle-red {
           width: 0.2rem;
           height: 0.2rem;
           border-radius: 50%;
-          background: blue;
+          background: #d82743;
           margin-right: 0.2rem;
         }
         .mt-swipe-circle-orange {
@@ -296,33 +365,71 @@ export default {
     .mt-swipe-flex:nth-child(4) {
       display: flex;
       justify-content: space-between;
-      padding: 0 0.7rem;
+      padding: 0 0.5rem;
       .mt-swipe-flex-one {
         display: flex;
         align-items: center;
         transform: scale(0.5);
         font-size: 20px;
+        .mt-swipe-circle-sky {
+          width: 0.2rem;
+          height: 0.2rem;
+          border-radius: 50%;
+          background: #27b5d9;
+          margin-right: 0.2rem;
+          margin-left: 0.2rem;
+        }
+        .mt-swipe-circle-lightgreen {
+          width: 0.2rem;
+          height: 0.2rem;
+          border-radius: 50%;
+          background: #3cd927;
+          margin-right: 0.2rem;
+          margin-left: 0.25rem;
+        }
         .mt-swipe-circle-blue {
           width: 0.2rem;
           height: 0.2rem;
           border-radius: 50%;
-          background: blue;
+          background: #278cd9;
           margin-right: 0.2rem;
         }
-        .mt-swipe-circle-orange {
-          width: 0.2rem;
-          height: 0.2rem;
-          border-radius: 50%;
-          background: #ffa21e;
-          margin-right: 0.2rem;
-        }
-        .mt-swipe-circle-green {
-          width: 0.2rem;
-          height: 0.2rem;
-          border-radius: 50%;
-          background: #b8d927;
-          margin-right: 0.2rem;
-        }
+      }
+    }
+  }
+}
+.appointment-footer-user {
+  box-sizing: border-box;
+  margin-top: 0.2rem;
+  height: 1.6rem;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.3rem 0.2rem;
+  .appointment-footer-user-left {
+    display: flex;
+    img:nth-child(1) {
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+    }
+    div:nth-child(2){
+      display:flex;
+      width:1.1rem;
+      flex-direction: column;
+      align-items: left;
+      margin-left:0.2rem;
+      p:nth-child(1){
+        font-size:13.5px;
+        font-weight: bold;
+        margin-top:-7%;
+      }
+      p:nth-child(2){
+        font-size:12px;
+        color: #999999;
+      }
+      p:nth-child(3){
+        font-size:12px;
       }
     }
   }
