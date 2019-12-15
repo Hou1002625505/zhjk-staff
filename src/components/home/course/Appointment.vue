@@ -177,7 +177,7 @@
           <p>年龄:<span>23</span></p>
         </div>
       </div>
-      <div class="appointment-footer-user-right">33</div>
+      <div class="appointment-footer-user-right">未签到</div>
     </div>
   </div>
 </template>
@@ -221,11 +221,11 @@ export default {
     align-items: center;
     p:nth-child(1) {
       margin-top: 0.29rem;
-      font-size: 14px;
+      font-size: 0.28rem;
     }
     p:nth-child(2) {
       color: #999999;
-      font-size: 12px;
+      font-size: 0.24rem;
     }
     .appointment-header-register {
       width: 100%;
@@ -240,10 +240,10 @@ export default {
         flex-direction: column;
         align-items: center;
         p:nth-child(1) {
-          font-size: 12px;
+          font-size: 0.24rem;
         }
         p:nth-child(2) {
-          font-size: 12px;
+          font-size: 0.24rem;
           color: #999999;
           margin-top: -0.01rem;
         }
@@ -259,10 +259,10 @@ export default {
         flex-direction: column;
         align-items: center;
         p:nth-child(1) {
-          font-size: 12px;
+          font-size: 0.24rem;
         }
         p:nth-child(2) {
-          font-size: 12px;
+          font-size: 0.24rem;
           color: #999999;
           margin-top: -0.01rem;
         }
@@ -279,10 +279,10 @@ export default {
         flex-direction: column;
         align-items: center;
         p:nth-child(1) {
-          font-size: 12px;
+          font-size: 0.24rem;
         }
         p:nth-child(2) {
-          font-size: 12px;
+          font-size:0.24rem;
           color: #999999;
           margin-top: -0.01rem;
         }
@@ -308,13 +308,13 @@ export default {
           background: #4978b0;
         }
         p:nth-child(2) {
-          font-size: 15px;
+          font-size: 0.3rem;
           margin-left: 0.09rem;
         }
       }
       .mt-swipe-header-right {
         display: flex;
-        font-size: 15px;
+        font-size: 0.3rem;
         padding: 0.11rem 0.2rem 0 0.2rem;
         align-items: center;
         p:nth-child(1) {
@@ -338,7 +338,7 @@ export default {
         display: flex;
         align-items: center;
         transform: scale(0.5);
-        font-size: 20px;
+        font-size: 0.4rem;
         .mt-swipe-circle-red {
           width: 0.2rem;
           height: 0.2rem;
@@ -370,7 +370,7 @@ export default {
         display: flex;
         align-items: center;
         transform: scale(0.5);
-        font-size: 20px;
+        font-size: 0.4rem;
         .mt-swipe-circle-sky {
           width: 0.2rem;
           height: 0.2rem;
@@ -406,8 +406,10 @@ export default {
   display: flex;
   justify-content: space-between;
   padding: 0.3rem 0.2rem;
+  align-items: center;
   .appointment-footer-user-left {
     display: flex;
+    align-items: center;
     img:nth-child(1) {
       width: 1rem;
       height: 1rem;
@@ -420,18 +422,27 @@ export default {
       align-items: left;
       margin-left:0.2rem;
       p:nth-child(1){
-        font-size:13.5px;
+        font-size:0.27rem;
         font-weight: bold;
-        margin-top:-7%;
       }
       p:nth-child(2){
-        font-size:12px;
+        font-size:0.24rem;
         color: #999999;
       }
       p:nth-child(3){
-        font-size:12px;
+        font-size:0.24rem;
       }
     }
+  }
+  .appointment-footer-user-right{
+    width:1.2rem;
+    height:0.5rem;
+    background:#4978B0;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    color:#FFFFFF;
+    font-size: 0.24rem;
   }
 }
 </style>

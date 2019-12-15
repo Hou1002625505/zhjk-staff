@@ -316,7 +316,7 @@ export default {
   }
   .year-month {
     margin: 0.3rem 0 0.3rem 0;
-    font-size: 14px;
+    font-size: 0.28rem;
     color: #000;
     display: flex;
     justify-content: center;
@@ -377,7 +377,7 @@ export default {
     display: flex;
     justify-content: space-between;
     list-style: none;
-    font-size: 12px;
+    font-size: 0.24rem;
     padding: 0 0.3rem 0 0.3rem;
     font-weight: bold;
     // margin: 0;
@@ -412,7 +412,7 @@ export default {
       height: 0.54rem;
       width: 13.4%;
       text-align: center;
-      font-size: 12px;
+      font-size: 0.24rem;
       color: #000;
       position: relative;
       .active {
@@ -433,8 +433,8 @@ export default {
         justify-content: center;
         align-items: center;
         .active-radius {
-          width: 2px;
-          height: 2px;
+          width: 0.04rem;
+          height: 0.04rem;
           border: 1px;
           background: blue;
           border-radius: 50%;
@@ -453,7 +453,7 @@ export default {
         color: blanchedalmond;
       }
       .everyDay {
-        width: 40px;
+        width: 0.8rem;
         height: 0.54rem;
         margin: auto;
         display: flex;
@@ -461,17 +461,17 @@ export default {
         align-items: center;
       }
       .circle {
-        width: 4px;
-        height: 4px;
+        width: 0.08rem;
+        height: 0.08rem;
         border-radius: 50%;
         background-color: #f2553d;
         position: absolute;
-        bottom: 6px;
+        bottom: 0.12rem;
         left: 48%;
       }
       .o {
-        width: 4px;
-        height: 4px;
+        width: 0.08rem;
+        height: 0.08rem;
         border-radius: 50%;
         border: 1px solid #f2553d;
         position: absolute;
@@ -495,15 +495,15 @@ export default {
         justify-content: center;
         align-items: center;
         .otherday-radius-hui {
-          width: 2px;
-          height: 2px;
+          width:0.04rem;
+          height: 0.04rem;
           border: 1px;
           background: #d6d6d6;
           border-radius: 50%;
         }
         .otherday-radius-red {
-          width: 2px;
-          height: 2px;
+          width: 0.04rem;
+          height: 0.04rem;
           border: 1px;
           background: red;
           border-radius: 50%;

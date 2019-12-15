@@ -184,7 +184,7 @@ export default {
     .branch-store-clock {
       display: flex;
       align-items: center;
-      font-size: 12px;
+      font-size: 0.24rem;
       color: blue;
       img {
         width: 0.3rem;
@@ -220,12 +220,12 @@ export default {
     }
     .branch-store-footer-p {
       p:nth-child(1) {
-        font-size: 12px;
+        font-size: 0.24rem;
         margin-right: 1.5rem;
         margin-top: 0.1rem;
       }
       p:nth-child(2) {
-        font-size: 22px;
+        font-size: 0.44rem;
         transform: scale(0.5);
         margin-bottom: 0.16rem;
         color: #999999;

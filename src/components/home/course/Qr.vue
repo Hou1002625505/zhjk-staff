@@ -62,17 +62,17 @@
       }
       p:nth-child(2) {
         margin-top: 0.23rem;
-        font-size: 17px;
+        font-size: 0.34rem;
         font-weight: bold;
       }
       p:nth-child(3) {
         margin-top: 0.24rem;
-        font-size: 14px;
+        font-size: 0.28rem;
       }
       p:nth-child(4) {
         margin-top: 0.2rem;
         color: #999999;
-        font-size: 12px;
+        font-size: 0.24rem;
       }
       .qr-register {
         width: 100%;
@@ -86,10 +86,10 @@
           flex-direction: column;
           align-items: center;
           p:nth-child(1) {
-            font-size: 12px;
+            font-size: 0.24rem;
           }
           p:nth-child(2) {
-            font-size: 12px;
+            font-size: 0.24rem;
             color: #999999;
             margin-top:-0.01rem;
           }
@@ -104,10 +104,10 @@
           flex-direction: column;
           align-items: center;
           p:nth-child(1) {
-            font-size: 12px;
+            font-size: 0.24rem;
           }
           p:nth-child(2) {
-            font-size: 12px;
+            font-size: 0.24rem;
             color: #999999;
             margin-top:-0.01rem;
           }
@@ -123,10 +123,10 @@
           flex-direction: column;
           align-items: center;
           p:nth-child(1) {
-            font-size: 12px;
+            font-size: 0.24rem;
           }
           p:nth-child(2) {
-            font-size: 12px;
+            font-size: 0.24rem;
             color: #999999;
             margin-top:-0.01rem;
           }
@@ -138,7 +138,7 @@
           margin-top:0.7rem;
       }
       p:nth-child(7){
-        font-size:12px;
+        font-size:0.24rem;
         margin-top:0.7rem;
         color:#999999
       }
