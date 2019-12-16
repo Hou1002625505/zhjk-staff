@@ -10,7 +10,10 @@
         :class="shift == 'customer' ? customerblue : customerwhite"
       >客户分析</button>
     </div>
-    <div v-if="shift == 'exercise'" :class="{'fadeOut':fadeOut,'fadeIn':fadeIn,'fadeOutR':fadeOutR,'fadeInR':fadeInR}">
+    <div
+      v-if="shift == 'exercise'"
+      :class="{'fadeOut':fadeOut,'fadeIn':fadeIn,'fadeOutR':fadeOutR,'fadeInR':fadeInR}"
+    >
       <Calendar />
       <div class="branch-store">
         <div class="branch-store-nav">
@@ -20,23 +23,29 @@
           </div>
           <a class="branch-store-qr" @click="toqr">
             <img src="../../../assets/image/code@2x.png" alt />
-            <img src="../../../assets/image/right_btn@2x.png" alt />
+            <!-- <img src="../../../assets/image/right_btn@2x.png" alt /> -->
           </a>
         </div>
         <div class="branch-store-line"></div>
         <a class="branch-store-footer" @click="toappointment">
           <img src="../../../assets/images/1.jpg" alt />
           <div class="branch-store-footer-p">
-            <p>
-              BODYBALANCE莱美身心 (
-              <span style="color:red">10</span>/20人)
-            </p>
+            <div>
+              <p>
+                BODYBALANCE莱美身心 (
+                <span style="color:red">10</span>/20人)
+              </p>
+              <img src="../../../assets/image/right_btn@2x.png" alt />
+            </div>
             <p>星河中心健身分店</p>
           </div>
         </a>
       </div>
     </div>
-    <div v-if="shift == 'customer'" :class="{'fadeOut':fadeOut,'fadeIn':fadeIn,'fadeOutR':fadeOutR,'fadeInR':fadeInR}">还没开始哦！</div>
+    <div
+      v-if="shift == 'customer'"
+      :class="{'fadeOut':fadeOut,'fadeIn':fadeIn,'fadeOutR':fadeOutR,'fadeInR':fadeInR}"
+    >还没开始哦！</div>
   </div>
 </template>
 
@@ -57,7 +66,7 @@ export default {
       fadeOut: false,
       fadeIn: false,
       fadeOutR: false,
-      fadeInR: false,
+      fadeInR: false
     };
   },
   methods: {
@@ -93,18 +102,18 @@ export default {
         self.fadeIn = false;
       }, 250);
     },
-    toqr(){
+    toqr() {
       setTimeout(() => {
         this.$router.push({
-        name : 'qr'
-      })
+          name: "qr"
+        });
       }, 500);
     },
-    toappointment(){
+    toappointment() {
       setTimeout(() => {
         this.$router.push({
-        name:'appointment'
-      })
+          name: "appointment"
+        });
       }, 500);
     }
   }
@@ -185,7 +194,7 @@ export default {
       display: flex;
       align-items: center;
       font-size: 0.24rem;
-      color: blue;
+      color: #4978B0;
       img {
         width: 0.3rem;
         height: 0.3rem;
@@ -193,16 +202,14 @@ export default {
       }
     }
     .branch-store-qr {
-      display: flex;
-      img:nth-child(1) {
+      img {
         width: 0.3rem;
         height: 0.3rem;
-        margin-right: 0.17rem;
       }
-      img:nth-child(2) {
-        width: 0.16rem;
-        height: 0.25rem;
-      }
+      // img:nth-child(2) {
+      //   width: 0.16rem;
+      //   height: 0.25rem;
+      // }
     }
   }
   .branch-store-line {
@@ -219,10 +226,19 @@ export default {
       height: 0.95rem;
     }
     .branch-store-footer-p {
-      p:nth-child(1) {
-        font-size: 0.24rem;
-        margin-right: 1.5rem;
-        margin-top: 0.1rem;
+      div:nth-child(1) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        p {
+          font-size: 0.24rem;
+          margin-right: 1.5rem;
+          margin-top: 0.1rem;
+        }
+        img {
+          width: 0.16rem;
+          height: 0.25rem;
+        }
       }
       p:nth-child(2) {
         font-size: 0.44rem;
@@ -237,27 +253,27 @@ export default {
 }
 
 .fadeOut {
-    animation-name: fadeOut;
-    animation-duration: 0.5s;
-    animation-timing-function: ease-in-out;
-  }
-  .fadeOutR {
-    animation-name: fadeOutR;
-    animation-duration: 0.5s;
-    animation-timing-function: ease-in-out;
-  }
-  .fadeIn {
-    animation-name: fadeIn;
-    animation-duration: 0.5s;
-    animation-timing-function: ease-in-out;
-  }
-  .fadeInR {
-    animation-name: fadeInR;
-    animation-duration: 0.5s;
-    animation-timing-function: ease-in-out;
-  }
+  animation-name: fadeOut;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+}
+.fadeOutR {
+  animation-name: fadeOutR;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+}
+.fadeIn {
+  animation-name: fadeIn;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+}
+.fadeInR {
+  animation-name: fadeInR;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+}
 
-  @keyframes fadeOut {
+@keyframes fadeOut {
   0% {
     transform: translateX(0);
     opacity: 1;
