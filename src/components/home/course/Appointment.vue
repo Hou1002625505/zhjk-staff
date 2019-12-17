@@ -367,7 +367,7 @@ export default {
     .mt-swipe-flex:nth-child(4) {
       display: flex;
       justify-content: space-between;
-      padding: 0 0.5rem;
+      padding: 0 0.52rem 0 0.5rem;
       margin-top:0.07rem;
       .mt-swipe-flex-one {
         display: flex;
