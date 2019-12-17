@@ -64,7 +64,15 @@
             @click="getDayMessage(currentYear,currentMonth,dayobject.day.getDate())"
           >
             <div class="otherday-col">
-              {{ dayobject.day.getDate()}}
+              <div
+                v-if="dayobject.day.getFullYear() < new Date().getFullYear() || dayobject.day.getFullYear() === new Date().getFullYear()&&dayobject.day.getMonth() < new Date().getMonth() 
+                || dayobject.day.getMonth() === new Date().getMonth() && dayobject.day.getDate() < new Date().getDate()"
+                class="otherday-col-hui"
+              >{{ dayobject.day.getDate()}}</div>
+              <div
+                v-if="dayobject.day.getFullYear() > new Date().getFullYear() || dayobject.day.getFullYear() === new Date().getFullYear()&&dayobject.day.getMonth() > new Date().getMonth() 
+                || dayobject.day.getMonth() === new Date().getMonth() && dayobject.day.getDate() > new Date().getDate()"
+              >{{ dayobject.day.getDate()}}</div>
               <div
                 v-if="dayobject.day.getFullYear() < new Date().getFullYear() || dayobject.day.getFullYear() === new Date().getFullYear()&&dayobject.day.getMonth() < new Date().getMonth() 
                 || dayobject.day.getMonth() === new Date().getMonth() && dayobject.day.getDate() < new Date().getDate()"
@@ -316,13 +324,13 @@ export default {
   }
   .year-month {
     margin: 0.3rem 0 0.3rem 0;
-    font-size: 0.28rem;
+    font-size: 0.3rem;
     color: #000;
     display: flex;
     justify-content: center;
     font-weight: bold;
     .year-month-a {
-      width: 1.62rem;
+      width: 1.72rem;
       text-align: center;
       margin-left: 0.23rem;
       margin-right: 0.23rem;
@@ -377,7 +385,7 @@ export default {
     display: flex;
     justify-content: space-between;
     list-style: none;
-    font-size: 0.24rem;
+    font-size: 0.26rem;
     padding: 0 0.3rem 0 0.3rem;
     font-weight: bold;
     // margin: 0;
@@ -412,7 +420,7 @@ export default {
       height: 0.54rem;
       width: 13.4%;
       text-align: center;
-      font-size: 0.24rem;
+      font-size: 0.26rem;
       color: #000;
       position: relative;
       .active {
@@ -487,15 +495,18 @@ export default {
         align-items: center;
         border-radius: 50%;
         border: 1px solid blue;
-        box-sizing: border-box
+        box-sizing: border-box;
       }
       .otherday-col {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        .otherday-col-hui {
+          color: #d6d6d6;
+        }
         .otherday-radius-hui {
-          width:0.04rem;
+          width: 0.04rem;
           height: 0.04rem;
           border: 1px;
           background: #d6d6d6;

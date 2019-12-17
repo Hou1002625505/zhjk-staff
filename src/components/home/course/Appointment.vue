@@ -6,18 +6,18 @@
         <p>10:00~11:00</p>
         <div class="appointment-header-register">
           <div class="appointment-header-register-column">
-            <p>10</p>
-            <p>已预约</p>
+            <div class="appointment-header-register-column-p">10</div>
+            <div class="appointment-header-register-column-p">已预约</div>
           </div>
-          <p class="appointment-header-register-column"></p>
+          <div class="appointment-header-register-column"></div>
           <div class="appointment-header-register-column">
-            <p>9</p>
-            <p>已签到</p>
+            <div class="appointment-header-register-column-p">9</div>
+            <div class="appointment-header-register-column-p">已签到</div>
           </div>
-          <p class="appointment-header-register-column"></p>
+          <div class="appointment-header-register-column"></div>
           <div class="appointment-header-register-column">
-            <p>1</p>
-            <p>未签到</p>
+            <div class="appointment-header-register-column-p">1</div>
+            <div class="appointment-header-register-column-p">未签到</div>
           </div>
         </div>
       </div>
@@ -172,7 +172,7 @@
       <div class="appointment-footer-user-left">
         <img src="../../../assets/images/1.jpg" alt />
         <div>
-          <p>吴美丽</p>
+          <div class="appointment-footer-user-left-p">吴美丽<img src="../../../assets/image/girl_icon@2x.png" alt=""></div>
           <p>123456789</p>
           <p>年龄:<span>23</span></p>
         </div>
@@ -221,11 +221,13 @@ export default {
     align-items: center;
     p:nth-child(1) {
       margin-top: 0.29rem;
-      font-size: 0.28rem;
+      font-size: 0.34rem;
+      color:#1D1D1D
     }
     p:nth-child(2) {
       color: #999999;
       font-size: 0.24rem;
+      margin-top:0.14rem;
     }
     .appointment-header-register {
       width: 100%;
@@ -234,15 +236,16 @@ export default {
       justify-content: space-between;
       align-items: center;
       padding-bottom: 0.3rem;
+      margin-top:0.6rem;
       .appointment-header-register-column:nth-child(1) {
         margin-left: 1.1rem;
         display: flex;
         flex-direction: column;
         align-items: center;
-        p:nth-child(1) {
-          font-size: 0.24rem;
+        .appointment-header-register-column-p:nth-child(1) {
+          font-size: 0.3rem;
         }
-        p:nth-child(2) {
+        .appointment-header-register-column-p:nth-child(2) {
           font-size: 0.24rem;
           color: #999999;
           margin-top: -0.01rem;
@@ -252,16 +255,15 @@ export default {
         height: 0.5rem;
         width: 1px;
         background: #d6d6d6;
-        margin-top: 0.2rem;
       }
       .appointment-header-register-column:nth-child(3) {
         display: flex;
         flex-direction: column;
         align-items: center;
-        p:nth-child(1) {
-          font-size: 0.24rem;
+        .appointment-header-register-column-p:nth-child(1) {
+          font-size: 0.3rem;
         }
-        p:nth-child(2) {
+        .appointment-header-register-column-p:nth-child(2) {
           font-size: 0.24rem;
           color: #999999;
           margin-top: -0.01rem;
@@ -271,17 +273,16 @@ export default {
         height: 0.5rem;
         width: 1px;
         background: #d6d6d6;
-        margin-top: 0.2rem;
       }
       .appointment-header-register-column:nth-child(5) {
         margin-right: 1.1rem;
         display: flex;
         flex-direction: column;
         align-items: center;
-        p:nth-child(1) {
-          font-size: 0.24rem;
+        .appointment-header-register-column-p:nth-child(1) {
+          font-size: 0.3rem;
         }
-        p:nth-child(2) {
+        .appointment-header-register-column-p:nth-child(2) {
           font-size:0.24rem;
           color: #999999;
           margin-top: -0.01rem;
@@ -291,7 +292,7 @@ export default {
   }
   .appointment-mt-swipe {
     width: 100%;
-    height: 4.9rem;
+    height: 4.7rem;
     background: white;
     border-radius: 0.1rem;
     margin-top: 0.2rem;
@@ -319,11 +320,13 @@ export default {
         align-items: center;
         p:nth-child(1) {
           margin-right: 0.28rem;
+          font-size:0.26rem;
           span {
             margin-left: 0.1rem;
           }
         }
         p:nth-child(2) {
+          font-size:0.26rem;
           span {
             margin-left: 0.1rem;
           }
@@ -337,8 +340,7 @@ export default {
       .mt-swipe-flex-one {
         display: flex;
         align-items: center;
-        transform: scale(0.5);
-        font-size: 0.4rem;
+        font-size: 0.24rem;
         .mt-swipe-circle-red {
           width: 0.2rem;
           height: 0.2rem;
@@ -366,18 +368,18 @@ export default {
       display: flex;
       justify-content: space-between;
       padding: 0 0.5rem;
+      margin-top:0.07rem;
       .mt-swipe-flex-one {
         display: flex;
         align-items: center;
-        transform: scale(0.5);
-        font-size: 0.4rem;
+        font-size: 0.24rem;
         .mt-swipe-circle-sky {
           width: 0.2rem;
           height: 0.2rem;
           border-radius: 50%;
           background: #27b5d9;
           margin-right: 0.2rem;
-          margin-left: 0.2rem;
+          margin-left:0.1rem;
         }
         .mt-swipe-circle-lightgreen {
           width: 0.2rem;
@@ -385,7 +387,7 @@ export default {
           border-radius: 50%;
           background: #3cd927;
           margin-right: 0.2rem;
-          margin-left: 0.25rem;
+          margin-left:0.4rem;
         }
         .mt-swipe-circle-blue {
           width: 0.2rem;
@@ -393,6 +395,7 @@ export default {
           border-radius: 50%;
           background: #278cd9;
           margin-right: 0.2rem;
+          margin-left:0.3rem;
         }
       }
     }
@@ -421,9 +424,16 @@ export default {
       flex-direction: column;
       align-items: left;
       margin-left:0.2rem;
-      p:nth-child(1){
-        font-size:0.27rem;
+      .appointment-footer-user-left-p{
+        display:flex;
+        font-size:0.28rem;
         font-weight: bold;
+        align-items: center;
+        img{
+          width:0.16rem;
+          height:0.24rem;
+          margin-left:0.08rem;
+        }
       }
       p:nth-child(2){
         font-size:0.24rem;

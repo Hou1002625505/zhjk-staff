@@ -134,48 +134,48 @@ export default {
     width: 3.45rem;
     height: 0.7rem;
     border-width: 1px 1px 1px 1px;
-    border-color: #4a77b0;
+    border-color: #4d78bd;
     border-style: solid;
     border-top-left-radius: 0.4em;
     border-bottom-left-radius: 0.4em;
-    background: #4a77b0;
-    font-size: 0.32rem;
+    background: #4d78bd;
+    font-size: 0.34rem;
     color: white;
   }
   .button-exercise-white {
     width: 3.45rem;
     height: 0.7rem;
     border-width: 1px 1px 1px 1px;
-    border-color: #4a77b0;
+    border-color: #4d78bd;
     border-style: solid;
     border-top-left-radius: 0.4em;
     border-bottom-left-radius: 0.4em;
     background: white;
-    font-size: 0.32rem;
-    color: #4a77b0;
+    font-size: 0.34rem;
+    color: #4d78bd;
   }
   .button-customer-blue {
     width: 3.45rem;
     height: 0.7rem;
     border-width: 1px 1px 1px 0;
-    border-color: #4a77b0;
+    border-color: #4d78bd;
     border-style: solid;
     border-top-right-radius: 0.4em;
     border-bottom-right-radius: 0.4em;
-    background: #4a77b0;
-    font-size: 0.32rem;
+    background: #4d78bd;
+    font-size: 0.34rem;
     color: white;
   }
   .button-customer-white {
     width: 3.45rem;
     height: 0.7rem;
     border-width: 1px 1px 1px 0;
-    border-color: #4a77b0;
+    border-color: #4d78bd;
     border-style: solid;
     border-top-right-radius: 0.4em;
     border-bottom-right-radius: 0.4em;
     background: white;
-    font-size: 0.32rem;
+    font-size: 0.34rem;
     color: #4a77b0;
   }
 }
@@ -193,8 +193,8 @@ export default {
     .branch-store-clock {
       display: flex;
       align-items: center;
-      font-size: 0.24rem;
-      color: #4978B0;
+      font-size: 0.3rem;
+      color: #4978b0;
       img {
         width: 0.3rem;
         height: 0.3rem;
@@ -221,9 +221,11 @@ export default {
     display: flex;
     justify-content: space-between;
     padding: 0.25rem 0.2rem 0.2rem 0.2rem;
+    color:#1D1D1D;
     img {
       width: 1rem;
       height: 0.95rem;
+      border-radius: 50%
     }
     .branch-store-footer-p {
       div:nth-child(1) {
@@ -231,9 +233,8 @@ export default {
         justify-content: space-between;
         align-items: center;
         p {
-          font-size: 0.24rem;
-          margin-right: 1.5rem;
-          margin-top: 0.1rem;
+          font-size: 0.26rem;
+          margin-right: 1.15rem;
         }
         img {
           width: 0.16rem;
@@ -241,12 +242,10 @@ export default {
         }
       }
       p:nth-child(2) {
-        font-size: 0.44rem;
-        transform: scale(0.5);
-        margin-bottom: 0.16rem;
+        font-size: 0.24rem;
+        //margin-bottom: 0.16rem;
         color: #999999;
-        margin-left: -1.8rem;
-        margin-top: -0.1rem;
+        margin-top: 0.1rem;
       }
     }
   }

@@ -8,17 +8,17 @@
         <p>BODYBALANCE莱美身心</p>
         <p>10:00~11:00</p>
         <div class="qr-register">
-          <div class="qr-register-column">
+          <div class="qr1-register-column">
             <p>10</p>
             <p>已预约</p>
           </div>
-          <p class="qr-register-column"></p>
-          <div class="qr-register-column">
+          <div class="qr1-register-column"></div>
+          <div class="qr1-register-column">
             <p>9</p>
             <p>已签到</p>
           </div>
-          <p class="qr-register-column"></p>
-          <div class="qr-register-column">
+          <div class="qr1-register-column"></div>
+          <div class="qr1-register-column">
             <p>1</p>
             <p>未签到</p>
           </div>
@@ -62,31 +62,32 @@
       }
       p:nth-child(2) {
         margin-top: 0.23rem;
-        font-size: 0.34rem;
+        font-size: 0.36rem;
         font-weight: bold;
       }
       p:nth-child(3) {
         margin-top: 0.24rem;
-        font-size: 0.28rem;
+        font-size: 0.3rem;
       }
       p:nth-child(4) {
         margin-top: 0.2rem;
         color: #999999;
-        font-size: 0.24rem;
+        font-size: 0.3rem;
       }
       .qr-register {
         width: 100%;
         box-sizing: content-box;
         display: flex;
         justify-content: space-between;
+        align-items: center;
         margin-top: 0.6rem;
-        .qr-register-column:nth-child(1) {
+        .qr1-register-column:nth-child(1) {
           margin-left: 1.1rem;
           display: flex;
           flex-direction: column;
           align-items: center;
           p:nth-child(1) {
-            font-size: 0.24rem;
+            font-size: 0.3rem;
           }
           p:nth-child(2) {
             font-size: 0.24rem;
@@ -94,17 +95,18 @@
             margin-top:-0.01rem;
           }
         }
-        .qr-register-column:nth-child(2) {
+        .qr1-register-column:nth-child(2) {
+          line-height:0.5rem;
           height: 0.5rem;
           width: 1px;
           background: black;
         }
-        .qr-register-column:nth-child(3) {
+        .qr1-register-column:nth-child(3) {
           display: flex;
           flex-direction: column;
           align-items: center;
           p:nth-child(1) {
-            font-size: 0.24rem;
+            font-size: 0.3rem;
           }
           p:nth-child(2) {
             font-size: 0.24rem;
@@ -112,18 +114,18 @@
             margin-top:-0.01rem;
           }
         }
-        .qr-register-column:nth-child(4) {
+        .qr1-register-column:nth-child(4) {
           height: 0.5rem;
           width: 1px;
           background: black;
         }
-        .qr-register-column:nth-child(5) {
+        .qr1-register-column:nth-child(5) {
           margin-right: 1.1rem;
           display: flex;
           flex-direction: column;
           align-items: center;
           p:nth-child(1) {
-            font-size: 0.24rem;
+            font-size: 0.3rem;
           }
           p:nth-child(2) {
             font-size: 0.24rem;
