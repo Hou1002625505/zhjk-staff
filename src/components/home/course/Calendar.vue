@@ -237,7 +237,7 @@ export default {
         //console.log(t)
         //var d = new Date(t);
         now.setDate(35);
-        date = new Date(this.formatDate(now.getFullYear(), now.getMonth() + 1, 1));
+        date = new Date(this.formatDate(now.getFullYear(), now.getMonth(), 1));
         // console.log(t)
         // console.log(d)
         console.log(date)
@@ -313,8 +313,8 @@ export default {
     }
   },
   mounted() {
-    console.log(this.days);
-    console.log(this.days[0].day.getMonth());
+    // console.log(this.days);
+    // console.log(this.days[0].day.getMonth());
     // console.log(this.currentDay)
     // console.log(this.currentYear)
     // console.log(new Date().getFullYear())

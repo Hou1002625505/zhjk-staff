@@ -51,6 +51,7 @@
 
 <script>
 import Calendar from "./Calendar.vue";
+import axios from 'axios'  
 
 export default {
   components: {
@@ -116,6 +117,15 @@ export default {
         });
       }, 500);
     }
+  },
+  created : function(){
+    axios.get('http://test.physicalclub.com/crm/rest/wx/employeeCourse/getCourseSchedulinSubscribegRecordList/'+'2020-03',)
+    .then(function(response){
+      console.log(response)
+    })
+    .catch(function(error){
+      console.log(error)
+    })
   }
 };
 </script>
