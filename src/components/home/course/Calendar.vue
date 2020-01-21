@@ -232,17 +232,23 @@ export default {
       if (cur) {
         date = new Date(cur);
       } else {
-        const now = new Date();
-        const t = this.formatDate(now.getFullYear(), now.getMonth(), 1);
-        const d = new Date(t);
-        d.setDate(35);
-        date = new Date(this.formatDate(d.getFullYear(), d.getMonth() + 1, 1));
+        var now = new Date();
+        //var t = this.formatDate(now.getFullYear(), now.getMonth(), 1);
+        //console.log(t)
+        //var d = new Date(t);
+        now.setDate(35);
+        date = new Date(this.formatDate(now.getFullYear(), now.getMonth() + 1, 1));
+        // console.log(t)
+        // console.log(d)
+        console.log(date)
       }
-
+      //console.log(date)
       this.currentDay = date.getDate();
       this.currentYear = date.getFullYear();
       this.currentMonth = date.getMonth() + 1;
       this.currentWeek = date.getDay();
+      //console.log(date)
+      //console.log(this.currentYear)
       if (!cur || !this.otherDay) {
         this.otherDay = new Date().getDate();
       }
@@ -309,6 +315,10 @@ export default {
   mounted() {
     console.log(this.days);
     console.log(this.days[0].day.getMonth());
+    // console.log(this.currentDay)
+    // console.log(this.currentYear)
+    // console.log(new Date().getFullYear())
+    // console.log(this.date)
   }
 };
 </script>

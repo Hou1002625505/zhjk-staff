@@ -221,11 +221,11 @@ export default {
     display: flex;
     justify-content: space-between;
     padding: 0.25rem 0.2rem 0.2rem 0.2rem;
-    color:#1D1D1D;
+    color: #1d1d1d;
     img {
       width: 1rem;
       height: 0.95rem;
-      border-radius: 50%
+      border-radius: 50%;
     }
     .branch-store-footer-p {
       div:nth-child(1) {
