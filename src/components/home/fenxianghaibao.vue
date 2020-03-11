@@ -189,9 +189,6 @@ fenxiangjs(){
 				alert('网络请求中断,请稍后重试!')
 			}
 		});
-       
-       
-       
 },
    },
    mounted(){

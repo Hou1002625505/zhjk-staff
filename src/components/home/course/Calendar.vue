@@ -66,21 +66,21 @@
             <div class="otherday-col">
               <div
                 v-if="dayobject.day.getFullYear() < new Date().getFullYear() || dayobject.day.getFullYear() === new Date().getFullYear()&&dayobject.day.getMonth() < new Date().getMonth() 
-                || dayobject.day.getMonth() === new Date().getMonth() && dayobject.day.getDate() < new Date().getDate()"
+                || dayobject.day.getFullYear() === new Date().getFullYear()&&dayobject.day.getMonth() === new Date().getMonth() && dayobject.day.getDate() < new Date().getDate()"
                 class="otherday-col-hui"
               >{{ dayobject.day.getDate()}}</div>
               <div
                 v-if="dayobject.day.getFullYear() > new Date().getFullYear() || dayobject.day.getFullYear() === new Date().getFullYear()&&dayobject.day.getMonth() > new Date().getMonth() 
-                || dayobject.day.getMonth() === new Date().getMonth() && dayobject.day.getDate() > new Date().getDate()"
+                || dayobject.day.getFullYear() === new Date().getFullYear()&&dayobject.day.getMonth() === new Date().getMonth() && dayobject.day.getDate() > new Date().getDate()"
               >{{ dayobject.day.getDate()}}</div>
               <div
                 v-if="dayobject.day.getFullYear() < new Date().getFullYear() || dayobject.day.getFullYear() === new Date().getFullYear()&&dayobject.day.getMonth() < new Date().getMonth() 
-                || dayobject.day.getMonth() === new Date().getMonth() && dayobject.day.getDate() < new Date().getDate()"
+                || dayobject.day.getFullYear() === new Date().getFullYear()&&dayobject.day.getMonth() === new Date().getMonth() && dayobject.day.getDate() < new Date().getDate()"
                 class="otherday-radius-hui"
               ></div>
               <div
                 v-if="dayobject.day.getFullYear() > new Date().getFullYear() || dayobject.day.getFullYear() === new Date().getFullYear()&&dayobject.day.getMonth() > new Date().getMonth() 
-                || dayobject.day.getMonth() === new Date().getMonth() && dayobject.day.getDate() > new Date().getDate()"
+                || dayobject.day.getFullYear() === new Date().getFullYear()&&dayobject.day.getMonth() === new Date().getMonth() && dayobject.day.getDate() > new Date().getDate()"
                 class="otherday-radius-red"
               ></div>
             </div>

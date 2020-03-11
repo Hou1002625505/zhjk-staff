@@ -52,6 +52,7 @@
 <script>
 import Calendar from "./Calendar.vue";
 import axios from 'axios'  
+import $ from 'jquery'
 
 export default {
   components: {
@@ -119,13 +120,25 @@ export default {
     }
   },
   created : function(){
-    axios.get('http://test.physicalclub.com/crm/rest/wx/employeeCourse/getCourseSchedulinSubscribegRecordList/'+'2020-03',)
+    axios.get('http://test.physicalclub.com/crm/rest/wx/employeeCourse/getCourseSchedulinSubscribegRecordList/2020-01',)
     .then(function(response){
       console.log(response)
     })
     .catch(function(error){
       console.log(error)
     })
+
+    $.ajax({
+      url:'http://test.physicalclub.com/crm/rest/wx/employeeCourse/getCourseSchedulinSubscribegRecordList/2020-01',
+      type:'GET',
+      dataType:'json',
+      success:function(data){
+        console.log(data)
+      },error(msg){
+        console.log(msg)
+      }
+    })
+    
   }
 };
 </script>
