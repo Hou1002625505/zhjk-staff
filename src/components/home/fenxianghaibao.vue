@@ -1,6 +1,9 @@
 <template>
  <div class='container'>
-  <img class="generateImg" :src="dataURL" />
+  <!-- <img class="generateImg" :src="dataURL" /> -->
+  <div class="shareCode">
+	   <qrcode :value="qrvalue" :size="250" :fg-color="fgColor"></qrcode>
+  </div>
 		<!-- <div class="middle-warp" v-for="(item,index) in ImgList" :key="index" :style="{width:item.imgWidth+'px',height:item.imgHeight+'px'}" v-show="middleflag">>
 			<div id="content" class="middle-content" ref="content">
 				<div id="shareContent" class="share-content">
@@ -16,13 +19,13 @@
 			</div>
 		</div>
 		<div class="finall"></div> -->
-       <div class="weui-loadmore">
+       <!-- <div class="weui-loadmore">
 			<i class="weui-loading"></i>
 			<span class="weui-loadmore__tips">正在加载</span>
 		</div>
         <div v-show="middleflag" ref="content" v-for="(item,index) in ImgList" :key="index"  :style="{ background:'url('+shareImages+') no-repeat',backgroundSize:100+'%', width:item.imgWidth+'px',height:item.imgHeight+'px',position:'relative'}">
-              <qrcode :style="{position:'absolute',top:parseInt(item.qrCodeTop)+10+'px',left:parseInt(item.qrCodeLeft)+10+'px'}" :value="qrvalue" :size="qrwidth" :fg-color="fgColor"></qrcode>
-        </div>
+             
+        </div> -->
       </div>
 
 </template>
@@ -64,7 +67,7 @@ import { Qrcode } from 'vux'
            this.states = res.message;
            console.log(888888)
            console.log(this.states)
-           this.getmoban(1)
+           this.getmessage()
        }
        })
      },
@@ -80,7 +83,7 @@ import { Qrcode } from 'vux'
             this.shareTitle = res.rows[0].title
             this.shareDes =  res.rows[0].content
             this.shareImages = this.config.service_ip+ "/template/image/" + res.rows[0].templateName;            
-           console.log( this.qrwidth)
+           console.log(this.qrwidth);
            this.getmessage(1)
        }
       
@@ -101,17 +104,17 @@ import { Qrcode } from 'vux'
            this.qrvalue = res.message;
            console.log('123')
            console.log(this.qrvalue) 
-		   this.$nextTick(function () {
-             this.toImage()
-         })             
+		//    this.$nextTick(function () {
+        //      this.toImage()
+        //  })             
        }else{
 		   //测试
 		    //  this.qrvalue = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx8cde01241502db2b&redirect_uri=http%3A%2F%2Ftest.physicalclub.com%2Fcrm%2Frest%2Fwx%2Flogin%2FsaleLink&response_type=code&scope=snsapi_userinfo&state=" + this.states + "#wechat_redirect"; 
 		   //正式
 		   this.qrvalue = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx0c02c2653bfc3cfa&redirect_uri=http%3A%2F%2Fcrm.physicalclub.com%2Fcrm%2Frest%2Fwx%2Flogin%2FsaleLink&response_type=code&scope=snsapi_userinfo&state=" + this.states + "#wechat_redirect";
-        this.$nextTick(function () {
-              this.toImage()
-         }) 
+        // this.$nextTick(function () {
+        //       this.toImage()
+        //  }) 
       }
       },error=>{ this.$refs.loadmore.onTopLoaded()},rate)
      },
@@ -189,6 +192,9 @@ fenxiangjs(){
 				alert('网络请求中断,请稍后重试!')
 			}
 		});
+       
+       
+       
 },
    },
    mounted(){
@@ -365,5 +371,9 @@ fenxiangjs(){
 				position: absolute;
 				z-index: 999999;
 			}
- 
+ .shareCode{
+	 padding: 0.3rem;
+		 text-align: center;
+		     padding-top: 1rem;
+ }
 </style>

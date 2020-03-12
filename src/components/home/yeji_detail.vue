@@ -104,14 +104,11 @@ import $ from 'jquery'
 						var arr = x.mediname  
 						var arr1 = x.autonumb
 //						console.log(arr1.length) 
-						
-						
 						$('.tb-option0').append('<span>'+x.strcreadate+'</span>')
 						$('.tb-option1').append('<span>'+x.fldFirstName+'</span>')
 						$('.tb-option2').append('<span>'+x.caseid+'</span>')
 						$('.tb-option3').append('<span>'+x.mediCode+'</span>')
 						$('.tb-option4').append('<span class="dataspan"><em>'+x.mediname+'</em></span>')
-					
 						$('.tb-option5').append('<span>'+x.autonumb+'</span>')
 						$('.tb-option6').append('<span>'+x.price3+'</span>')
 						$('.tb-option7').append('<span>'+x.price7+'</span>')
@@ -121,11 +118,8 @@ import $ from 'jquery'
 						$('.tb-option11').append('<span>'+x.option_name+'</span>')
 				
 					});
-					 
-
 				},
 				error: function(res){
-					
 					 alert(res.status)
 				}
 			});

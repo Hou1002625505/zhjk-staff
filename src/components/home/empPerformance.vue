@@ -25,7 +25,6 @@
 		<div id="performance">
 			<section class="mg-05">
 				<div class="weui-flex">
-                 
 					<div class="weui-flex__item tab preDate" :class="{'active':tabflag===1}" @click="selectflag(1)">
 						昨天
 					</div>
