@@ -95,8 +95,11 @@
     </div>-->
   </div>
 </template> 
- 
+
 <script>
+
+import $ from 'jquery'
+
 export default {
   name: "Calendar",
   data() {
@@ -134,6 +137,8 @@ export default {
       const str = this.formatDate(y, m, d);
       this.$emit("change", str, m, d);
       this.otherDay = d;
+      this.$emit("abc",$(this)[0].otherDay)
+      //($(this)[0].otherDay)
     },
     getCurrentWeek(y, m, d) {
       const w = `${y}-${m}-${d}`;

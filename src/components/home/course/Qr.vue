@@ -3,11 +3,12 @@
     <img src="../../../assets/image/code_bg@2x.png" alt />
     <div class="qr-background">
       <div class="qr-column">
-        <img src="../../../assets/images/1.jpg" alt />
-        <p>张琳</p>
-        <p>BODYBALANCE莱美身心</p>
-        <p>10:00~11:00</p>
-        <div class="qr-register">
+        <img :src="`http://test.physicalclub.com/crm/images/${this.data1.pictures}`" alt />
+        <!-- <img :src="`http://crm.physicalclub.com/crm/images/${this.data1.pictures}`" alt /> -->
+        <p>{{ this.data1.realName }}</p>
+        <p>{{ this.data1.storeName }}</p>
+        <p>{{ this.data1.timeStr }}</p>
+        <div class="qr-register" style="display:none">
           <div class="qr1-register-column">
             <p>10</p>
             <p>已预约</p>
@@ -23,12 +24,50 @@
             <p>未签到</p>
           </div>
         </div>
-        <img src="../../../assets/image/code@3x.png" alt="">
+        <img id="imageimage" src="" alt="">
         <p>会员通过微信扫描二维码上课签到.</p>
       </div>
     </div>
   </div>
 </template>
+
+<script>
+import axios from 'axios'
+import $ from 'jquery'
+export default {
+  
+  data(){
+    return{
+      data1 : this.$route.params.data1,
+
+    }
+  },
+
+  created : function(){
+    console.log(this.data1)
+    var a = this.data1.leagueCurriculumId
+    var b = this.data1.leagueCurriculumName
+    var c = this.data1.timeStr
+    axios.get('/rest/wx/login/getXcxToken',{
+      params:{
+        page:'pages/successfully/successfully'}
+      })
+    .then(response => {
+      //console.log(response)
+      axios.get('/rest/wx/login/getXcxCode',{
+        params:{
+           token : response.data.code,
+           sence : a/b/c,
+           page : 'pages/successfully/successfully'
+        }
+      }).then(response1 => {
+        console.log(response1)
+        $('#imageimage').attr('src','data:image/png;base64,'+response1.data.code)
+      })
+    })
+}
+}
+</script>
 
 <style lang="less" scoped>
 .qr {

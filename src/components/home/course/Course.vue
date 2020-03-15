@@ -14,33 +14,36 @@
       v-if="shift == 'exercise'"
       :class="{'fadeOut':fadeOut,'fadeIn':fadeIn,'fadeOutR':fadeOutR,'fadeInR':fadeInR}"
     >
-      <Calendar />
-      <div class="branch-store">
+      <Calendar @abc="ceshi"/>
+
+      <div class="branch-store" v-for="(item,index) in data1" :key="index">
         <div class="branch-store-nav">
           <div class="branch-store-clock">
             <img src="../../../assets/image/clock_icon@2x.png" alt />
-            <p>8:00~10:00</p>
+            <p>{{item.timeStr}}</p>
           </div>
-          <a class="branch-store-qr" @click="toqr">
+          <a class="branch-store-qr" @click="toqr(index)">
             <img src="../../../assets/image/code@2x.png" alt />
             <!-- <img src="../../../assets/image/right_btn@2x.png" alt /> -->
           </a>
         </div>
         <div class="branch-store-line"></div>
         <a class="branch-store-footer" @click="toappointment">
-          <img src="../../../assets/images/1.jpg" alt />
+          <img :src="`http://test.physicalclub.com/crm/images/${item.pictures}`" alt />
+          <!-- <img :src="`http://crm.physicalclub.com/crm/images/${item.pictures}`" alt /> -->
           <div class="branch-store-footer-p">
             <div>
               <p>
                 BODYBALANCE莱美身心 (
-                <span style="color:red">10</span>/20人)
+                <span style="color:red">{{item.minNumber}}</span>/{{item.maxNumber}}人)
               </p>
               <img src="../../../assets/image/right_btn@2x.png" alt />
             </div>
-            <p>星河中心健身分店</p>
+            <p>{{ item.storeName }}</p>
           </div>
         </a>
       </div>
+
     </div>
     <div
       v-if="shift == 'customer'"
@@ -55,6 +58,7 @@ import axios from 'axios'
 import $ from 'jquery'
 
 export default {
+  
   components: {
     Calendar
   },
@@ -68,7 +72,8 @@ export default {
       fadeOut: false,
       fadeIn: false,
       fadeOutR: false,
-      fadeInR: false
+      fadeInR: false,
+      data1:''
     };
   },
   methods: {
@@ -104,10 +109,13 @@ export default {
         self.fadeIn = false;
       }, 250);
     },
-    toqr() {
+    toqr(index) {
       setTimeout(() => {
         this.$router.push({
-          name: "qr"
+          name: "qr",
+          params: {
+            data1 : this.data1[index]
+          }
         });
       }, 500);
     },
@@ -117,27 +125,35 @@ export default {
           name: "appointment"
         });
       }, 500);
+    },
+    ceshi(payload){
+      var date = $('.year-month-a').html().split('年')[0]
+      var date1 = $('.year-month-a').html().split('年')[1].split('月')[0]
+      if(date1 < 10){
+        date1 = '0' + date1
+      }
+      var date0 = date + '-' + date1
+      //console.log($('.year-month-a').html().split('年')[0])
+        axios.get(
+        'rest/wx/employeeCourse/getCourseSchedulinSubscribegRecordList/'+date0)
+        .then(response =>{
+          console.log(response.data)
+          for(var i=0; i< response.data.rows.length;i++){
+            if(response.data.rows[i].dayStr == payload){
+                console.log(i)
+                this.data1 = response.data.rows[i].children
+                console.log(this.data1)
+                break;
+            }else{
+              this.data1 = ''
+            }
+          }
+
+
+        })
     }
   },
   created : function(){
-    axios.get('http://test.physicalclub.com/crm/rest/wx/employeeCourse/getCourseSchedulinSubscribegRecordList/2020-01',)
-    .then(function(response){
-      console.log(response)
-    })
-    .catch(function(error){
-      console.log(error)
-    })
-
-    $.ajax({
-      url:'http://test.physicalclub.com/crm/rest/wx/employeeCourse/getCourseSchedulinSubscribegRecordList/2020-01',
-      type:'GET',
-      dataType:'json',
-      success:function(data){
-        console.log(data)
-      },error(msg){
-        console.log(msg)
-      }
-    })
     
   }
 };

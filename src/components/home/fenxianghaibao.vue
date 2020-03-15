@@ -94,9 +94,9 @@ import { Qrcode } from 'vux'
           this.instance.$post('/rest/wx/shortLink/makeShortLink',{
 			 linkName:this.packageName1,
 			 //测试
-			//  url:"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx8cde01241502db2b&redirect_uri=http%3A%2F%2Ftest.physicalclub.com%2Frest%2Fwx%2Flogin%2FsaleLink&response_type=code&scope=snsapi_userinfo&state=" + this.states + "#wechat_redirect"
+			url:"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx8cde01241502db2b&redirect_uri=http%3A%2F%2Ftest.physicalclub.com%2Frest%2Fwx%2Flogin%2FsaleLink&response_type=code&scope=snsapi_userinfo&state=" + this.states + "#wechat_redirect"
 			//正式
-			 url:"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx0c02c2653bfc3cfa&redirect_uri=http%3A%2F%2Fcrm.physicalclub.com%2Frest%2Fwx%2Flogin%2FsaleLink&response_type=code&scope=snsapi_userinfo&state=" + this.states + "#wechat_redirect"
+			 //url:"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx0c02c2653bfc3cfa&redirect_uri=http%3A%2F%2Fcrm.physicalclub.com%2Frest%2Fwx%2Flogin%2FsaleLink&response_type=code&scope=snsapi_userinfo&state=" + this.states + "#wechat_redirect"
          },res => {
              console.log('生成短链接')
        console.log(res);
@@ -109,9 +109,9 @@ import { Qrcode } from 'vux'
         //  })             
        }else{
 		   //测试
-		    //  this.qrvalue = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx8cde01241502db2b&redirect_uri=http%3A%2F%2Ftest.physicalclub.com%2Fcrm%2Frest%2Fwx%2Flogin%2FsaleLink&response_type=code&scope=snsapi_userinfo&state=" + this.states + "#wechat_redirect"; 
+		    this.qrvalue = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx8cde01241502db2b&redirect_uri=http%3A%2F%2Ftest.physicalclub.com%2Fcrm%2Frest%2Fwx%2Flogin%2FsaleLink&response_type=code&scope=snsapi_userinfo&state=" + this.states + "#wechat_redirect"; 
 		   //正式
-		   this.qrvalue = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx0c02c2653bfc3cfa&redirect_uri=http%3A%2F%2Fcrm.physicalclub.com%2Fcrm%2Frest%2Fwx%2Flogin%2FsaleLink&response_type=code&scope=snsapi_userinfo&state=" + this.states + "#wechat_redirect";
+		   //this.qrvalue = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx0c02c2653bfc3cfa&redirect_uri=http%3A%2F%2Fcrm.physicalclub.com%2Fcrm%2Frest%2Fwx%2Flogin%2FsaleLink&response_type=code&scope=snsapi_userinfo&state=" + this.states + "#wechat_redirect";
         // this.$nextTick(function () {
         //       this.toImage()
         //  }) 
