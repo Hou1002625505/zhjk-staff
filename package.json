@@ -24,6 +24,7 @@
     "mui": "^0.0.1",
     "nprogress": "^0.2.0",
     "v-charts": "^1.19.0",
+    "vconsole": "^3.3.4",
     "vue": "^2.5.2",
     "vue-awesome-picker": "^1.1.0",
     "vue-calendar-component": "^2.8.2",

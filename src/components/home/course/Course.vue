@@ -28,13 +28,13 @@
           </a>
         </div>
         <div class="branch-store-line"></div>
-        <a class="branch-store-footer" @click="toappointment">
+        <a class="branch-store-footer">
           <img :src="`http://test.physicalclub.com/crm/images/${item.pictures}`" alt />
           <!-- <img :src="`http://crm.physicalclub.com/crm/images/${item.pictures}`" alt /> -->
           <div class="branch-store-footer-p">
             <div>
               <p>
-                BODYBALANCE莱美身心 (
+                {{ item.storeName }} (
                 <span style="color:red">{{item.minNumber}}</span>/{{item.maxNumber}}人)
               </p>
               <img src="../../../assets/image/right_btn@2x.png" alt />
@@ -135,7 +135,7 @@ export default {
       var date0 = date + '-' + date1
       //console.log($('.year-month-a').html().split('年')[0])
         axios.get(
-        'rest/wx/employeeCourse/getCourseSchedulinSubscribegRecordList/'+date0)
+        '/rest/wx/employeeCourse/getCourseSchedulinSubscribegRecordList/'+date0)
         .then(response =>{
           console.log(response.data)
           for(var i=0; i< response.data.rows.length;i++){
