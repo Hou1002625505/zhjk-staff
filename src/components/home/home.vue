@@ -191,7 +191,7 @@
 
               <div class="item" @click="course()" v-show="tckedui">
                 <span class="feng25"></span>
-                <p>团操课表核对</p>
+                <p>团操课表</p>
               </div>
 
               <div class="item" @click="fenxiangka()" v-show="fenxiang">

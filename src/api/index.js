@@ -2,9 +2,9 @@
 import axios from 'axios';
 import $this from '../util/config';
 // 测试环境
-axios.defaults.baseURL = 'http://test.physicalclub.com/crm';
+// axios.defaults.baseURL = 'http://test.physicalclub.com/crm';
 // 生产环境
- //axios.defaults.baseURL = 'http://crm.physicalclub.com';
+ axios.defaults.baseURL = 'http://crm.physicalclub.com';
 //设置超时时间
 // axios.defaults.timeout = 30000;
 //post请求头

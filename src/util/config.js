@@ -1,10 +1,10 @@
 import {MessageBox,Indicator} from "mint-ui";
 export default {
-    service_ip1: "http://test.physicalclub.com",//测试域名
-    service_ip: "http://test.physicalclub.com/crm",//测试接口域名
+    // service_ip1: "http://test.physicalclub.com",//测试域名
+    // service_ip: "http://test.physicalclub.com/crm",//测试接口域名
   
-        //  service_ip1: "http://crm.physicalclub.com",//生产域名
-        //  service_ip: "http://crm.physicalclub.com", //生产接口域名
+         service_ip1: "http://crm.physicalclub.com",//生产域名
+         service_ip: "http://crm.physicalclub.com", //生产接口域名
      
     formatDate:function (date) {
         var d = new Date(date);

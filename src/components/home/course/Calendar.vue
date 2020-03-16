@@ -10,11 +10,11 @@
         </ul>
       </div>
       <div class="year-month_right"><x-icon @click="addSchedule" type="ios-plus-empty" size="30" class="i-plus-empty"></x-icon></div>-->
-      <div @click="leftSliding">
+      <div @click="leftSliding" id="leftleft">
         <img src="../../../assets/image/left_btn@2x.png" alt />
       </div>
       <div class="year-month-a">{{currentYear}}年{{currentMonth}}月</div>
-      <div @click="rightSliding">
+      <div @click="rightSliding" id="rightright">
         <img src="../../../assets/image/right_btn@2x.png" alt />
       </div>
     </div>
@@ -99,6 +99,7 @@
 <script>
 
 import $ from 'jquery'
+import axios from 'axios'
 
 export default {
   name: "Calendar",
@@ -130,6 +131,7 @@ export default {
   },
   created() {
     this.initData(null);
+    
   },
   methods: {
     getDayMessage(y, m, d) {
@@ -218,7 +220,24 @@ export default {
         self.fadeOut = false;
         self.fadeOutR = false;
         self.fadeInR = false;
-      }, 300);
+
+        // var date = $('.year-month-a').html().split('年')[0]
+        // var date1 =$('.year-month-a').html().split('年')[1].split('月')[0]
+        // if(date1 < 10){
+        //   date1 = '0' + date1
+        // }
+        // var date0 = date + '-' + date1
+        
+        // axios.get(
+        // '/rest/wx/employeeCourse/getCourseSchedulinSubscribegRecordList/'+date0)
+        // .then(response =>{
+        //   console.log(response)
+        // })
+
+        }, 300);
+
+      
+
     },
     //向左滑动
     leftSliding() {
@@ -233,7 +252,25 @@ export default {
         self.fadeOutR = false;
         self.fadeOut = false;
         self.fadeIn = false;
+
+        // var date = $('.year-month-a').html().split('年')[0]
+        // var date1 =$('.year-month-a').html().split('年')[1].split('月')[0]
+        // if(date1 < 10){
+        //   date1 = '0' + date1
+        // }
+        // var date0 = date + '-' + date1
+        
+        // axios.get(
+        // '/rest/wx/employeeCourse/getCourseSchedulinSubscribegRecordList/'+date0)
+        // .then(response =>{
+        //   console.log(response)
+          
+        // })
+
       }, 300);
+
+        
+
     },
     initData(cur) {
       let date;
@@ -318,6 +355,12 @@ export default {
       let d = day;
       if (d < 10) d = "0" + d;
       return y + "-" + m + "-" + d;
+    
+    
+    },
+
+    shishi(){
+      
     }
   },
   mounted() {
@@ -327,6 +370,21 @@ export default {
     // console.log(this.currentYear)
     // console.log(new Date().getFullYear())
     // console.log(this.date)
+    // var date = $('.year-month-a').html().split('年')[0]
+    // var date1 =$('.year-month-a').html().split('年')[1].split('月')[0]
+    // if(date1 < 10){
+    //   date1 = '0' + date1
+    // }
+    // var date0 = date + '-' + date1
+    
+    // axios.get(
+    // '/rest/wx/employeeCourse/getCourseSchedulinSubscribegRecordList/'+date0)
+    // .then(response =>{
+    //   console.log(response)
+      
+    // })
+    // console.log(1)
+
   }
 };
 </script>
@@ -462,7 +520,7 @@ export default {
           width: 0.04rem;
           height: 0.04rem;
           border: 1px;
-          background: blue;
+          background:white;
           border-radius: 50%;
           display: flex;
           justify-content: center;
@@ -534,7 +592,8 @@ export default {
           width: 0.04rem;
           height: 0.04rem;
           border: 1px;
-          background: red;
+          background: white;
+          background: white;
           border-radius: 50%;
         }
       }
