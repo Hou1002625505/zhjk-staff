@@ -66,9 +66,9 @@ Vue.prototype.$http = axios;
 import Vuex from 'vuex';
 Vue.use(Vuex);
 
-let VConsole = require('../node_modules/vconsole/dist/vconsole.min');
-let vConsole = new VConsole();//初始化
-Vue.use(vConsole);//设为全局
+// let VConsole = require('../node_modules/vconsole/dist/vconsole.min');
+// let vConsole = new VConsole();//初始化
+// Vue.use(vConsole);//设为全局
 
 // const store = new Vuex.Store({
 //   state: {

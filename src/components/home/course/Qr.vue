@@ -8,19 +8,19 @@
         <p>{{ this.data1.realName }}</p>
         <p>{{ this.data1.storeName }}</p>
         <p>{{ this.data1.timeStr }}</p>
-        <div class="qr-register" style="display:none">
+        <div class="qr-register">
           <div class="qr1-register-column">
-            <p>10</p>
+            <p>{{ this.shuju.subscribeCount }}</p>
             <p>已预约</p>
           </div>
           <div class="qr1-register-column"></div>
           <div class="qr1-register-column">
-            <p>9</p>
+            <p>{{ this.shuju.signCount }}</p>
             <p>已签到</p>
           </div>
           <div class="qr1-register-column"></div>
           <div class="qr1-register-column">
-            <p>1</p>
+            <p>{{ this.shuju.noSignCount }}</p>
             <p>未签到</p>
           </div>
         </div>
@@ -39,15 +39,13 @@ export default {
   data(){
     return{
       data1 : this.$route.params.data1,
-
+      shuju : ''
     }
   },
 
   created : function(){
     console.log(this.data1)
-    var a = this.data1.leagueCurriculumId
-    var b = this.data1.leagueCurriculumName
-    var c = this.data1.timeStr
+    var a = this.data1.id
     axios.get('/rest/wx/login/getXcxToken',{
       params:{
         page:'pages/successfully/successfully'}
@@ -57,7 +55,7 @@ export default {
       axios.get('/rest/wx/login/getXcxCode',{
         params:{
            token : response.data.code,
-           sence : a/b/c,
+           sence : a,
            page : 'pages/successfully/successfully'
         }
       }).then(response1 => {
@@ -65,6 +63,12 @@ export default {
         $('#imageimage').attr('src','data:image/png;base64,'+response1.data.code)
       })
     })
+
+  axios.get('/rest/wx/employeeCourse/getCourseSchedulinSubscribegRecordItem/1/'+this.data1.id)
+  .then(response11 => {
+    console.log(response11)
+    this.shuju = response11.data.rows[0]
+  })
 }
 }
 </script>
