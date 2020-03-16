@@ -16,13 +16,13 @@
     >
       <Calendar @abc="ceshi"/>
 
-      <div class="branch-store" v-for="(item,index) in data1" :key="index" ref="count">
+      <div class="branch-store" v-for="(item,index) in data1" :key="index">
         <div class="branch-store-nav" :id="`${item.id}`">
           <div class="branch-store-clock">
             <img src="../../../assets/image/clock_icon@2x.png" alt />
             <p>{{item.timeStr}}</p>
           </div>
-          <a class="branch-store-qr" @click="toqr(index)">
+          <a class="branch-store-qr" style="width:0.4rem;height:0.4rem" @click="toqr(index)">
             <img src="../../../assets/image/code@2x.png" alt />
             <!-- <img src="../../../assets/image/right_btn@2x.png" alt /> -->
           </a>
@@ -35,7 +35,7 @@
             <div>
               <p>
                 {{ item.storeName }} (
-                <span style="color:red">{{shishi(item.id)}}</span>/{{ shishi1(item.id) }}人)
+                <span style="color:red">{{ item.signCount }}</span>/{{ item.totalCount }}人)
               </p>
               <img src="../../../assets/image/right_btn@2x.png" alt />
             </div>
@@ -77,6 +77,9 @@ export default {
       count:'',
       count1:''
     };
+  },
+  computed:{
+    
   },
   methods: {
     exercise(type) {
@@ -128,28 +131,23 @@ export default {
         });
       }, 500);
     },
-    ceshi(payload){
-      var date = $('.year-month-a').html().split('年')[0]
-      var date1 = $('.year-month-a').html().split('年')[1].split('月')[0]
+    ceshi(payload,year){
+      var date = year.split('年')[0]
+      var date1 =year.split('年')[1].split('月')[0]
       if(date1 < 10){
         date1 = '0' + date1
       }
       var date0 = date + '-' + date1
-      //console.log($('.year-month-a').html().split('年')[0])
+      
         axios.get(
         '/rest/wx/employeeCourse/getCourseSchedulinSubscribegRecordList/'+date0)
         .then(response =>{
-          //console.log(response.data)
+          console.log(response)
           for(var i=0; i< response.data.rows.length;i++){
             if(response.data.rows[i].dayStr == payload){
                 //console.log(i)
                 this.data1 = response.data.rows[i].children
                 //console.log(this.data1)
-
-                this.count = []
-                for(var p=0;p<this.data1.length;p++){
-                  
-                }
                 
                 break;
             }else{
@@ -158,31 +156,8 @@ export default {
           }
           
         })
-    },
-    shishi(id){
-      var a = ''
-      axios.get('/rest/wx/employeeCourse/getCourseSchedulinSubscribegRecordItem/1/'+id)
-      .then(response11 => {
-        console.log(response11)
-        //this.count = response11.data.rows[0].signCount
-        a = response11.data.rows[0].signCount
-        this.count = a
         
-      })
-      return this.count
-    },
-
-    shishi1(id){
-      var a=0
-      axios.get('/rest/wx/employeeCourse/getCourseSchedulinSubscribegRecordItem/1/'+id)
-      .then(response11 => {
-        a = response11.data.rows[0].subscribeCount
-        //this.count = response11.data.rows[0].signCount
-        this.count1 = a
-      })
-
-      return this.count1
-    }    
+    }
   },
   created : function(){
     

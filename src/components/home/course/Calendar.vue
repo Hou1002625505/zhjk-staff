@@ -137,7 +137,10 @@ export default {
       const str = this.formatDate(y, m, d);
       this.$emit("change", str, m, d);
       this.otherDay = d;
-      this.$emit("abc",$(this)[0].otherDay)
+      setTimeout(() => {
+        this.$emit("abc",$(this)[0].otherDay,$('.year-month-a').html())
+      }, 50);
+      
       //($(this)[0].otherDay)
     },
     getCurrentWeek(y, m, d) {
