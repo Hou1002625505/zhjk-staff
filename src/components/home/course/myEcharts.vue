@@ -69,10 +69,10 @@ export default {
         //     fontSize: 12
         //   }
         // },
-        tooltip: {
-          trigger: "item",
-          formatter: "{d}%"
-        },
+        // tooltip: {
+        //   trigger: "item",
+        //   formatter: "{d}%"
+        // },
         // legend: {
         //   padding:[10,0],
         //   orient: "horizontal",
@@ -92,7 +92,7 @@ export default {
           {
             type: "pie",
             color: ["#f09542", "#42a3d8", "#6ec290", "#777", "#666"],
-            center: ["50%", "30%"],
+            center: ["50%", "40%"],
             radius: ["0%", "50%"],
             // 默认防止标签重叠
             avoidLabelOverlap: false,
@@ -125,7 +125,7 @@ export default {
 <style lang="less" scoped>
 .chart-body {
   width: 100%;
-  height: 2.5rem;
+  height: 3rem;
   overflow: hidden;
   #chart {
     width: 100%;

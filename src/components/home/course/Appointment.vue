@@ -2,21 +2,21 @@
   <div style="background:#f7f7f7">
     <div class="appointment-body">
       <div class="appointment-header">
-        <p>BODYBALANCE莱美身心</p>
-        <p>10:00~11:00</p>
+        <p>{{ this.lunbo1.leagueCurriculumName }}</p>
+        <p>{{ this.lunbo1.timeStr }}</p>
         <div class="appointment-header-register">
           <div class="appointment-header-register-column">
-            <div class="appointment-header-register-column-p">10</div>
+            <div class="appointment-header-register-column-p">{{ this.data1.totalCount }}</div>
             <div class="appointment-header-register-column-p">已预约</div>
           </div>
           <div class="appointment-header-register-column"></div>
           <div class="appointment-header-register-column">
-            <div class="appointment-header-register-column-p">9</div>
+            <div class="appointment-header-register-column-p">{{ this.data1.signCount }}</div>
             <div class="appointment-header-register-column-p">已签到</div>
           </div>
           <div class="appointment-header-register-column"></div>
           <div class="appointment-header-register-column">
-            <div class="appointment-header-register-column-p">1</div>
+            <div class="appointment-header-register-column-p">{{ Number(this.data1.totalCount) - Number(this.data1.signCount) }}</div>
             <div class="appointment-header-register-column-p">未签到</div>
           </div>
         </div>
@@ -31,11 +31,11 @@
             <div class="mt-swipe-header-right">
               <p>
                 男:
-                <span>5</span>人
+                <span>{{ this.lunbo1.maleCount }}</span>人
               </p>
               <p>
                 女:
-                <span>5</span>人
+                <span>{{ this.lunbo1.femaleCount }}</span>人
               </p>
             </div>
           </div>
@@ -44,29 +44,29 @@
           <div class="mt-swipe-flex">
             <div class="mt-swipe-flex-one">
               <div class="mt-swipe-circle-red"></div>
-              <p>20以下</p>
+              <p>20岁以下</p>
             </div>
             <div class="mt-swipe-flex-one">
               <div class="mt-swipe-circle-orange"></div>
-              <p>20-24</p>
+              <p>20-24岁</p>
             </div>
             <div class="mt-swipe-flex-one">
               <div class="mt-swipe-circle-green"></div>
-              <p>25-30</p>
+              <p>25-30岁</p>
             </div>
           </div>
           <div class="mt-swipe-flex">
             <div class="mt-swipe-flex-one">
               <div class="mt-swipe-circle-sky"></div>
-              <p>31-40</p>
+              <p>31-40岁</p>
             </div>
             <div class="mt-swipe-flex-one">
               <div class="mt-swipe-circle-lightgreen"></div>
-              <p>41-50</p>
+              <p>41-50岁</p>
             </div>
             <div class="mt-swipe-flex-one">
               <div class="mt-swipe-circle-blue"></div>
-              <p>50以上</p>
+              <p>50岁以上</p>
             </div>
           </div>
         </mt-swipe-item>
@@ -74,47 +74,43 @@
           <div class="mt-swipe-header">
             <div class="mt-swipe-header-left">
               <p></p>
-              <p>年龄比对分析</p>
+              <p>上我课频次</p>
             </div>
             <div class="mt-swipe-header-right">
               <p>
                 男:
-                <span>5</span>人
+                <span>{{ this.lunbo2.maleCount }}</span>人
               </p>
               <p>
                 女:
-                <span>5</span>人
+                <span>{{ this.lunbo2.femaleCount }}</span>人
               </p>
             </div>
           </div>
-          <my-echarts :opinionData="opinionData"></my-echarts>
+          <my-echarts :opinionData="opinionData1"></my-echarts>
           <!-- :titleText="titleText" :opinion="opinion" -->
           <div class="mt-swipe-flex">
             <div class="mt-swipe-flex-one">
               <div class="mt-swipe-circle-red"></div>
-              <p>20以下</p>
+              <p>1-3次</p>
             </div>
             <div class="mt-swipe-flex-one">
               <div class="mt-swipe-circle-orange"></div>
-              <p>20-24</p>
+              <p>4-10次</p>
             </div>
             <div class="mt-swipe-flex-one">
               <div class="mt-swipe-circle-green"></div>
-              <p>25-30</p>
+              <p>10-20次</p>
             </div>
           </div>
-          <div class="mt-swipe-flex">
+          <div class="mt-swipe-flex" style="justify-content:left">
             <div class="mt-swipe-flex-one">
               <div class="mt-swipe-circle-sky"></div>
-              <p>31-40</p>
+              <p>20-30次</p>
             </div>
-            <div class="mt-swipe-flex-one">
+            <div class="mt-swipe-flex-one" style="margin-left:0.54rem">
               <div class="mt-swipe-circle-lightgreen"></div>
-              <p>41-50</p>
-            </div>
-            <div class="mt-swipe-flex-one">
-              <div class="mt-swipe-circle-blue"></div>
-              <p>50以上</p>
+              <p>30次以上</p>
             </div>
           </div>
         </mt-swipe-item>
@@ -122,62 +118,60 @@
           <div class="mt-swipe-header">
             <div class="mt-swipe-header-left">
               <p></p>
-              <p>年龄比对分析</p>
+              <p>累计上课频次</p>
             </div>
             <div class="mt-swipe-header-right">
               <p>
                 男:
-                <span>5</span>人
+                <span>{{ this.lunbo3.maleCount }}</span>人
               </p>
               <p>
                 女:
-                <span>5</span>人
+                <span>{{ this.lunbo3.femaleCount }}</span>人
               </p>
             </div>
           </div>
-          <my-echarts :opinionData="opinionData"></my-echarts>
+          <my-echarts :opinionData="opinionData2"></my-echarts>
           <!-- :titleText="titleText" :opinion="opinion" -->
           <div class="mt-swipe-flex">
             <div class="mt-swipe-flex-one">
               <div class="mt-swipe-circle-red"></div>
-              <p>20以下</p>
+              <p>1-3次</p>
             </div>
             <div class="mt-swipe-flex-one">
               <div class="mt-swipe-circle-orange"></div>
-              <p>20-24</p>
+              <p>4-10次</p>
             </div>
             <div class="mt-swipe-flex-one">
               <div class="mt-swipe-circle-green"></div>
-              <p>25-30</p>
+              <p>10-20次</p>
             </div>
           </div>
-          <div class="mt-swipe-flex">
+          <div class="mt-swipe-flex" style="justify-content:left">
             <div class="mt-swipe-flex-one">
               <div class="mt-swipe-circle-sky"></div>
-              <p>31-40</p>
+              <p>20-30次</p>
             </div>
-            <div class="mt-swipe-flex-one">
+            <div class="mt-swipe-flex-one" style="margin-left:0.54rem">
               <div class="mt-swipe-circle-lightgreen"></div>
-              <p>41-50</p>
-            </div>
-            <div class="mt-swipe-flex-one">
-              <div class="mt-swipe-circle-blue"></div>
-              <p>50以上</p>
+              <p>30次以上</p>
             </div>
           </div>
         </mt-swipe-item>
       </mt-swipe>
     </div>
-    <div class="appointment-footer-user">
+    <div class="appointment-footer-user" v-for="(item,index) in customerList" :key="index">
       <div class="appointment-footer-user-left">
-        <img src="../../../assets/images/1.jpg" alt />
+        <img :src="`http://test.physicalclub.com/crm/images/${item.head}`" alt />
+        <!-- <img :src="`http://crm.physicalclub.com/crm/images/${item.head}`" alt /> -->
         <div>
-          <div class="appointment-footer-user-left-p">吴美丽<img src="../../../assets/image/girl_icon@2x.png" alt=""></div>
-          <p>123456789</p>
-          <p>年龄:<span>23</span></p>
+          <div class="appointment-footer-user-left-p">{{ item.name }}<img v-if="item.sex == 1" src="../../../assets/image/boy_icon@2x.png" alt=""><img v-if="item.sex == 0" src="../../../assets/image/boy_icon@2x.png" alt=""></div>
+          <p>{{ item.mobile }}</p>
+          <!-- <p>年龄:<span>23</span></p> -->
         </div>
       </div>
-      <div class="appointment-footer-user-right">未签到</div>
+      <div class="appointment-footer-user-right" v-if="item.signState == 0">未签到</div>
+      <div class="appointment-footer-user-right1" v-if="item.signState == 1">签到</div>
     </div>
   </div>
 </template>
@@ -185,6 +179,8 @@
 <script>
 import { Swipe, SwipeItem } from "mint-ui";
 import myEcharts from "./myEcharts.vue";
+import axios from 'axios'  
+import $ from 'jquery'
 export default {
   components: {
     myEcharts
@@ -195,14 +191,74 @@ export default {
       // 扇形区域名称 lengend
       //opinion: ["18-25岁", "26-40岁", "41-50岁","51-60岁","61-70岁"],
       // series
+      kcid : this.$route.params.kcid,
+      data1 : this.$route.params.data1,
+      customerList : [],
+      lunbo1:'',
+      lunbo2:'',
+      lunbo3:'',
       opinionData: [
-        { value: 600, name: "18-25岁" },
-        { value: 300, name: "26-40岁" },
-        { value: 200, name: "41-50岁" },
-        { value: 600, name: "51-60岁" }
         // { value: 400, name: "61-70岁" },
-      ]
+      ],
+      opinionData1: [
+        // { value: 400, name: "61-70岁" },
+      ],
+      opinionData2: [
+        // { value: 400, name: "61-70岁" },
+      ],
+      // opinionData1: [
+      //   { value: 1, name: "18-25岁" },
+      //   { value: 6, name: "26-40岁" },
+      //   { value: 10, name: "41-50岁" },
+      //   { value: 6, name: "51-60岁" }
+      //   // { value: 400, name: "61-70岁" },
+      // ]
     };
+  },
+  mounted:function(){
+
+    axios.get('/rest/wx/employeeCourse/getCourseSchedulinSubscribegRecordItem/'+1+'/'+this.kcid)
+    .then(response => {
+      console.log(response.data.rows[0])
+      this.lunbo1 = response.data.rows[0]
+      this.customerList = response.data.rows[0].customerList
+      this.opinionData = [
+        {value: response.data.rows[0].studentAgeAnalysis[0].count, name: "20岁以下"},
+        {value: response.data.rows[0].studentAgeAnalysis[1].count, name: "20-24岁" },
+        {value: response.data.rows[0].studentAgeAnalysis[2].count, name: "25-30岁" },
+        {value: response.data.rows[0].studentAgeAnalysis[3].count, name: "31-40岁" },
+        {value: response.data.rows[0].studentAgeAnalysis[4].count, name: "41-50岁" },
+        {value: response.data.rows[0].studentAgeAnalysis[5].count, name: "50岁以上" },
+      ]
+    })
+
+    axios.get('/rest/wx/employeeCourse/getCourseSchedulinSubscribegRecordItem/'+2+'/'+this.kcid)
+    .then(response => {
+      this.lunbo2 = response.data.rows[0]
+      console.log(response.data.rows[0])
+      this.opinionData1 = [
+        {value: response.data.rows[0].classFrequency[0].count, name: "1-3次"},
+        {value: response.data.rows[0].classFrequency[1].count, name: "4-10次" },
+        {value: response.data.rows[0].classFrequency[2].count, name: "10-20次" },
+        {value: response.data.rows[0].classFrequency[3].count, name: "20-30次" },
+        {value: response.data.rows[0].classFrequency[4].count, name: "30次以上" },
+      ]
+    })
+
+    axios.get('/rest/wx/employeeCourse/getCourseSchedulinSubscribegRecordItem/'+3+'/'+this.kcid)
+    .then(response => {
+      this.lunbo3 = response.data.rows[0]
+      console.log(response.data.rows[0])
+      this.opinionData2 =[
+        {value: response.data.rows[0].classFrequency[0].count, name: "1-3次"},
+        {value: response.data.rows[0].classFrequency[1].count, name: "4-10次" },
+        {value: response.data.rows[0].classFrequency[2].count, name: "10-20次" },
+        {value: response.data.rows[0].classFrequency[3].count, name: "20-30次" },
+        {value: response.data.rows[0].classFrequency[4].count, name: "30次以上" },
+      ]
+    })
+
+    console.log(this.data1)
   }
 };
 </script>
@@ -296,6 +352,7 @@ export default {
     background: white;
     border-radius: 0.1rem;
     margin-top: 0.2rem;
+    
     .mt-swipe-header {
       display: flex;
       justify-content: space-between;
@@ -454,5 +511,16 @@ export default {
     color:#FFFFFF;
     font-size: 0.24rem;
   }
+  .appointment-footer-user-right1{
+    width:1.2rem;
+    height:0.5rem;
+    background:#F7F7F7;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    color:#999999;
+    font-size: 0.24rem;
+  }
 }
+
 </style>

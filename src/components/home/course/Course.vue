@@ -16,8 +16,8 @@
     >
       <Calendar @abc="ceshi"/>
 
-      <div class="branch-store" v-for="(item,index) in data1" :key="index"  @click="(item.state == 1)?toqr(index) : ''">
-        <div class="branch-store-nav" :id="`${item.id}`">
+      <div class="branch-store" v-for="(item,index) in data1" :key="index">
+        <div class="branch-store-nav" :id="`${item.id}`" @click="(item.state == 1)?toqr(index) : ''">
           <div class="branch-store-clock">
             <img src="../../../assets/image/clock_icon@2x.png" alt />
             <p>{{item.timeStr}}</p>
@@ -28,9 +28,9 @@
           </a>
         </div>
         <div class="branch-store-line"></div>
-        <a class="branch-store-footer">
-          <!-- <img :src="`http://test.physicalclub.com/crm/images/${item.pictures}`" alt /> -->
-          <img :src="`http://crm.physicalclub.com/crm/images/${item.pictures}`" alt />
+        <a class="branch-store-footer" @click="toappointment(index)">
+          <img :src="`http://test.physicalclub.com/crm/images/${item.pictures}`" alt />
+          <!-- <img :src="`http://crm.physicalclub.com/crm/images/${item.pictures}`" alt /> -->
           <div class="branch-store-footer-p">
             <div>
               <p>
@@ -124,10 +124,14 @@ export default {
         });
       }, 500);
     },
-    toappointment() {
+    toappointment(index) {
       setTimeout(() => {
         this.$router.push({
-          name: "appointment"
+          name: "appointment",
+          params:{
+            kcid : this.data1[index].id,
+            data1 : this.data1[index]
+          }
         });
       }, 500);
     },
@@ -142,7 +146,7 @@ export default {
         axios.get(
         '/rest/wx/employeeCourse/getCourseSchedulinSubscribegRecordList/'+date0)
         .then(response =>{
-          //console.log(response)
+          console.log(response)
           for(var i=0; i< response.data.rows.length;i++){
             if(response.data.rows[i].dayStr == payload){
                 //console.log(i)
@@ -181,9 +185,10 @@ export default {
     })
 
     function aaa(){
-      console.log($('.days').length)
-      console.log($('.days').children().length)
-      console.log($('.days').children().eq(4).children().children().eq(0).children().children().eq(0).html())
+      // console.log($('.days').length)
+      // console.log($('.days').children().length)
+      console.log(Number($('.days').children().eq(17).children().children().eq(0).children().text()))
+      console.log(new Date().getDate())
 
       var date = $('.year-month-a').html().split('年')[0]
       var date1 =$('.year-month-a').html().split('年')[1].split('月')[0]
@@ -191,16 +196,17 @@ export default {
         date1 = '0' + date1
       }
       var date0 = date + '-' + date1
-      
+
       axios.get(
       '/rest/wx/employeeCourse/getCourseSchedulinSubscribegRecordList/'+date0)
       .then(response =>{
         console.log(response.data.rows)
-        for(var j=0;j<$('.days').children().length;j++){
-          for(var i=0;i<response.data.rows.length;i++){
+        for(var i=0;i<response.data.rows.length;i++){
+          for(var j=0;j<$('.days').children().length;j++){
             if($('.days').children().eq(j).children().children().eq(0).children().children().eq(0).html() == Number(response.data.rows[i].dayStr)){
               if(response.data.rows[i].state == 1){
                 $('.days').children().eq(j).children().children().eq(0).children().children().eq(1).css('background','blue')
+                console.log(j)
                 
               }else if(response.data.rows[i].state == 0){
                 $('.days').children().eq(j).children().children().eq(0).children().children().eq(1).css('background','red')
@@ -208,6 +214,20 @@ export default {
               }
             }
           }
+          if(new Date().getDate() == Number(response.data.rows[i].dayStr)){
+            for(var j=0;j<$('.days').children().length;j++){
+                if(Number($('.days').children().eq(j).children().children().eq(0).children().text()) == new Date().getDate()){
+                  //console.log(j)
+                  if(response.data.rows[i].state == 1){
+                    $('.days').children().eq(j).children().children().eq(0).children().children('.active-radius').css('background','blue')
+                    console.log(j)
+                  }else if(response.data.rows[i].state == 0){
+                    $('.days').children().eq(j).children().children().eq(0).children().children('.active-radius').css('background','red')
+                  }
+                }
+            }
+              
+            }
         }
         
       })
