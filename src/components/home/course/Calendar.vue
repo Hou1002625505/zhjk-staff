@@ -281,7 +281,7 @@ export default {
         //var t = this.formatDate(now.getFullYear(), now.getMonth(), 1);
         //console.log(t)
         //var d = new Date(t);
-        now.setDate(35);
+        now.setDate(42);
         date = new Date(this.formatDate(now.getFullYear(), now.getMonth(), 1));
         // console.log(t)
         // console.log(d)
@@ -313,7 +313,7 @@ export default {
         this.days.push(dayobject); //将日期放入data 中的days数组 供页面渲染使用
       }
       //其他周
-      for (let i = 1; i <= 34 - this.currentWeek; i++) {
+      for (let i = 1; i <= 42 - this.currentWeek; i++) {
         const d = new Date(str);
         d.setDate(d.getDate() + i);
         const dayobject = {};
@@ -344,7 +344,7 @@ export default {
     // 下个月信息
     pickNext(year, month) {
       const d = new Date(this.formatDate(year, month, 1));
-      d.setDate(35);
+      d.setDate(42);
       this.initData(this.formatDate(d.getFullYear(), d.getMonth() + 1, 1));
     },
     // 补零处理
@@ -481,7 +481,7 @@ export default {
     // }
   }
   .days {
-    height: 2.8rem;
+    height: 3.1rem;
     padding: 0;
     margin: 0;
     display: flex;

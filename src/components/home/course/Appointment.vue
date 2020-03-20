@@ -193,19 +193,13 @@ export default {
       // series
       kcid : this.$route.params.kcid,
       data1 : this.$route.params.data1,
-      customerList : [],
-      lunbo1:'',
-      lunbo2:'',
-      lunbo3:'',
-      opinionData: [
-        // { value: 400, name: "61-70岁" },
-      ],
-      opinionData1: [
-        // { value: 400, name: "61-70岁" },
-      ],
-      opinionData2: [
-        // { value: 400, name: "61-70岁" },
-      ],
+      customerList : this.$route.params.customerList,
+      lunbo1:this.$route.params.lunbo1,
+      lunbo2:this.$route.params.lunbo2,
+      lunbo3:this.$route.params.lunbo3,
+      opinionData: this.$route.params.opinionData,
+      opinionData1: this.$route.params.opinionData1,
+      opinionData2: this.$route.params.opinionData2,
       // opinionData1: [
       //   { value: 1, name: "18-25岁" },
       //   { value: 6, name: "26-40岁" },
@@ -217,48 +211,48 @@ export default {
   },
   mounted:function(){
 
-    axios.get('/rest/wx/employeeCourse/getCourseSchedulinSubscribegRecordItem/'+1+'/'+this.kcid)
-    .then(response => {
-      console.log(response.data.rows[0])
-      this.lunbo1 = response.data.rows[0]
-      this.customerList = response.data.rows[0].customerList
-      this.opinionData = [
-        {value: response.data.rows[0].studentAgeAnalysis[0].count, name: "20岁以下"},
-        {value: response.data.rows[0].studentAgeAnalysis[1].count, name: "20-24岁" },
-        {value: response.data.rows[0].studentAgeAnalysis[2].count, name: "25-30岁" },
-        {value: response.data.rows[0].studentAgeAnalysis[3].count, name: "31-40岁" },
-        {value: response.data.rows[0].studentAgeAnalysis[4].count, name: "41-50岁" },
-        {value: response.data.rows[0].studentAgeAnalysis[5].count, name: "50岁以上" },
-      ]
-    })
+    // axios.get('/rest/wx/employeeCourse/getCourseSchedulinSubscribegRecordItem/'+1+'/'+this.kcid)
+    // .then(response => {
+    //   console.log(response.data.rows[0])
+    //   this.lunbo1 = response.data.rows[0]
+    //   this.customerList = response.data.rows[0].customerList
+    //   this.opinionData = [
+    //     {value: response.data.rows[0].studentAgeAnalysis[0].count, name: "20岁以下"},
+    //     {value: response.data.rows[0].studentAgeAnalysis[1].count, name: "20-24岁" },
+    //     {value: response.data.rows[0].studentAgeAnalysis[2].count, name: "25-30岁" },
+    //     {value: response.data.rows[0].studentAgeAnalysis[3].count, name: "31-40岁" },
+    //     {value: response.data.rows[0].studentAgeAnalysis[4].count, name: "41-50岁" },
+    //     {value: response.data.rows[0].studentAgeAnalysis[5].count, name: "50岁以上" },
+    //   ]
+    // })
 
-    axios.get('/rest/wx/employeeCourse/getCourseSchedulinSubscribegRecordItem/'+2+'/'+this.kcid)
-    .then(response => {
-      this.lunbo2 = response.data.rows[0]
-      console.log(response.data.rows[0])
-      this.opinionData1 = [
-        {value: response.data.rows[0].classFrequency[0].count, name: "1-3次"},
-        {value: response.data.rows[0].classFrequency[1].count, name: "4-10次" },
-        {value: response.data.rows[0].classFrequency[2].count, name: "10-20次" },
-        {value: response.data.rows[0].classFrequency[3].count, name: "20-30次" },
-        {value: response.data.rows[0].classFrequency[4].count, name: "30次以上" },
-      ]
-    })
+    // axios.get('/rest/wx/employeeCourse/getCourseSchedulinSubscribegRecordItem/'+2+'/'+this.kcid)
+    // .then(response => {
+    //   this.lunbo2 = response.data.rows[0]
+    //   console.log(response.data.rows[0])
+    //   this.opinionData1 = [
+    //     {value: response.data.rows[0].classFrequency[0].count, name: "1-3次"},
+    //     {value: response.data.rows[0].classFrequency[1].count, name: "4-10次" },
+    //     {value: response.data.rows[0].classFrequency[2].count, name: "10-20次" },
+    //     {value: response.data.rows[0].classFrequency[3].count, name: "20-30次" },
+    //     {value: response.data.rows[0].classFrequency[4].count, name: "30次以上" },
+    //   ]
+    // })
 
-    axios.get('/rest/wx/employeeCourse/getCourseSchedulinSubscribegRecordItem/'+3+'/'+this.kcid)
-    .then(response => {
-      this.lunbo3 = response.data.rows[0]
-      console.log(response.data.rows[0])
-      this.opinionData2 =[
-        {value: response.data.rows[0].classFrequency[0].count, name: "1-3次"},
-        {value: response.data.rows[0].classFrequency[1].count, name: "4-10次" },
-        {value: response.data.rows[0].classFrequency[2].count, name: "10-20次" },
-        {value: response.data.rows[0].classFrequency[3].count, name: "20-30次" },
-        {value: response.data.rows[0].classFrequency[4].count, name: "30次以上" },
-      ]
-    })
+    // axios.get('/rest/wx/employeeCourse/getCourseSchedulinSubscribegRecordItem/'+3+'/'+this.kcid)
+    // .then(response => {
+    //   this.lunbo3 = response.data.rows[0]
+    //   console.log(response.data.rows[0])
+    //   this.opinionData2 =[
+    //     {value: response.data.rows[0].classFrequency[0].count, name: "1-3次"},
+    //     {value: response.data.rows[0].classFrequency[1].count, name: "4-10次" },
+    //     {value: response.data.rows[0].classFrequency[2].count, name: "10-20次" },
+    //     {value: response.data.rows[0].classFrequency[3].count, name: "20-30次" },
+    //     {value: response.data.rows[0].classFrequency[4].count, name: "30次以上" },
+    //   ]
+    // })
 
-    console.log(this.data1)
+    // console.log(this.data1)
   }
 };
 </script>

@@ -75,7 +75,14 @@ export default {
       fadeInR: false,
       data1:'',
       count:'',
-      count1:''
+      count1:'',
+      opinionData : '',
+      opinionData1:'',
+      opinionData2:'',
+      customerList:'',
+      lunbo1:'',
+      lunbo2:'',
+      lunbo3:''
     };
   },
   computed:{
@@ -125,12 +132,63 @@ export default {
       }, 500);
     },
     toappointment(index) {
+      console.log(this.data1)
+      axios.get('/rest/wx/employeeCourse/getCourseSchedulinSubscribegRecordItem/'+1+'/'+this.data1[index].id)
+      .then(response => {
+        console.log(response.data.rows[0])
+        this.lunbo1 = response.data.rows[0]
+        this.customerList = response.data.rows[0].customerList
+        this.opinionData = [
+          {value: this.lunbo1.studentAgeAnalysis[0].count, name: "20岁以下"},
+          {value: this.lunbo1.studentAgeAnalysis[1].count, name: "20-24岁" },
+          {value: this.lunbo1.studentAgeAnalysis[2].count, name: "25-30岁" },
+          {value: this.lunbo1.studentAgeAnalysis[3].count, name: "31-40岁" },
+          {value: this.lunbo1.studentAgeAnalysis[4].count, name: "41-50岁" },
+          {value: this.lunbo1.studentAgeAnalysis[5].count, name: "50岁以上" },
+          // response.data.rows[0].studentAgeAnalysis[5].count
+        ]
+      
+      })
+
+      axios.get('/rest/wx/employeeCourse/getCourseSchedulinSubscribegRecordItem/'+2+'/'+this.data1[index].id)
+      .then(response => {
+        this.lunbo2 = response.data.rows[0]
+        console.log(response.data.rows[0])
+        this.opinionData1 = [
+          {value: this.lunbo2.classFrequency[0].count, name: "1-3次"},
+          {value: this.lunbo2.classFrequency[1].count, name: "4-10次" },
+          {value: this.lunbo2.classFrequency[2].count, name: "10-20次" },
+          {value: this.lunbo2.classFrequency[3].count, name: "20-30次" },
+          {value: this.lunbo2.classFrequency[4].count, name: "30次以上" },
+        ]
+      })
+
+      axios.get('/rest/wx/employeeCourse/getCourseSchedulinSubscribegRecordItem/'+3+'/'+this.data1[index].id)
+      .then(response => {
+        this.lunbo3 = response.data.rows[0]
+        console.log(response.data.rows[0])
+        this.opinionData2 =[
+          {value: this.lunbo3.classFrequency[0].count, name: "1-3次"},
+          {value: this.lunbo3.classFrequency[1].count, name: "4-10次" },
+          {value: this.lunbo3.classFrequency[2].count, name: "10-20次" },
+          {value: this.lunbo3.classFrequency[3].count, name: "20-30次" },
+          {value: this.lunbo3.classFrequency[4].count, name: "30次以上" },
+        ]
+      })
+
       setTimeout(() => {
         this.$router.push({
           name: "appointment",
           params:{
             kcid : this.data1[index].id,
-            data1 : this.data1[index]
+            data1 : this.data1[index],
+            lunbo1:this.lunbo1,
+            lunbo2:this.lunbo2,
+            lunbo3:this.lunbo3,
+            opinionData:this.opinionData,
+            opinionData1:this.opinionData1,
+            opinionData2:this.opinionData2,
+            customerList:this.customerList,
           }
         });
       }, 500);
