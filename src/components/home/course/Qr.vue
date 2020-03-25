@@ -3,8 +3,8 @@
     <img src="../../../assets/image/code_bg@2x.png" alt />
     <div class="qr-background">
       <div class="qr-column">
-        <img :src="`http://test.physicalclub.com/crm/images/${this.data1.pictures}`" alt />
-        <!-- <img :src="`http://crm.physicalclub.com/crm/images/${this.data1.pictures}`" alt /> -->
+        <!-- <img :src="`http://test.physicalclub.com/crm/images/${this.data1.pictures}`" alt /> -->
+        <img :src="`http://crm.physicalclub.com/crm/images/${this.data1.pictures}`" alt />
         <p>{{ this.data1.realName }}</p>
         <p>{{ this.data1.storeName }}</p>
         <p>{{ this.data1.timeStr }}</p>
