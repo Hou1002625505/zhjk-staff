@@ -702,7 +702,7 @@ em {
 }
 .qi_home_header {
   width: 100%;
-  background: #4978b0;
+  background: #5076b7;
   position: relative;
 }
 .qi_home_guang {

@@ -162,8 +162,8 @@
     </div>
     <div class="appointment-footer-user" v-for="(item,index) in customerList" :key="index">
       <div class="appointment-footer-user-left">
-        <!-- <img :src="`http://test.physicalclub.com/crm/images/${item.head}`" alt /> -->
-        <img :src="`http://crm.physicalclub.com/crm/images/${item.head}`" alt />
+        <img :src="`http://test.physicalclub.com/crm/images/${item.head}`" alt />
+        <!-- <img :src="`http://crm.physicalclub.com/crm/images/${item.head}`" alt /> -->
         <div>
           <div class="appointment-footer-user-left-p">{{ item.name }}<img v-if="item.sex == 1" src="../../../assets/image/boy_icon@2x.png" alt=""><img v-if="item.sex == 0" src="../../../assets/image/boy_icon@2x.png" alt=""></div>
           <p>{{ item.mobile }}</p>

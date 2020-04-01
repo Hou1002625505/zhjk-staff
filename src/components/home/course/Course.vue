@@ -29,8 +29,8 @@
         </div>
         <div class="branch-store-line"></div>
         <a class="branch-store-footer" @click="toappointment(index)">
-          <!-- <img :src="`http://test.physicalclub.com/crm/images/${item.pictures}`" alt /> -->
-          <img :src="`http://crm.physicalclub.com/crm/images/${item.pictures}`" alt />
+          <img :src="`http://test.physicalclub.com/crm/images/${item.pictures}`" alt />
+          <!-- <img :src="`http://crm.physicalclub.com/crm/images/${item.pictures}`" alt /> -->
           <div class="branch-store-footer-p">
             <div>
               <p>
