@@ -123,7 +123,7 @@
             </div>
           </div> -->
           <div class="title">广信标签</div>
-          <div style="display:flex;padding:0.14rem 0 0.14rem 0.3rem;flex-wrap:wrap;border-top:1px solid #F7F7F7;" id="gxbiaoqian">
+          <div style="display:flex;padding:0.14rem 0 0.14rem 0.3rem;flex-wrap:wrap;border-top:1px solid #F7F7F7;min-height:0.5rem" id="gxbiaoqian">
             <div v-for="(item,index) in getcustomertag" :key="index">
               <div v-if="item.sourceSystem == 2" style="font-size:0.24rem;background:#F7F7F7;padding:0.14rem 0.16rem;margin:0 0.16rem 0.16rem 0">
                 <span v-if="item.groupName">{{ item.groupName }}:</span>
@@ -442,7 +442,7 @@ export default {
           console.log($('#gxbiaoqian').html())
           console.log($('#qywxbiaoqian').html())
           var html = `
-            <p style="text-align:center;width:100%;font-size:0.3rem">暂无</p>
+            <p style="text-align:center;width:100%;font-size:0.3rem;height:0.7rem;line-height:0.7rem">暂无</p>
           `
           // if($('#crmbiaoqian').children().children().html() == ''){
           //   $('#crmbiaoqian').html(html)
