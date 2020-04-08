@@ -107,6 +107,39 @@
             </div>-->
           </div>
         </div>
+        <div class="fourty" style="padding-bottom:0.2rem">
+          <div class="title">CRM标签</div>
+          <div style="display:flex;padding:0.14rem 0 0.14rem 0.3rem;flex-wrap:wrap;border-top:1px solid #F7F7F7;border-bottom:1px solid #F7F7F7" id="crmbiaoqian">
+            <div v-for="(item,index) in getcustomertag" :key="index">
+              <div v-if="item.sourceSystem == 1" style="font-size:0.24rem;background:#F7F7F7;padding:0.14rem 0.16rem;margin:0 0.16rem 0.16rem 0">
+                <span v-if="item.groupName">{{ item.groupName }}:</span>
+                <span v-if="item.tagName">{{ item.tagName }}</span>
+              </div>
+              <div v-else></div>
+            </div>
+          </div>
+          <div class="title">广信标签</div>
+          <div style="display:flex;padding:0.14rem 0 0.14rem 0.3rem;flex-wrap:wrap;border-top:1px solid #F7F7F7;border-bottom:1px solid #F7F7F7" id="gxbiaoqian">
+            <div v-for="(item,index) in getcustomertag" :key="index">
+              <div v-if="item.sourceSystem == 2" style="font-size:0.24rem;background:#F7F7F7;padding:0.14rem 0.16rem;margin:0 0.16rem 0.16rem 0">
+                <span v-if="item.groupName">{{ item.groupName }}:</span>
+                <span v-if="item.tagName">{{ item.tagName }}</span>
+              </div>
+              <div v-else></div>
+            </div>
+          </div>
+          <div class="title">企业微信标签</div>
+          <div style="display:flex;padding:0.14rem 0 0.14rem 0.3rem;flex-wrap:wrap;border-top:1px solid #F7F7F7;border-bottom:1px solid #F7F7F7" id="qywxbiaoqian">
+            <div v-for="(item,index) in getcustomertag" :key="index">
+              <div v-if="item.sourceSystem == 3" style="font-size:0.24rem;background:#F7F7F7;padding:0.14rem 0.16rem;margin:0 0.16rem 0.16rem 0">
+                <span v-if="item.groupName">{{ item.groupName }}:</span>
+                <span v-if="item.tagName">{{ item.tagName }}</span>
+              </div>
+              <div v-else></div>
+            </div>
+            
+          </div>
+        </div>
         <div class="second">
           <div class="title">消费情况</div>
           <div class="datalist">
@@ -154,12 +187,15 @@
 </template>
 
 <script>
+import $ from 'jquery'
 export default {
   data() {
     return {
       filid: this.$route.query.filid,
+      crmid: this.$route.query.crmid,
       //filid:'099105851',
       getDetailarr: [],
+      getcustomertag: [],
       topStatus: "",
       activeStatus: "",
       costYear: "",
@@ -188,7 +224,17 @@ export default {
   },
   created() {
     console.log(this.filid);
+    console.log(this.crmid);
     this.getDetail();
+    // this.getcustomertag();
+    this.instance.$post(
+      "/rest/wx/customerGx/customerTagList",
+      { customerCode: this.crmid },
+      res => {
+        console.log(res);
+        this.getcustomertag = res.rows;
+      }
+    );
   },
   methods: {
     getDetail(rate) {
@@ -197,7 +243,7 @@ export default {
         "/rest/wx/customerGx/findCustomerGx ",
         { fldclientid: this.filid },
         res => {
-          console.log(res);
+          // console.log(res);
           this.genjinzhuangtai();
           this.getDetailarr.push(res.rows[0]);
           this.activeStatus = res.rows[0].activeStatus;
@@ -239,6 +285,8 @@ export default {
       );
     },
 
+    getcustomertag() {},
+
     genjinzhuangtai() {
       this.instance.$post(
         "/rest/wx/customerGx/getVisitStatus",
@@ -247,7 +295,7 @@ export default {
         },
         res => {
           this.getkaliebiao();
-          console.log(res);
+          // console.log(res);
           if (res.rows[0].status == 0) {
             $(".checkbox").addClass("active");
           }
@@ -261,7 +309,7 @@ export default {
           userId: this.filid
         },
         res => {
-          console.log(res);
+          // console.log(res);
 
           if (res.status) {
             var data = res.rows;
@@ -298,7 +346,7 @@ export default {
           status: sta
         },
         res => {
-          console.log(res);
+          // console.log(res);
           if (res.status) {
             if (sta == 1) {
               $(".checkbox").removeClass("active");
@@ -373,7 +421,47 @@ export default {
       }, 300);
     }
   },
-  components: {}
+  components: {},
+  mounted:function(){
+    // if($('#crmbiaoqian').html() == ''){
+    //   $('#crmbiaoqian').html('暂无')
+    // }
+    // if($('#gxbiaoqian').html() == ''){
+    //   $('#gxbiaoqian').html('暂无')
+    // }
+    // if($('#qywxbiaoqian').html() == ''){
+    //   $('#qywxbiaoqian').html('暂无')
+    // }
+    setTimeout(() => {
+      console.log($('#crmbiaoqian').children().html())
+      console.log($('#gxbiaoqian').children().html())
+      console.log($('#qywxbiaoqian').children().html())
+      console.log($('#crmbiaoqian').html())
+      console.log($('#gxbiaoqian').html())
+      console.log($('#qywxbiaoqian').html())
+      var html = `
+        <p style="text-align:center;width:100%">暂无</p>
+      `
+      if($('#crmbiaoqian').children().children().html() == ''){
+        $('#crmbiaoqian').html(html)
+      }else if($('#crmbiaoqian').html() == ''){
+        $('#crmbiaoqian').html(html)
+      }
+
+      if($('#gxbiaoqian').children().children().html() == ''){
+        $('#gxbiaoqian').html(html)
+      }else if($('#gxbiaoqian').html() == ''){
+        $('#gxbiaoqian').html(html)
+      }
+
+      if($('#qywxbiaoqian').children().children().html() == ''){
+        $('#qywxbiaoqian').html(html)
+      }else if($('#qywxbiaoqian').html() == ''){
+        $('#qywxbiaoqian').html(html)
+      }
+    }, 100);
+    
+  }
 };
 </script>
 
@@ -538,7 +626,7 @@ export default {
   //display: flex;
   padding: 0.44rem 0 0.4rem 0;
   //box-shadow: 0px 0px 4px 0px rgba(73, 120, 176, 0.5);
-  border-top:1px solid #e7edf5;
+  border-top: 1px solid #e7edf5;
   border-bottom: 1px solid #e7edf5;
   margin-top: 0px;
   background-color: #fff;
@@ -579,7 +667,7 @@ export default {
   padding: 0 0.3rem;
   font-size: 0.35rem;
   font-weight: bold;
-  height:1.6rem;
+  height: 1.6rem;
   line-height: 1.6rem;
   box-sizing: border-box;
 }
@@ -591,9 +679,9 @@ export default {
 .costomer_xin {
   display: flex;
   border-top: 1px solid #f7f7f7;
-  padding:0 0.3rem;
+  padding: 0 0.3rem;
   font-size: 0.3rem;
-  height:1.6rem;
+  height: 1.6rem;
   line-height: 1.6rem;
 }
 
@@ -606,6 +694,7 @@ export default {
   text-align: right;
 }
 
+.fourty,
 .second,
 .third {
   border-top: 10px solid #f7f7f7;

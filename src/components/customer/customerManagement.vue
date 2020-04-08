@@ -243,7 +243,7 @@
               class="mycustomer_item"
               v-for="(item1,index) in getmycustomerlist.length>0?getmycustomerlist:searchlist"
               :key="index"
-              @click="glass(item1.fldclientid)"
+              @click="glass(item1.fldclientid,item1.crmid)"
             >
               <div class="mycustomer_fang">
                 <div class="yewu_ico">
@@ -557,7 +557,8 @@ export default {
           //	userId:this.gonghao
         },
         res => {
-          console.log(JSON.stringify(res));
+          // console.log(JSON.stringify(res));
+          console.log(res)
           this.getmycustomerlist = [];
           this.getshaixuanvalList = [];
           this.getshaiguoqiList = [];
@@ -880,11 +881,12 @@ export default {
         }
       );
     },
-    glass(filid) {
+    glass(filid,crmid) {
       this.$router.push({
         name: "customerDetail",
         query: {
-          filid: filid
+          filid: filid,
+          crmid: crmid
         }
       });
     },
@@ -953,7 +955,6 @@ export default {
   }
 };
 </script>
-
 <style scoped lang="less">
 .bottom_height {
   width: 100%;
