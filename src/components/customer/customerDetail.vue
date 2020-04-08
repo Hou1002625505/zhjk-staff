@@ -107,8 +107,8 @@
             </div>-->
           </div>
         </div>
-        <div class="fourty" style="padding-bottom:0.2rem">
-          <div class="title">CRM标签</div>
+        <div class="fourty">
+          <!-- <div class="title">CRM标签</div>
           <div style="display:flex;padding:0.14rem 0 0.14rem 0.3rem;flex-wrap:wrap;border-top:1px solid #F7F7F7;border-bottom:1px solid #F7F7F7" id="crmbiaoqian">
             <div v-for="(item,index) in getcustomertag" :key="index">
               <div v-if="item.sourceSystem == 1" style="font-size:0.24rem;background:#F7F7F7;padding:0.14rem 0.16rem;margin:0 0.16rem 0.16rem 0">
@@ -117,9 +117,9 @@
               </div>
               <div v-else></div>
             </div>
-          </div>
+          </div> -->
           <div class="title">广信标签</div>
-          <div style="display:flex;padding:0.14rem 0 0.14rem 0.3rem;flex-wrap:wrap;border-top:1px solid #F7F7F7;border-bottom:1px solid #F7F7F7" id="gxbiaoqian">
+          <div style="display:flex;padding:0.14rem 0 0.14rem 0.3rem;flex-wrap:wrap;border-top:1px solid #F7F7F7;" id="gxbiaoqian">
             <div v-for="(item,index) in getcustomertag" :key="index">
               <div v-if="item.sourceSystem == 2" style="font-size:0.24rem;background:#F7F7F7;padding:0.14rem 0.16rem;margin:0 0.16rem 0.16rem 0">
                 <span v-if="item.groupName">{{ item.groupName }}:</span>
@@ -128,8 +128,9 @@
               <div v-else></div>
             </div>
           </div>
+          <div style="height:1px;background:#F7F7F7;margin:0 0.3rem;box-sizing:border-box"></div>
           <div class="title">企业微信标签</div>
-          <div style="display:flex;padding:0.14rem 0 0.14rem 0.3rem;flex-wrap:wrap;border-top:1px solid #F7F7F7;border-bottom:1px solid #F7F7F7" id="qywxbiaoqian">
+          <div style="display:flex;padding:0.14rem 0 0.14rem 0.3rem;flex-wrap:wrap;border-top:1px solid #F7F7F7;" id="qywxbiaoqian">
             <div v-for="(item,index) in getcustomertag" :key="index">
               <div v-if="item.sourceSystem == 3" style="font-size:0.24rem;background:#F7F7F7;padding:0.14rem 0.16rem;margin:0 0.16rem 0.16rem 0">
                 <span v-if="item.groupName">{{ item.groupName }}:</span>
@@ -137,7 +138,6 @@
               </div>
               <div v-else></div>
             </div>
-            
           </div>
         </div>
         <div class="second">
@@ -667,8 +667,8 @@ export default {
   padding: 0 0.3rem;
   font-size: 0.35rem;
   font-weight: bold;
-  height: 1.6rem;
-  line-height: 1.6rem;
+  height: 0.8rem;
+  line-height: 0.8rem;
   box-sizing: border-box;
 }
 
@@ -681,8 +681,8 @@ export default {
   border-top: 1px solid #f7f7f7;
   padding: 0 0.3rem;
   font-size: 0.3rem;
-  height: 1.6rem;
-  line-height: 1.6rem;
+  height: 0.8rem;
+  line-height: 0.8rem;
 }
 
 .costomer_xi {
