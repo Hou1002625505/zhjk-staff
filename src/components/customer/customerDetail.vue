@@ -72,10 +72,14 @@
           <div class="datalist">
             <div class="costomer_xin">
               <div class="costomer_xi">会员卡号</div>
-              <div class="costomer_xi" @click="showkaliebiao()">
+              <div class="costomer_xi" @click="showkaliebiao()" style="position:relative">
                 <span id="cardNo">{{firstRegistCard?firstRegistCard:"__"}}</span>
                 <span v-show="showarrow" class="arrow"></span>
+                <div class="kaliebiao" v-show="kaliebiaoflag">
+                <p v-for="(item,index) in kaliebiaolist" :key="index">{{item.carcode1}}</p>
               </div>
+              </div>
+              
             </div>
             <div class="costomer_xin">
               <div class="costomer_xi">出生日期</div>
@@ -180,9 +184,7 @@
         </div>
       </div>
     </mt-loadmore>
-    <div class="kaliebiao" v-show="kaliebiaoflag">
-      <p v-for="(item,index) in kaliebiaolist" :key="index">{{item.carcode1}}</p>
-    </div>
+    
   </div>
 </template>
 
@@ -227,14 +229,8 @@ export default {
     console.log(this.crmid);
     this.getDetail();
     // this.getcustomertag();
-    this.instance.$post(
-      "/rest/wx/customerGx/customerTagList",
-      { customerCode: this.crmid },
-      res => {
-        console.log(res);
-        this.getcustomertag = res.rows;
-      }
-    );
+      
+    
   },
   methods: {
     getDetail(rate) {
@@ -432,34 +428,44 @@ export default {
     // if($('#qywxbiaoqian').html() == ''){
     //   $('#qywxbiaoqian').html('暂无')
     // }
-    setTimeout(() => {
-      console.log($('#crmbiaoqian').children().html())
-      console.log($('#gxbiaoqian').children().html())
-      console.log($('#qywxbiaoqian').children().html())
-      console.log($('#crmbiaoqian').html())
-      console.log($('#gxbiaoqian').html())
-      console.log($('#qywxbiaoqian').html())
-      var html = `
-        <p style="text-align:center;width:100%">暂无</p>
-      `
-      if($('#crmbiaoqian').children().children().html() == ''){
-        $('#crmbiaoqian').html(html)
-      }else if($('#crmbiaoqian').html() == ''){
-        $('#crmbiaoqian').html(html)
-      }
+    this.instance.$post(
+      "/rest/wx/customerGx/customerTagList",
+      { customerCode: this.crmid },
+      res => {
+        console.log(res);
+        this.getcustomertag = res.rows;
+        setTimeout(() => {
+          console.log($('#crmbiaoqian').children().html())
+          console.log($('#gxbiaoqian').children().html())
+          console.log($('#qywxbiaoqian').children().html())
+          console.log($('#crmbiaoqian').html())
+          console.log($('#gxbiaoqian').html())
+          console.log($('#qywxbiaoqian').html())
+          var html = `
+            <p style="text-align:center;width:100%;font-size:0.3rem">暂无</p>
+          `
+          // if($('#crmbiaoqian').children().children().html() == ''){
+          //   $('#crmbiaoqian').html(html)
+          // }else if($('#crmbiaoqian').html() == ''){
+          //   $('#crmbiaoqian').html(html)
+          // }
 
-      if($('#gxbiaoqian').children().children().html() == ''){
-        $('#gxbiaoqian').html(html)
-      }else if($('#gxbiaoqian').html() == ''){
-        $('#gxbiaoqian').html(html)
-      }
+          if($('#gxbiaoqian').children().children().html() == ''){
+            $('#gxbiaoqian').html(html)
+          }else if($('#gxbiaoqian').html() == ''){
+            $('#gxbiaoqian').html(html)
+          }
 
-      if($('#qywxbiaoqian').children().children().html() == ''){
-        $('#qywxbiaoqian').html(html)
-      }else if($('#qywxbiaoqian').html() == ''){
-        $('#qywxbiaoqian').html(html)
+          if($('#qywxbiaoqian').children().children().html() == ''){
+            $('#qywxbiaoqian').html(html)
+          }else if($('#qywxbiaoqian').html() == ''){
+            $('#qywxbiaoqian').html(html)
+          }
+        }, 100);
+        
       }
-    }, 100);
+    );
+      
     
   }
 };
@@ -467,12 +473,12 @@ export default {
 
 <style scoped lang="less">
 .kaliebiao {
-  width: 40%;
+  // width: 40%;
   text-align: center;
   background: #f7f7f7;
   position: absolute;
   right: 0;
-  top: 52%;
+  top: 85%;
 }
 .kaliebiao p {
   font-size: 0.3rem;
@@ -664,12 +670,11 @@ export default {
 }
 
 .title {
-  padding: 0 0.3rem;
-  font-size: 0.35rem;
+  padding: 0.1rem 0.3rem;
+  font-size: 0.34rem;
   font-weight: bold;
   height: 0.8rem;
   line-height: 0.8rem;
-  box-sizing: border-box;
 }
 
 .datalist {
@@ -679,7 +684,7 @@ export default {
 .costomer_xin {
   display: flex;
   border-top: 1px solid #f7f7f7;
-  padding: 0 0.3rem;
+  padding: 0.1rem 0.3rem;
   font-size: 0.3rem;
   height: 0.8rem;
   line-height: 0.8rem;
