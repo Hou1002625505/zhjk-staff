@@ -549,17 +549,17 @@ export default {
           //   $('#crmbiaoqian').html(html)
           // }
 
-          // if($('#gxbiaoqian').children().children().html() == ''){
-          //   $('#gxbiaoqian').html(html)
-          // }else if($('#gxbiaoqian').html() == ''){
-          //   $('#gxbiaoqian').html(html)
-          // }
+          if($('#gxbiaoqian').children().children().html() == ''){
+            $('#gxbiaoqian').html(html)
+          }else if($('#gxbiaoqian').html() == ''){
+            $('#gxbiaoqian').html(html)
+          }
 
-          // if($('#qywxbiaoqian').children().children().html() == ''){
-          //   $('#qywxbiaoqian').html(html)
-          // }else if($('#qywxbiaoqian').html() == ''){
-          //   $('#qywxbiaoqian').html(html)
-          // }
+          if($('#qywxbiaoqian').children().children().html() == ''){
+            $('#qywxbiaoqian').html(html)
+          }else if($('#qywxbiaoqian').html() == ''){
+            $('#qywxbiaoqian').html(html)
+          }
         }, 100);
         
       }
