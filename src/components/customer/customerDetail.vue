@@ -446,6 +446,32 @@ export default {
       { customerCode: this.crmid },
       res => {
         console.log(res);
+        console.log($('#gxbiaoqian').html())
+        console.log($('#qywxbiaoqian').html())
+
+        setTimeout(() => {
+          var html = `
+            <p style="text-align:center;width:100%;font-size:0.3rem;height:0.7rem;line-height:0.7rem">暂无</p>
+          `
+          // if($('#crmbiaoqian').children().children().html() == ''){
+          //   $('#crmbiaoqian').html(html)
+          // }else if($('#crmbiaoqian').html() == ''){
+          //   $('#crmbiaoqian').html(html)
+          // }
+
+          if($('#gxbiaoqian').children().children().html() == ''){
+            $('#gxbiaoqian').html(html)
+          }else if($('#gxbiaoqian').html() == ''){
+            $('#gxbiaoqian').html(html)
+          }
+
+          if($('#qywxbiaoqian').children().children().html() == ''){
+            $('#qywxbiaoqian').html(html)
+          }else if($('#qywxbiaoqian').html() == ''){
+            $('#qywxbiaoqian').html(html)
+          }
+        }, 100);
+
         var arr = res.rows
 
 //         var arr = [{"Group":1,"Groupheader":"质量管理","Leftimg":"","Left":"","Min":"","Right":"","Rightimg":""},
@@ -485,6 +511,8 @@ export default {
             getcustomertagqywx = dest[i]
           }
         }
+
+        
 
         var dest1 = []
         if(getcustomertaggx == ''){
@@ -539,29 +567,6 @@ export default {
         this.getcustomertaggx = dest1
         this.getcustomertagqywx = dest2
 
-        setTimeout(() => {
-          var html = `
-            <p style="text-align:center;width:100%;font-size:0.3rem;height:0.7rem;line-height:0.7rem">暂无</p>
-          `
-          // if($('#crmbiaoqian').children().children().html() == ''){
-          //   $('#crmbiaoqian').html(html)
-          // }else if($('#crmbiaoqian').html() == ''){
-          //   $('#crmbiaoqian').html(html)
-          // }
-
-          if($('#gxbiaoqian').children().children().html() == ''){
-            $('#gxbiaoqian').html(html)
-          }else if($('#gxbiaoqian').html() == ''){
-            $('#gxbiaoqian').html(html)
-          }
-
-          if($('#qywxbiaoqian').children().children().html() == ''){
-            $('#qywxbiaoqian').html(html)
-          }else if($('#qywxbiaoqian').html() == ''){
-            $('#qywxbiaoqian').html(html)
-          }
-        }, 100);
-        
       }
     );
       
