@@ -76,8 +76,8 @@
                 <span id="cardNo">{{firstRegistCard?firstRegistCard:"__"}}</span>
                 <span v-show="showarrow" class="arrow"></span>
                 <div class="kaliebiao" v-show="kaliebiaoflag">
-                <p v-for="(item,index) in kaliebiaolist" :key="index">{{item.carcode1}}</p>
-              </div>
+                  <p v-for="(item,index) in kaliebiaolist" :key="index">{{item.carcode1}}</p>
+                </div>
               </div>
               
             </div>
@@ -574,16 +574,18 @@ export default {
 .kaliebiao {
   // width: 40%;
   text-align: center;
-  background: #f7f7f7;
+  background: #35495e;
   position: absolute;
   right: 0;
   top: 85%;
+  border-radius: 2px;
+  opacity: 0.8;
 }
 .kaliebiao p {
   font-size: 0.3rem;
   font-family: PingFang-SC-Medium;
   font-weight: 500;
-  color: rgba(29, 29, 29, 1);
+  color: #f4f5f7;
   line-height: 0.5rem;
 }
 .customer_data {
