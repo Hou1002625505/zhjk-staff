@@ -116,7 +116,8 @@
           <div style="display:flex;padding:0.14rem 0 0.14rem 0.3rem;flex-wrap:wrap;border-top:1px solid #F7F7F7;border-bottom:1px solid #F7F7F7" id="crmbiaoqian">
             <div v-for="(item,index) in getcustomertag" :key="index">
               <div v-if="item.sourceSystem == 1" style="font-size:0.24rem;background:#F7F7F7;padding:0.14rem 0.16rem;margin:0 0.16rem 0.16rem 0">
-                <span v-if="item.groupName">{{ item.groupName }}:</span>
+                <span v-if="item.groupName">{{ item.groupName }}</span>
+                <span v-if="item.groupName&&item.tagName">:</span>
                 <span v-if="item.tagName">{{ item.tagName }}</span>
               </div>
               <div v-else></div>
@@ -124,23 +125,33 @@
           </div> -->
           <div class="title">广信标签</div>
           <div style="display:flex;padding:0.14rem 0 0.14rem 0.3rem;flex-wrap:wrap;border-top:1px solid #F7F7F7;min-height:0.5rem" id="gxbiaoqian">
-            <div v-for="(item,index) in getcustomertag" :key="index">
-              <div v-if="item.sourceSystem == 2" style="font-size:0.24rem;background:#F7F7F7;padding:0.14rem 0.16rem;margin:0 0.16rem 0.16rem 0">
-                <span v-if="item.groupName">{{ item.groupName }}:</span>
-                <span v-if="item.tagName">{{ item.tagName }}</span>
+            <div v-for="(item,index) in getcustomertaggx" :key="index">
+              <!-- <span v-if="item.data.length > 1">{{ item1.groupName }}:</span> -->
+              <div v-for="(item1,index1) in item.data" :key="index1">
+                <div v-if="item1.length = 1" style="font-size:0.24rem;background:#F7F7F7;padding:0.14rem 0.16rem;margin:0 0.16rem 0.16rem 0">
+                  <span>{{ item1.tagName }}</span>
+                </div>
+                <div v-else-if="item1.length > 1" style="font-size:0.24rem;background:#F7F7F7;padding:0.14rem 0.16rem;margin:0 0.16rem 0.16rem 0">
+                  <span v-if="index1 = 0">{{ item1.groupName }}:{{ item1.tagName }}、</span>
+                  <span v-else>{{ item1.tagName }}、</span>
+                </div>
               </div>
-              <div v-else></div>
             </div>
           </div>
           <div style="height:1px;background:#F7F7F7;margin:0 0.3rem;box-sizing:border-box"></div>
           <div class="title">企业微信标签</div>
           <div style="display:flex;padding:0.14rem 0 0.14rem 0.3rem;flex-wrap:wrap;border-top:1px solid #F7F7F7;" id="qywxbiaoqian">
-            <div v-for="(item,index) in getcustomertag" :key="index">
-              <div v-if="item.sourceSystem == 3" style="font-size:0.24rem;background:#F7F7F7;padding:0.14rem 0.16rem;margin:0 0.16rem 0.16rem 0">
-                <span v-if="item.groupName">{{ item.groupName }}:</span>
-                <span v-if="item.tagName">{{ item.tagName }}</span>
+            <div v-for="(item,index) in getcustomertagqywx" :key="index">
+              <!-- <span v-if="item.data.length > 1">{{ item1.groupName }}:</span> -->
+              <div v-for="(item1,index1) in item.data" :key="index1">
+                <div v-if="item1.length = 1" style="font-size:0.24rem;background:#F7F7F7;padding:0.14rem 0.16rem;margin:0 0.16rem 0.16rem 0">
+                  <span>{{ item1.tagName }}</span>
+                </div>
+                <div v-else-if="item1.length > 1" style="font-size:0.24rem;background:#F7F7F7;padding:0.14rem 0.16rem;margin:0 0.16rem 0.16rem 0">
+                  <span v-if="index1 = 0">{{ item1.groupName }}:{{ item1.tagName }}、</span>
+                  <span v-else>{{ item1.tagName }}、</span>
+                </div>
               </div>
-              <div v-else></div>
             </div>
           </div>
         </div>
@@ -197,7 +208,8 @@ export default {
       crmid: this.$route.query.crmid,
       //filid:'099105851',
       getDetailarr: [],
-      getcustomertag: [],
+      getcustomertaggx: [],
+      getcustomertagqywx:[],
       topStatus: "",
       activeStatus: "",
       costYear: "",
@@ -428,19 +440,106 @@ export default {
     // if($('#qywxbiaoqian').html() == ''){
     //   $('#qywxbiaoqian').html('暂无')
     // }
+    var that = this
     this.instance.$post(
       "/rest/wx/customerGx/customerTagList",
       { customerCode: this.crmid },
       res => {
         console.log(res);
-        this.getcustomertag = res.rows;
+        var arr = res.rows
+
+//         var arr = [{"Group":1,"Groupheader":"质量管理","Leftimg":"","Left":"","Min":"","Right":"","Rightimg":""},
+// {"Group":1,"Groupheader":"","Leftimg":"","Left":"","Min":"质量巡检","Right":"","Rightimg":""},
+// {"Group":2,"Groupheader":"设备管理","Leftimg":"","Left":"","Min":"","Right":"","Rightimg":""},
+// {"Group":2,"Groupheader":"","Leftimg":"","Left":"","Min":"设备专业点检","Right":"","Rightimg":""},
+// {"Group":2,"Groupheader":"","Leftimg":"","Left":"","Min":"设备日检","Right":"","Rightimg":""},
+// {"Group":2,"Groupheader":"","Leftimg":"","Left":"","Min":"设备周检","Right":"","Rightimg":""},
+// {"Group":2,"Groupheader":"","Leftimg":"","Left":"","Min":"设备月检","Right":"","Rightimg":""}]
+        var map = {},
+            dest = [];
+        for(var i = 0; i < arr.length; i++){
+            var ai = arr[i];
+            if(!map[ai.sourceSystem]){
+                dest.push({
+                    sourceSystem: ai.sourceSystem,
+              
+                    data: [ai]
+                });
+                map[ai.sourceSystem] = ai;
+            }else{
+                for(var j = 0; j < dest.length; j++){
+                    var dj = dest[j];
+                    if(dj.sourceSystem == ai.sourceSystem){
+                        dj.data.push(ai);
+                        break;
+                    }
+                }
+            }
+        }
+        var getcustomertaggx = []
+        var getcustomertagqywx = []
+        for(var i=0;i<dest.length;i++){
+          if(dest[i].sourceSystem == 2){
+            getcustomertaggx = dest[i]
+          }else if(dest[i].sourceSystem == 3){
+            getcustomertagqywx = dest[i]
+          }
+        }
+
+        var dest1 = []
+        if(getcustomertaggx == ''){
+          dest1 = []
+        }else{
+          for(var i = 0; i < getcustomertaggx.data.length; i++){
+            var ai = getcustomertaggx.data[i];
+            if(!map[ai.groupName]){
+                dest1.push({
+                    groupName: ai.groupName,
+              
+                    data: [ai]
+                });
+                map[ai.groupName] = ai;
+            }else{
+                for(var j = 0; j < dest1.length; j++){
+                    var dj = dest1[j];
+                    if(dj.groupName == ai.groupName){
+                        dj.data.push(ai);
+                        break;
+                    }
+                }
+            }
+          }
+        }
+
+        var dest2 = []
+        if(getcustomertagqywx == ''){
+          dest2 = []
+        }
+        else{
+          for(var i = 0; i < getcustomertagqywx.data.length; i++){
+            var ai = getcustomertagqywx.data[i];
+            if(!map[ai.groupName]){
+                dest2.push({
+                    groupName: ai.groupName,
+              
+                    data: [ai]
+                });
+                map[ai.groupName] = ai;
+            }else{
+                for(var j = 0; j < dest2.length; j++){
+                    var dj = dest2[j];
+                    if(dj.groupName == ai.groupName){
+                        dj.data.push(ai);
+                        break;
+                    }
+                }
+            }
+          }
+        }
+        this.getcustomertaggx = dest1
+        this.getcustomertagqywx = dest2
+
         setTimeout(() => {
-          console.log($('#crmbiaoqian').children().html())
-          console.log($('#gxbiaoqian').children().html())
-          console.log($('#qywxbiaoqian').children().html())
-          console.log($('#crmbiaoqian').html())
-          console.log($('#gxbiaoqian').html())
-          console.log($('#qywxbiaoqian').html())
           var html = `
             <p style="text-align:center;width:100%;font-size:0.3rem;height:0.7rem;line-height:0.7rem">暂无</p>
           `
@@ -450,17 +549,17 @@ export default {
           //   $('#crmbiaoqian').html(html)
           // }
 
-          if($('#gxbiaoqian').children().children().html() == ''){
-            $('#gxbiaoqian').html(html)
-          }else if($('#gxbiaoqian').html() == ''){
-            $('#gxbiaoqian').html(html)
-          }
+          // if($('#gxbiaoqian').children().children().html() == ''){
+          //   $('#gxbiaoqian').html(html)
+          // }else if($('#gxbiaoqian').html() == ''){
+          //   $('#gxbiaoqian').html(html)
+          // }
 
-          if($('#qywxbiaoqian').children().children().html() == ''){
-            $('#qywxbiaoqian').html(html)
-          }else if($('#qywxbiaoqian').html() == ''){
-            $('#qywxbiaoqian').html(html)
-          }
+          // if($('#qywxbiaoqian').children().children().html() == ''){
+          //   $('#qywxbiaoqian').html(html)
+          // }else if($('#qywxbiaoqian').html() == ''){
+          //   $('#qywxbiaoqian').html(html)
+          // }
         }, 100);
         
       }
