@@ -128,11 +128,11 @@
             <div v-for="(item,index) in getcustomertaggx" :key="index">
               <!-- <span v-if="item.data.length > 1">{{ item1.groupName }}:</span> -->
               <div v-for="(item1,index1) in item.data" :key="index1">
-                <div v-if="item1.length = 1" style="font-size:0.24rem;background:#F7F7F7;padding:0.14rem 0.16rem;margin:0 0.16rem 0.16rem 0">
+                <div v-if="item.data.length == 1" style="font-size:0.24rem;background:#F7F7F7;padding:0.14rem 0.16rem;margin:0 0.16rem 0.16rem 0">
                   <span>{{ item1.tagName }}</span>
                 </div>
-                <div v-else-if="item1.length > 1" style="font-size:0.24rem;background:#F7F7F7;padding:0.14rem 0.16rem;margin:0 0.16rem 0.16rem 0">
-                  <span v-if="index1 = 0">{{ item1.groupName }}:{{ item1.tagName }}、</span>
+                <div v-else-if="item.data.length > 1" style="font-size:0.24rem;background:#F7F7F7;padding:0.14rem 0.16rem;margin:0 0.16rem 0.16rem 0">
+                  <span v-if="index1 == 0">{{ item1.groupName }}:{{ item1.tagName }}、</span>
                   <span v-else>{{ item1.tagName }}、</span>
                 </div>
               </div>
@@ -144,11 +144,11 @@
             <div v-for="(item,index) in getcustomertagqywx" :key="index">
               <!-- <span v-if="item.data.length > 1">{{ item1.groupName }}:</span> -->
               <div v-for="(item1,index1) in item.data" :key="index1">
-                <div v-if="item1.length = 1" style="font-size:0.24rem;background:#F7F7F7;padding:0.14rem 0.16rem;margin:0 0.16rem 0.16rem 0">
+                <div v-if="item.data.length == 1" style="font-size:0.24rem;background:#F7F7F7;padding:0.14rem 0.16rem;margin:0 0.16rem 0.16rem 0">
                   <span>{{ item1.tagName }}</span>
                 </div>
-                <div v-else-if="item1.length > 1" style="font-size:0.24rem;background:#F7F7F7;padding:0.14rem 0.16rem;margin:0 0.16rem 0.16rem 0">
-                  <span v-if="index1 = 0">{{ item1.groupName }}:{{ item1.tagName }}、</span>
+                <div v-else-if="item.data.length > 1" style="font-size:0.24rem;background:#F7F7F7;padding:0.14rem 0.16rem;margin:0 0.16rem 0.16rem 0">
+                  <span v-if="index1 == 0">{{ item1.groupName }}:{{ item1.tagName }}、</span>
                   <span v-else>{{ item1.tagName }}、</span>
                 </div>
               </div>
@@ -566,7 +566,7 @@ export default {
         }
         this.getcustomertaggx = dest1
         this.getcustomertagqywx = dest2
-
+        console.log(dest2)
       }
     );
       
