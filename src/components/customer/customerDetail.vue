@@ -123,7 +123,7 @@
               <div v-else></div>
             </div>
           </div> -->
-          <div class="title">广信标签</div>
+          <div class="title" @click="wxsys()">广信标签</div>
           <div style="display:flex;padding:0.14rem 0 0.14rem 0.3rem;flex-wrap:wrap;border-top:1px solid #F7F7F7;min-height:0.5rem" id="gxbiaoqian">
             <div v-for="(item,index) in getcustomertaggx" :key="index">
               <!-- <span v-if="item.data.length > 1">{{ item1.groupName }}:</span> -->
@@ -139,7 +139,7 @@
             </div>
           </div>
           <div style="height:1px;background:#F7F7F7;margin:0 0.3rem;box-sizing:border-box"></div>
-          <div class="title">企业微信标签</div>
+          <div class="title" @click="wxsyss()">企业微信标签</div>
           <div style="display:flex;padding:0.14rem 0 0.14rem 0.3rem;flex-wrap:wrap;border-top:1px solid #F7F7F7;" id="qywxbiaoqian">
             <div v-for="(item,index) in getcustomertagqywx" :key="index">
               <!-- <span v-if="item.data.length > 1">{{ item1.groupName }}:</span> -->
@@ -201,6 +201,7 @@
 
 <script>
 import $ from 'jquery'
+import axios from 'axios'
 export default {
   data() {
     return {
@@ -427,7 +428,161 @@ export default {
         this.loading = 1;
         this.getcustomer(1);
       }, 300);
-    }
+    },
+    wxsys(){
+      
+      var _that = this;
+    //alert(location.href)
+     var fang = location.href.split("#")[0];
+    // var cheng = location.href.split("#")[1];
+	//  var feng = cheng.substr(1)
+	// var feng1 = fang +feng
+ var link = fang;
+ //alert(link)
+		var data = {
+			code: 1003,
+			url: link
+        }
+		$.ajax({
+			type: "post",
+			url: this.config.service_ip + "/rest/wx/login/getQYparam", 
+			data: data,
+			success: function(res) {
+                    console.log('签名') 
+                    console.log(res) 
+				 //alert(res.signature) 
+				wx.config({
+          beta:true,
+					debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来
+					appId: "wx5f8f3a976bb14c88", // 公众号的唯一标识
+					timestamp: res.timestamp, // 生成签名的时间戳
+					nonceStr: res.nonce_str, // 生成签名的随机串
+					signature: res.signature, // 签名
+					jsApiList: [
+            //             'checkJsApi',
+						// "onMenuShareTimeline",
+            // "onMenuShareAppMessage"
+            "openEnterpriseChat"
+					] // 需要使用的JS接口列表
+				});
+                // wx.error(function(res) {alert('验证失败')});
+                	//			分享好友,朋友圈
+            wx.ready(function(res) {
+
+              wx.openEnterpriseChat({
+              // 注意：userIds和externalUserIds至少选填一个，且userIds+externalUserIds总数不能超过2000。
+                userIds: 'houjiahui',    //参与会话的企业成员列表，格式为userid1;userid2;...，用分号隔开。
+                externalUserIds: 'wmugtECwAAprHa2SdNRr9u66bBmZp3eg', // 参与会话的外部联系人列表，格式为userId1;userId2;…，用分号隔开。
+                groupName: '讨论组',  // 必填，会话名称。单聊时该参数传入空字符串""即可。
+                success: function(res) {
+                    // 回调
+                },
+                fail: function(res) {
+                    if(res.errMsg.indexOf('function not exist') > -1){
+                        alert('版本过低请升级')
+                    }
+                }
+            });
+
+            });
+			},
+			error: function() {
+				alert('网络请求中断,请稍后重试!')
+			}
+		});
+    },
+    wxsyss(){
+      var _that = this;
+    //alert(location.href)
+     var fang = location.href.split("#")[0];
+    // var cheng = location.href.split("#")[1];
+	//  var feng = cheng.substr(1)
+	// var feng1 = fang +feng
+ var link = fang;
+ //alert(link)
+		var data = {
+			code: 1003,
+			url: link
+        }
+		$.ajax({
+			type: "post",
+			url: this.config.service_ip + "/rest/wx/login/getQYparam", 
+			data: data,
+			success: function(res) {
+                    console.log('签名') 
+                    console.log(res) 
+				 //alert(res.signature) 
+				wx.config({
+          beta:true,
+					debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来
+					appId: "wx5f8f3a976bb14c88", // 公众号的唯一标识
+					timestamp: res.timestamp, // 生成签名的时间戳
+					nonceStr: res.nonce_str, // 生成签名的随机串
+					signature: res.signature, // 签名
+					jsApiList: [
+            //             'checkJsApi',
+						// "onMenuShareTimeline",
+            // "onMenuShareAppMessage"
+            "agentConfig",
+            'invoke',
+            "sendChatMessage"
+					] // 需要使用的JS接口列表
+				});
+                // wx.error(function(res) {alert('验证失败')});
+                	//			分享好友,朋友圈
+            wx.ready(function(res) {
+              wx.agentConfig({
+              corpid: "wx5f8f3a976bb14c88", // 必填，企业微信的corpid，必须与当前登录的企业一致
+              agentid: "1000008", // 必填，企业微信的应用id （e.g. 1000247）
+              timestamp: res.timestamp, // 必填，生成签名的时间戳
+              nonceStr: res.nonce_str, // 必填，生成签名的随机串
+              signature: res.signature,// 必填，签名，见附录1
+              jsApiList: ['invoke',"sendChatMessage"], //必填
+              success: function(res) {
+                  // 回调
+                  wx.invoke('sendChatMessage', {
+                  msgtype:"text", //消息类型，必填
+                  text: {
+                      content:"你好", //文本内容
+                  },
+                  image:
+                  {
+                      mediaid: "", //图片的素材id
+                  },
+                  video:
+                  {
+                      mediaid: "", //视频的素材id
+                  },
+                  file:
+                  {
+                    mediaid: "", //文件的素材id
+                  },
+                  news:
+                  {
+                      link: "", //H5消息页面url 必填
+                      title: "", //H5消息标题
+                      desc: "", //H5消息摘要
+                      imgUrl: "", //H5消息封面图片URL
+                  }
+              }, function(res) {
+                  if (res.err_msg == 'sendChatMessage:ok') {
+                      //发送成功
+                  }
+              })
+                            },
+                            fail: function(res) {
+                                if(res.errMsg.indexOf('function not exist') > -1){
+                                    alert('版本过低请升级')
+                                }
+                            }
+                        });
+                      });
+                    },
+                    error: function() {
+                      alert('网络请求中断,请稍后重试!')
+                    }
+                  });
+                  }
   },
   components: {},
   mounted:function(){

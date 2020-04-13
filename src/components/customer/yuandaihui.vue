@@ -937,7 +937,7 @@ export default {
   color: #fff !important;
 }
 .qi_search_wrap {
-  padding: 0 5%;
+  padding: 0 2%;
   height: 1rem;
   margin-bottom: 0.3rem;
 }

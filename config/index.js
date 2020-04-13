@@ -10,7 +10,15 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/api': {    //跨域标识     请求地址为‘http://1xxx.xxx.com/index/list’, 请求时 “/api/index/list”
+        target: 'https://qyapi.weixin.qq.com',
+        changeOrigin: true,   //允许跨域
+        pathRewrite: {            //重新跨域标识
+          '^/api': ''
+        }
+      }
+    },
     //172.16.7.14
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST 
