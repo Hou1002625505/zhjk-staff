@@ -79,7 +79,6 @@
                   <p v-for="(item,index) in kaliebiaolist" :key="index">{{item.carcode1}}</p>
                 </div>
               </div>
-              
             </div>
             <div class="costomer_xin">
               <div class="costomer_xi">出生日期</div>
@@ -122,16 +121,25 @@
               </div>
               <div v-else></div>
             </div>
-          </div> -->
+          </div>-->
           <div class="title" @click="wxsys()">广信标签</div>
-          <div style="display:flex;padding:0.14rem 0 0.14rem 0.3rem;flex-wrap:wrap;border-top:1px solid #F7F7F7;min-height:0.5rem" id="gxbiaoqian">
+          <div
+            style="display:flex;padding:0.14rem 0 0.14rem 0.3rem;flex-wrap:wrap;border-top:1px solid #F7F7F7;min-height:0.5rem"
+            id="gxbiaoqian"
+          >
             <div v-for="(item,index) in getcustomertaggx" :key="index">
               <!-- <span v-if="item.data.length > 1">{{ item1.groupName }}:</span> -->
               <div v-for="(item1,index1) in item.data" :key="index1">
-                <div v-if="item.data.length == 1" style="font-size:0.24rem;background:#F7F7F7;padding:0.14rem 0.16rem;margin:0 0.16rem 0.16rem 0">
+                <div
+                  v-if="item.data.length == 1"
+                  style="font-size:0.24rem;background:#F7F7F7;padding:0.14rem 0.16rem;margin:0 0.16rem 0.16rem 0"
+                >
                   <span>{{ item1.tagName }}</span>
                 </div>
-                <div v-else-if="item.data.length > 1" style="font-size:0.24rem;background:#F7F7F7;padding:0.14rem 0.16rem;margin:0 0.16rem 0.16rem 0">
+                <div
+                  v-else-if="item.data.length > 1"
+                  style="font-size:0.24rem;background:#F7F7F7;padding:0.14rem 0.16rem;margin:0 0.16rem 0.16rem 0"
+                >
                   <span v-if="index1 == 0">{{ item1.groupName }}:{{ item1.tagName }}、</span>
                   <span v-else>{{ item1.tagName }}、</span>
                 </div>
@@ -140,14 +148,23 @@
           </div>
           <div style="height:1px;background:#F7F7F7;margin:0 0.3rem;box-sizing:border-box"></div>
           <div class="title" @click="wxsyss()">企业微信标签</div>
-          <div style="display:flex;padding:0.14rem 0 0.14rem 0.3rem;flex-wrap:wrap;border-top:1px solid #F7F7F7;" id="qywxbiaoqian">
+          <div
+            style="display:flex;padding:0.14rem 0 0.14rem 0.3rem;flex-wrap:wrap;border-top:1px solid #F7F7F7;"
+            id="qywxbiaoqian"
+          >
             <div v-for="(item,index) in getcustomertagqywx" :key="index">
               <!-- <span v-if="item.data.length > 1">{{ item1.groupName }}:</span> -->
               <div v-for="(item1,index1) in item.data" :key="index1">
-                <div v-if="item.data.length == 1" style="font-size:0.24rem;background:#F7F7F7;padding:0.14rem 0.16rem;margin:0 0.16rem 0.16rem 0">
+                <div
+                  v-if="item.data.length == 1"
+                  style="font-size:0.24rem;background:#F7F7F7;padding:0.14rem 0.16rem;margin:0 0.16rem 0.16rem 0"
+                >
                   <span>{{ item1.tagName }}</span>
                 </div>
-                <div v-else-if="item.data.length > 1" style="font-size:0.24rem;background:#F7F7F7;padding:0.14rem 0.16rem;margin:0 0.16rem 0.16rem 0">
+                <div
+                  v-else-if="item.data.length > 1"
+                  style="font-size:0.24rem;background:#F7F7F7;padding:0.14rem 0.16rem;margin:0 0.16rem 0.16rem 0"
+                >
                   <span v-if="index1 == 0">{{ item1.groupName }}:{{ item1.tagName }}、</span>
                   <span v-else>{{ item1.tagName }}、</span>
                 </div>
@@ -156,7 +173,7 @@
           </div>
         </div>
         <div class="second">
-          <div class="title">消费情况</div>
+          <div class="title" @click="wxsysss()">消费情况</div>
           <div class="datalist">
             <!--<div class="costomer_xin">
 					<div class="costomer_xi">月到店次数</div>
@@ -195,13 +212,12 @@
         </div>
       </div>
     </mt-loadmore>
-    
   </div>
 </template>
 
 <script>
-import $ from 'jquery'
-import axios from 'axios'
+import $ from "jquery";
+import axios from "axios";
 export default {
   data() {
     return {
@@ -210,7 +226,7 @@ export default {
       //filid:'099105851',
       getDetailarr: [],
       getcustomertaggx: [],
-      getcustomertagqywx:[],
+      getcustomertagqywx: [],
       topStatus: "",
       activeStatus: "",
       costYear: "",
@@ -242,8 +258,6 @@ export default {
     console.log(this.crmid);
     this.getDetail();
     // this.getcustomertag();
-      
-    
   },
   methods: {
     getDetail(rate) {
@@ -429,163 +443,282 @@ export default {
         this.getcustomer(1);
       }, 300);
     },
-    wxsys(){
-      
+    wxsys() {
       var _that = this;
-    //alert(location.href)
-     var fang = location.href.split("#")[0];
-    // var cheng = location.href.split("#")[1];
-	//  var feng = cheng.substr(1)
-	// var feng1 = fang +feng
- var link = fang;
- //alert(link)
-		var data = {
-			code: 1003,
-			url: link
-        }
-		$.ajax({
-			type: "post",
-			url: this.config.service_ip + "/rest/wx/login/getQYparam", 
-			data: data,
-			success: function(res) {
-                    console.log('签名') 
-                    console.log(res) 
-				 //alert(res.signature) 
-				wx.config({
-          beta:true,
-					debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来
-					appId: "wx5f8f3a976bb14c88", // 公众号的唯一标识
-					timestamp: res.timestamp, // 生成签名的时间戳
-					nonceStr: res.nonce_str, // 生成签名的随机串
-					signature: res.signature, // 签名
-					jsApiList: [
-            //             'checkJsApi',
-						// "onMenuShareTimeline",
-            // "onMenuShareAppMessage"
-            "openEnterpriseChat"
-					] // 需要使用的JS接口列表
-				});
-                // wx.error(function(res) {alert('验证失败')});
-                	//			分享好友,朋友圈
-            wx.ready(function(res) {
-
-              wx.openEnterpriseChat({
+      //alert(location.href)
+      var fang = location.href.split("#")[0];
+      // var cheng = location.href.split("#")[1];
+      //  var feng = cheng.substr(1)
+      // var feng1 = fang +feng
+      var link = fang;
+      //alert(link)
+      var data = {
+        code: 1003,
+        url: link
+      };
+      $.ajax({
+        type: "post",
+        url: this.config.service_ip + "/rest/wx/login/getQYparam",
+        data: data,
+        success: function(res) {
+          console.log("签名");
+          console.log(res);
+          //alert(res.signature)
+          wx.config({
+            beta: true,
+            debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来
+            appId: "wx5f8f3a976bb14c88", // 公众号的唯一标识
+            timestamp: res.timestamp, // 生成签名的时间戳
+            nonceStr: res.nonce_str, // 生成签名的随机串
+            signature: res.signature, // 签名
+            jsApiList: [
+              //             'checkJsApi',
+              // "onMenuShareTimeline",
+              // "onMenuShareAppMessage"
+              "openEnterpriseChat"
+            ] // 需要使用的JS接口列表
+          });
+          // wx.error(function(res) {alert('验证失败')});
+          //			分享好友,朋友圈
+          wx.ready(function(res) {
+            wx.openEnterpriseChat({
               // 注意：userIds和externalUserIds至少选填一个，且userIds+externalUserIds总数不能超过2000。
-                userIds: 'houjiahui',    //参与会话的企业成员列表，格式为userid1;userid2;...，用分号隔开。
-                externalUserIds: 'wmugtECwAAprHa2SdNRr9u66bBmZp3eg', // 参与会话的外部联系人列表，格式为userId1;userId2;…，用分号隔开。
-                groupName: '讨论组',  // 必填，会话名称。单聊时该参数传入空字符串""即可。
-                success: function(res) {
-                    // 回调
-                },
-                fail: function(res) {
-                    if(res.errMsg.indexOf('function not exist') > -1){
-                        alert('版本过低请升级')
-                    }
+              userIds: "houjiahui", //参与会话的企业成员列表，格式为userid1;userid2;...，用分号隔开。
+              externalUserIds: "wmugtECwAAprHa2SdNRr9u66bBmZp3eg", // 参与会话的外部联系人列表，格式为userId1;userId2;…，用分号隔开。
+              groupName: "讨论组", // 必填，会话名称。单聊时该参数传入空字符串""即可。
+              success: function(res) {
+                // 回调
+              },
+              fail: function(res) {
+                if (res.errMsg.indexOf("function not exist") > -1) {
+                  alert("版本过低请升级");
                 }
+              }
+            });
+          });
+        },
+        error: function() {
+          alert("网络请求中断,请稍后重试!");
+        }
+      });
+    },
+    wxsyss() {
+      var _that = this;
+      var fang = location.href.split("#")[0];
+      var link = fang;
+      var data = {
+        code: 1003,
+        url: link
+      };
+      $.ajax({
+        type: "post",
+        url: _that.config.service_ip + "/rest/wx/login/getQYparam",
+        data: data,
+        success: function(res) {
+          console.log("签名");
+          console.log(res);
+          wx.config({
+            beta: true,
+            debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来
+            appId: "wx5f8f3a976bb14c88", // 公众号的唯一标识
+            timestamp: res.timestamp, // 生成签名的时间戳
+            nonceStr: res.nonce_str, // 生成签名的随机串
+            signature: res.signature, // 签名
+            jsApiList: [
+              "agentConfig",
+              "sendChatMessage"
+              // "sendChatMessage"
+            ] // 需要使用的JS接口列表
+          });
+            
+          wx.ready(function() {
+            var fang1 = location.href.split("#")[0];
+            var link1 = fang1;
+            var data1 = {
+              code: 1003,
+              url: link1,
+              type: "agent_config"
+            };
+
+            $.ajax({
+              type: "post",
+              url: _that.config.service_ip + "/rest/wx/login/getQYparam",
+              data: data1,
+              success: function(resss) {
+                alert(resss.timestamp);
+                alert(resss.nonce_str);
+                alert(resss.signature);
+                var nonce_str = resss.nonce_str.toString()
+                var signature = resss.signature.toString()
+                wx.agentConfig({
+                  corpid: "wx5f8f3a976bb14c88", // 必填，企业微信的corpid，必须与当前登录的企业一致
+                  agentid: "1000008", // 必填，企业微信的应用id （e.g. 1000247）
+                  timestamp: resss.timestamp, // 必填，生成签名的时间戳
+                  nonceStr: nonce_str, // 必填，生成签名的随机串
+                  signature: signature, // 必填，签名，见附录1
+                  jsApiList: ["sendChatMessage"], //必填
+                  success: function(res) {
+                    // 回调
+                    wx.invoke(
+                      "sendChatMessage",
+                      {
+                        msgtype: "news", //消息类型，必填
+                        text: {
+                          content: "你好" //文本内容
+                        },
+                        image: {
+                          mediaid: "" //图片的素材id
+                        },
+                        video: {
+                          mediaid: "" //视频的素材id
+                        },
+                        file: {
+                          mediaid: "" //文件的素材id
+                        },
+                        news: {
+                          link: "www.baidu.com", //H5消息页面url 必填
+                          title: "baidu", //H5消息标题
+                          desc: "baidu", //H5消息摘要
+                          imgUrl:
+                            "https://www.baidu.com/img/bd_logo1.png?qua=high" //H5消息封面图片URL
+                        }
+                      },
+                      function(res1) {
+                        alert(res1);
+                        //console.log(res1.err_msg);
+                        if (res1.err_msg == "sendChatMessage:ok") {
+                          //发送成功
+                        }
+                      }
+                    );
+                  },
+                  fail: function(res) {
+                    if (res.errMsg.indexOf("function not exist") > -1) {
+                      alert("版本过低请升级");
+                    }
+                  }
+                });
+              }
             });
 
-            });
-			},
-			error: function() {
-				alert('网络请求中断,请稍后重试!')
-			}
-		});
-    },
-    wxsyss(){
-      var _that = this;
-    //alert(location.href)
-     var fang = location.href.split("#")[0];
-    // var cheng = location.href.split("#")[1];
-	//  var feng = cheng.substr(1)
-	// var feng1 = fang +feng
- var link = fang;
- //alert(link)
-		var data = {
-			code: 1003,
-			url: link
+
+          });
+        },
+        error: function() {
+          alert("网络请求中断,请稍后重试!");
         }
-		$.ajax({
-			type: "post",
-			url: this.config.service_ip + "/rest/wx/login/getQYparam", 
-			data: data,
-			success: function(res) {
-                    console.log('签名') 
-                    console.log(res) 
-				 //alert(res.signature) 
-				wx.config({
-          beta:true,
-					debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来
-					appId: "wx5f8f3a976bb14c88", // 公众号的唯一标识
-					timestamp: res.timestamp, // 生成签名的时间戳
-					nonceStr: res.nonce_str, // 生成签名的随机串
-					signature: res.signature, // 签名
-					jsApiList: [
-            //             'checkJsApi',
-						// "onMenuShareTimeline",
-            // "onMenuShareAppMessage"
-            "agentConfig",
-            'invoke',
-            "sendChatMessage"
-					] // 需要使用的JS接口列表
-				});
-                // wx.error(function(res) {alert('验证失败')});
-                	//			分享好友,朋友圈
-            wx.ready(function(res) {
-              wx.agentConfig({
-              corpid: "wx5f8f3a976bb14c88", // 必填，企业微信的corpid，必须与当前登录的企业一致
-              agentid: "1000008", // 必填，企业微信的应用id （e.g. 1000247）
-              timestamp: res.timestamp, // 必填，生成签名的时间戳
-              nonceStr: res.nonce_str, // 必填，生成签名的随机串
-              signature: res.signature,// 必填，签名，见附录1
-              jsApiList: ['invoke',"sendChatMessage"], //必填
-              success: function(res) {
-                  // 回调
-                  wx.invoke('sendChatMessage', {
-                  msgtype:"text", //消息类型，必填
-                  text: {
-                      content:"你好", //文本内容
-                  },
-                  image:
-                  {
-                      mediaid: "", //图片的素材id
-                  },
-                  video:
-                  {
-                      mediaid: "", //视频的素材id
-                  },
-                  file:
-                  {
-                    mediaid: "", //文件的素材id
-                  },
-                  news:
-                  {
-                      link: "", //H5消息页面url 必填
-                      title: "", //H5消息标题
-                      desc: "", //H5消息摘要
-                      imgUrl: "", //H5消息封面图片URL
-                  }
-              }, function(res) {
-                  if (res.err_msg == 'sendChatMessage:ok') {
-                      //发送成功
-                  }
-              })
-                            },
-                            fail: function(res) {
-                                if(res.errMsg.indexOf('function not exist') > -1){
-                                    alert('版本过低请升级')
-                                }
-                            }
-                        });
-                      });
-                    },
-                    error: function() {
-                      alert('网络请求中断,请稍后重试!')
-                    }
-                  });
-                  }
+      });
+    },
+    wxsysss() {
+      var _that = this;
+      //alert(location.href)
+      var fang = location.href.split("#")[0];
+      // var cheng = location.href.split("#")[1];
+      //  var feng = cheng.substr(1)
+      // var feng1 = fang +feng
+      var link = fang;
+      //alert(link)
+      var data = {
+        code: 1003,
+        url: link
+      };
+      $.ajax({
+        type: "post",
+        url: this.config.service_ip + "/rest/wx/login/getQYparam",
+        data: data,
+        success: function(res) {
+          console.log("签名");
+          console.log(res);
+          //alert(res.signature)
+          wx.config({
+            beta: true,
+            debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来
+            appId: "wx5f8f3a976bb14c88", // 公众号的唯一标识
+            timestamp: res.timestamp, // 生成签名的时间戳
+            nonceStr: res.nonce_str, // 生成签名的随机串
+            signature: res.signature, // 签名
+            jsApiList: [
+              //             'checkJsApi',
+              // "onMenuShareTimeline",
+              // "onMenuShareAppMessage"
+              // "agentConfig",
+              "invoke",
+              "selectExternalContact"
+              // "sendChatMessage"
+            ] // 需要使用的JS接口列表
+          });
+          // wx.error(function(res) {alert('验证失败')});
+          //			分享好友,朋友圈
+          wx.ready(function(res) {
+            wx.invoke(
+              "selectExternalContact",
+              {
+                filterType: 0 //0表示展示全部外部联系人列表，1表示仅展示未曾选择过的外部联系人。默认值为0；除了0与1，其他值非法。在企业微信2.4.22及以后版本支持该参数
+              },
+              function(res) {
+                if (res.err_msg == "selectExternalContact:ok") {
+                  userIds = res.userIds; //返回此次选择的外部联系人userId列表，数组类型
+                } else {
+                  //错误处理
+                }
+              }
+            );
+            // wx.invoke('sendChatMessage', {
+            //     msgtype:"text", //消息类型，必填
+            //     text: {
+            //         content:"你好", //文本内容
+            //     },
+            //     image:
+            //     {
+            //         mediaid: "", //图片的素材id
+            //     },
+            //     video:
+            //     {
+            //         mediaid: "", //视频的素材id
+            //     },
+            //     file:
+            //     {
+            //       mediaid: "", //文件的素材id
+            //     },
+            //     news:
+            //     {
+            //         link: "", //H5消息页面url 必填
+            //         title: "", //H5消息标题
+            //         desc: "", //H5消息摘要
+            //         imgUrl: "", //H5消息封面图片URL
+            //     }
+            // }, function(res) {
+            //     if (res.err_msg == 'sendChatMessage:ok') {
+            //         //发送成功
+            //     }
+            // })
+            // wx.agentConfig({
+            // corpid: "wx5f8f3a976bb14c88", // 必填，企业微信的corpid，必须与当前登录的企业一致
+            // agentid: "1000008", // 必填，企业微信的应用id （e.g. 1000247）
+            // timestamp: res.timestamp, // 必填，生成签名的时间戳
+            // nonceStr: res.nonce_str, // 必填，生成签名的随机串
+            // signature: res.signature,// 必填，签名，见附录1
+            // jsApiList: ['invoke',"sendChatMessage"], //必填
+            // success: function(res) {
+            //     // 回调
+
+            //               },
+            //               fail: function(res) {
+            //                   if(res.errMsg.indexOf('function not exist') > -1){
+            //                       alert('版本过低请升级')
+            //                   }
+            //               }
+            //           });
+          });
+        },
+        error: function() {
+          alert("网络请求中断,请稍后重试!");
+        }
+      });
+    }
   },
   components: {},
-  mounted:function(){
+  mounted: function() {
     // if($('#crmbiaoqian').html() == ''){
     //   $('#crmbiaoqian').html('暂无')
     // }
@@ -595,137 +728,142 @@ export default {
     // if($('#qywxbiaoqian').html() == ''){
     //   $('#qywxbiaoqian').html('暂无')
     // }
-    var that = this
+    var that = this;
     this.instance.$post(
       "/rest/wx/customerGx/customerTagList",
       { customerCode: this.crmid },
       res => {
         console.log(res);
-        console.log($('#gxbiaoqian').html())
-        console.log($('#qywxbiaoqian').html())
+        console.log($("#gxbiaoqian").html());
+        console.log($("#qywxbiaoqian").html());
 
         setTimeout(() => {
           var html = `
             <p style="text-align:center;width:100%;font-size:0.3rem;height:0.7rem;line-height:0.7rem">暂无</p>
-          `
+          `;
           // if($('#crmbiaoqian').children().children().html() == ''){
           //   $('#crmbiaoqian').html(html)
           // }else if($('#crmbiaoqian').html() == ''){
           //   $('#crmbiaoqian').html(html)
           // }
 
-          if($('#gxbiaoqian').children().children().html() == ''){
-            $('#gxbiaoqian').html(html)
-          }else if($('#gxbiaoqian').html() == ''){
-            $('#gxbiaoqian').html(html)
+          if (
+            $("#gxbiaoqian")
+              .children()
+              .children()
+              .html() == ""
+          ) {
+            $("#gxbiaoqian").html(html);
+          } else if ($("#gxbiaoqian").html() == "") {
+            $("#gxbiaoqian").html(html);
           }
 
-          if($('#qywxbiaoqian').children().children().html() == ''){
-            $('#qywxbiaoqian').html(html)
-          }else if($('#qywxbiaoqian').html() == ''){
-            $('#qywxbiaoqian').html(html)
+          if (
+            $("#qywxbiaoqian")
+              .children()
+              .children()
+              .html() == ""
+          ) {
+            $("#qywxbiaoqian").html(html);
+          } else if ($("#qywxbiaoqian").html() == "") {
+            $("#qywxbiaoqian").html(html);
           }
         }, 100);
 
-        var arr = res.rows
+        var arr = res.rows;
 
-//         var arr = [{"Group":1,"Groupheader":"质量管理","Leftimg":"","Left":"","Min":"","Right":"","Rightimg":""},
-// {"Group":1,"Groupheader":"","Leftimg":"","Left":"","Min":"质量巡检","Right":"","Rightimg":""},
-// {"Group":2,"Groupheader":"设备管理","Leftimg":"","Left":"","Min":"","Right":"","Rightimg":""},
-// {"Group":2,"Groupheader":"","Leftimg":"","Left":"","Min":"设备专业点检","Right":"","Rightimg":""},
-// {"Group":2,"Groupheader":"","Leftimg":"","Left":"","Min":"设备日检","Right":"","Rightimg":""},
-// {"Group":2,"Groupheader":"","Leftimg":"","Left":"","Min":"设备周检","Right":"","Rightimg":""},
-// {"Group":2,"Groupheader":"","Leftimg":"","Left":"","Min":"设备月检","Right":"","Rightimg":""}]
+        //         var arr = [{"Group":1,"Groupheader":"质量管理","Leftimg":"","Left":"","Min":"","Right":"","Rightimg":""},
+        // {"Group":1,"Groupheader":"","Leftimg":"","Left":"","Min":"质量巡检","Right":"","Rightimg":""},
+        // {"Group":2,"Groupheader":"设备管理","Leftimg":"","Left":"","Min":"","Right":"","Rightimg":""},
+        // {"Group":2,"Groupheader":"","Leftimg":"","Left":"","Min":"设备专业点检","Right":"","Rightimg":""},
+        // {"Group":2,"Groupheader":"","Leftimg":"","Left":"","Min":"设备日检","Right":"","Rightimg":""},
+        // {"Group":2,"Groupheader":"","Leftimg":"","Left":"","Min":"设备周检","Right":"","Rightimg":""},
+        // {"Group":2,"Groupheader":"","Leftimg":"","Left":"","Min":"设备月检","Right":"","Rightimg":""}]
         var map = {},
-            dest = [];
-        for(var i = 0; i < arr.length; i++){
-            var ai = arr[i];
-            if(!map[ai.sourceSystem]){
-                dest.push({
-                    sourceSystem: ai.sourceSystem,
-              
-                    data: [ai]
-                });
-                map[ai.sourceSystem] = ai;
-            }else{
-                for(var j = 0; j < dest.length; j++){
-                    var dj = dest[j];
-                    if(dj.sourceSystem == ai.sourceSystem){
-                        dj.data.push(ai);
-                        break;
-                    }
-                }
+          dest = [];
+        for (var i = 0; i < arr.length; i++) {
+          var ai = arr[i];
+          if (!map[ai.sourceSystem]) {
+            dest.push({
+              sourceSystem: ai.sourceSystem,
+
+              data: [ai]
+            });
+            map[ai.sourceSystem] = ai;
+          } else {
+            for (var j = 0; j < dest.length; j++) {
+              var dj = dest[j];
+              if (dj.sourceSystem == ai.sourceSystem) {
+                dj.data.push(ai);
+                break;
+              }
             }
+          }
         }
-        var getcustomertaggx = []
-        var getcustomertagqywx = []
-        for(var i=0;i<dest.length;i++){
-          if(dest[i].sourceSystem == 2){
-            getcustomertaggx = dest[i]
-          }else if(dest[i].sourceSystem == 3){
-            getcustomertagqywx = dest[i]
+        var getcustomertaggx = [];
+        var getcustomertagqywx = [];
+        for (var i = 0; i < dest.length; i++) {
+          if (dest[i].sourceSystem == 2) {
+            getcustomertaggx = dest[i];
+          } else if (dest[i].sourceSystem == 3) {
+            getcustomertagqywx = dest[i];
           }
         }
 
-        
-
-        var dest1 = []
-        if(getcustomertaggx == ''){
-          dest1 = []
-        }else{
-          for(var i = 0; i < getcustomertaggx.data.length; i++){
+        var dest1 = [];
+        if (getcustomertaggx == "") {
+          dest1 = [];
+        } else {
+          for (var i = 0; i < getcustomertaggx.data.length; i++) {
             var ai = getcustomertaggx.data[i];
-            if(!map[ai.groupName]){
-                dest1.push({
-                    groupName: ai.groupName,
-              
-                    data: [ai]
-                });
-                map[ai.groupName] = ai;
-            }else{
-                for(var j = 0; j < dest1.length; j++){
-                    var dj = dest1[j];
-                    if(dj.groupName == ai.groupName){
-                        dj.data.push(ai);
-                        break;
-                    }
+            if (!map[ai.groupName]) {
+              dest1.push({
+                groupName: ai.groupName,
+
+                data: [ai]
+              });
+              map[ai.groupName] = ai;
+            } else {
+              for (var j = 0; j < dest1.length; j++) {
+                var dj = dest1[j];
+                if (dj.groupName == ai.groupName) {
+                  dj.data.push(ai);
+                  break;
                 }
+              }
             }
           }
         }
 
-        var dest2 = []
-        if(getcustomertagqywx == ''){
-          dest2 = []
-        }
-        else{
-          for(var i = 0; i < getcustomertagqywx.data.length; i++){
+        var dest2 = [];
+        if (getcustomertagqywx == "") {
+          dest2 = [];
+        } else {
+          for (var i = 0; i < getcustomertagqywx.data.length; i++) {
             var ai = getcustomertagqywx.data[i];
-            if(!map[ai.groupName]){
-                dest2.push({
-                    groupName: ai.groupName,
-              
-                    data: [ai]
-                });
-                map[ai.groupName] = ai;
-            }else{
-                for(var j = 0; j < dest2.length; j++){
-                    var dj = dest2[j];
-                    if(dj.groupName == ai.groupName){
-                        dj.data.push(ai);
-                        break;
-                    }
+            if (!map[ai.groupName]) {
+              dest2.push({
+                groupName: ai.groupName,
+
+                data: [ai]
+              });
+              map[ai.groupName] = ai;
+            } else {
+              for (var j = 0; j < dest2.length; j++) {
+                var dj = dest2[j];
+                if (dj.groupName == ai.groupName) {
+                  dj.data.push(ai);
+                  break;
                 }
+              }
             }
           }
         }
-        this.getcustomertaggx = dest1
-        this.getcustomertagqywx = dest2
-        console.log(dest2)
+        this.getcustomertaggx = dest1;
+        this.getcustomertagqywx = dest2;
+        console.log(dest2);
       }
     );
-      
-    
   }
 };
 </script>
